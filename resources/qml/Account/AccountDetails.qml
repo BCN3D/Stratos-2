@@ -9,8 +9,8 @@ import Cura 1.1 as Cura
 
 Item
 {
-    property var profile: Cura.API.account.userProfile
-    property bool loggedIn: Cura.API.account.isLoggedIn
+    property var profile: Cura.AuthenticationService.profile
+    property bool loggedIn: Cura.AuthenticationService.isLoggedIn
     property var profileImage: Cura.API.account.profileImageUrl
 
     Loader

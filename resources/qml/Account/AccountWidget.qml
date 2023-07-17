@@ -4,16 +4,22 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
 
-import UM 1.5 as UM
+import UM 1.4 as UM
 import Cura 1.1 as Cura
 
 Item
 {
-    property var profile: Cura.API.account.userProfile
-    property bool loggedIn: Cura.API.account.isLoggedIn
+    property var emailText: ""
+    property var passwordText: ""
+    property int signInStatusCode: 200
+    property bool emailErrorVisible: false
+    property bool passwordErrorVisible: false
 
-    height: signInButton.visible ? signInButton.height : accountWidget.height
-    width: signInButton.visible ? signInButton.width : accountWidget.width
+    property var profile: Cura.AuthenticationService.profile
+    property var loggedIn: Cura.AuthenticationService.isLoggedIn
+
+    height: signInButton.height > accountWidget.height ? signInButton.height : accountWidget.height
+    width: signInButton.width > accountWidget.width ? signInButton.width : accountWidget.width
 
     Button
     {
@@ -32,26 +38,20 @@ Item
         background: Rectangle
         {
             radius: UM.Theme.getSize("action_button_radius").width
-            color: UM.Theme.getColor("main_window_header_background")
+            color: signInButton.hovered ? UM.Theme.getColor("main_window_header_background") : UM.Theme.getColor("primary_text")
             border.width: UM.Theme.getSize("default_lining").width
             border.color: UM.Theme.getColor("primary_text")
-
-            Rectangle
-            {
-                anchors.fill: parent
-                radius: parent.radius
-                color: UM.Theme.getColor("primary_text")
-                opacity: signInButton.hovered ? 0.2 : 0
-                Behavior on opacity { NumberAnimation { duration: 100 } }
-            }
         }
 
-        contentItem: UM.Label
+        contentItem: Label
         {
             id: label
             text: signInButton.text
-            color: UM.Theme.getColor("primary_text")
+            font: UM.Theme.getFont("default")
+            color: signInButton.hovered ? UM.Theme.getColor("primary_text") : UM.Theme.getColor("main_window_header_background")
             width: contentWidth
+            verticalAlignment: Text.AlignVCenter
+            renderType: Text.NativeRendering
         }
     }
 
@@ -61,27 +61,26 @@ Item
 
         anchors.verticalCenter: parent.verticalCenter
 
-        implicitHeight: Math.round(0.5 * UM.Theme.getSize("main_window_header").height)
-        implicitWidth: Math.round(0.5 * UM.Theme.getSize("main_window_header").height)
+        implicitHeight: UM.Theme.getSize("main_window_header").height
+        implicitWidth: UM.Theme.getSize("main_window_header").height
 
         hoverEnabled: true
 
         visible: loggedIn
 
-        text: (loggedIn && profile["profile_image_url"] == "") ? profile["username"].charAt(0).toUpperCase() : ""
+        text: profile["username"] ? profile["username"].charAt(0).toUpperCase() : null
 
         background: AvatarImage
         {
             id: avatar
 
-            width: accountWidget.width
-            height: accountWidget.height
+            width: Math.round(0.8 * accountWidget.width)
+            height: Math.round(0.8 * accountWidget.height)
             anchors.verticalCenter: accountWidget.verticalCenter
             anchors.horizontalCenter: accountWidget.horizontalCenter
 
             source: (loggedIn && profile["profile_image_url"]) ? profile["profile_image_url"] : ""
             outlineColor: loggedIn ? UM.Theme.getColor("account_widget_outline_active") : UM.Theme.getColor("lining")
-            maskColor: UM.Theme.getColor("main_window_header_background")
         }
 
         contentItem: Item
@@ -93,33 +92,25 @@ Item
             {
                 id: initialCircle
                 anchors.centerIn: parent
-                width: Math.min(accountWidget.width, accountWidget.height)
+                width: Math.min(parent.width, parent.height)
                 height: width
                 radius: width
-                color: UM.Theme.getColor("main_window_header_background")
-                border.width: UM.Theme.getSize("default_lining").width
+                color: accountWidget.hovered ? UM.Theme.getColor("primary_text") : "transparent"
+                border.width: 1
                 border.color: UM.Theme.getColor("primary_text")
-
-                Rectangle
-                {
-                    id: initialCircleFill
-                    anchors.fill: parent
-                    radius: parent.radius
-                    color: UM.Theme.getColor("primary_text")
-                    opacity: accountWidget.hovered ? 0.2 : 0
-                    Behavior on opacity { NumberAnimation { duration: 100 } }
-                }
             }
 
-            UM.Label
+            Label
             {
                 id: initialLabel
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: accountWidget.text
                 font: UM.Theme.getFont("large_bold")
-                color: UM.Theme.getColor("primary_text")
+                color: accountWidget.hovered ? UM.Theme.getColor("main_window_header_background") : UM.Theme.getColor("primary_text")
+                verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
+                renderType: Text.NativeRendering
             }
         }
 
@@ -143,6 +134,7 @@ Item
 
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         onOpened: Cura.API.account.popupOpened()
+        onClosed: this.resetForm()
 
         opacity: opened ? 1 : 0
         Behavior on opacity { NumberAnimation { duration: 100 } }
@@ -156,9 +148,19 @@ Item
             borderColor: UM.Theme.getColor("lining")
             borderWidth: UM.Theme.getSize("default_lining").width
 
-            target: Qt.point(width - ((signInButton.visible ? signInButton.width : accountWidget.width) / 2), -10)
+            target: Qt.point(width - (accountWidget.width / 2), -10)
 
             arrowSize: UM.Theme.getSize("default_arrow").width
+        }
+
+        function resetForm() {
+            signInStatusCode = 200
+
+            emailText = ""
+            passwordText = ""
+
+            emailErrorVisible = false
+            passwordErrorVisible = false
         }
     }
 }

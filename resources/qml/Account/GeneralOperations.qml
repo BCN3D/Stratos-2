@@ -47,15 +47,24 @@ Column
         width: UM.Theme.getSize("account_button").width
         height: UM.Theme.getSize("account_button").height
         text: catalog.i18nc("@button", "Sign in")
-        onClicked: Cura.API.account.login()
+        onClicked: this.signIn()
         fixedWidthMode: true
+
+        function signIn() {
+            signInStatusCode = Cura.AuthenticationService.signIn(email.text, password.text)
+            if (signInStatusCode == 200) {
+                popup.close()
+            }
+        }
     }
 
-    Cura.TertiaryButton
+    Cura.SecondaryButton
     {
         anchors.horizontalCenter: parent.horizontalCenter
+        width: UM.Theme.getSize("account_button").width
         height: UM.Theme.getSize("account_button").height
-        text: catalog.i18nc("@button", "Create a free UltiMaker account")
-        onClicked: Qt.openUrlExternally("https://ultimaker.com/app/ultimaker-cura-account-sign-up?utm_source=cura&utm_medium=software&utm_campaign=menu-signup")
+        text: catalog.i18nc("@button", "Create account")
+        onClicked: Qt.openUrlExternally("https://cloud.bcn3d.com")
+        fixedWidthMode: true
     }
 }
