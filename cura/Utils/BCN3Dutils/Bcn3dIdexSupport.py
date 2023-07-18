@@ -1,5 +1,5 @@
 import math
-from typing import List
+from typing import List, Optional
 
 from UM.Application import Application
 from UM.Operations.GroupedOperation import GroupedOperation
@@ -13,6 +13,7 @@ from UM.Message import Message
 from UM.Scene.SceneNode import SceneNode
 import UM.Application
 from UM.Logger import Logger
+from cura.Settings.GlobalStack import GlobalStack
 
 from cura.Scene.CuraSceneNode import CuraSceneNode
 from cura.Operations.SetParentOperation import SetParentOperation
@@ -131,6 +132,19 @@ def checkSTLScene(filename : str, loading_message : Message) -> None:
 def applyPrintMode() -> None:
     PrintModeManager.getInstance().applyPrintMode()
 
+#closeApplication(self)
+#Cura/CuraApplication.py:704
+def extractAndSavePrintMode(stack: Optional["GlobalStack"]) -> None:
+    if stack:
+        printModeToLoad : str = stack.getProperty("print_mode", "value")
+        PrintModeManager.getInstance().setPrintModeToLoad(printModeToLoad)
+        stack.setProperty("print_mode", "value", "singleT0") # Set a default
+
+#closeApplication(self)
+#Cura/CuraApplication.py:633
+def closeApplication(global_container_stack) -> None:
+    if global_container_stack is not None:
+        global_container_stack.setProperty("print_mode", "value", "singleT0")
 
 #SetParentOperation undo(self)
 #Cura/Operations/SetParentOperation.py:29

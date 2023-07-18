@@ -630,7 +630,8 @@ class CuraApplication(QtApplication):
         Logger.log("i", "Close application")
 
         #BCN3D IDEX INCLUSION
-        self._global_container_stack.setProperty("print_mode", "value", "singleT0")
+        from cura.Utils.BCN3Dutils.Bcn3dIdexSupport import closeApplication
+        closeApplication(self._global_container_stack)
 
         # Workaround: Before closing the window, remove the global stack.
         # This is necessary because as the main window gets closed, hundreds of QML elements get updated which often
@@ -697,6 +698,11 @@ class CuraApplication(QtApplication):
     @override(Application)
     def setGlobalContainerStack(self, stack: Optional["GlobalStack"]) -> None:
         self._setLoadingHint(self._i18n_catalog.i18nc("@info:progress", "Initializing Active Machine..."))
+
+        #BCN3D IDEX INCLUSION
+        from cura.Utils.BCN3Dutils.Bcn3dIdexSupport import extractAndSavePrintMode
+        extractAndSavePrintMode(stack)
+
         super().setGlobalContainerStack(stack)
 
     showMessageBox = pyqtSignal(str,str, str, str, int, int,
