@@ -109,7 +109,7 @@ Cura.ExpandablePopup
             }
             else if (Cura.MachineManager.activeMachine.definition.name == "Omega I60")
             {
-                return UM.Theme.getIcon("Epsilon_w50", "default")
+                return UM.Theme.getIcon("Omega_I60", "default")
             }
             else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W50")
             {
