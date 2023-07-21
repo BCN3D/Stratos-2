@@ -26,14 +26,14 @@ class SetParentOperation(Operation.Operation):
 
         #BCN3D IDEX INCLUSION
         from cura.Utils.BCN3Dutils.Bcn3dIdexSupport import setParentOperationUndo
-        setParentOperationUndo(self._set_parent, self._old_parent, self._node, Application.getInstance().getController().getScene().getRoot())
+        setParentOperationUndo(self._set_parent, self._parent, self._old_parent, self._node, Application.getInstance().getController().getScene().getRoot())
         #self._set_parent(self._old_parent)
 
     def redo(self) -> None:
         """Re-applies the set-parent operation."""
         #BCN3D IDEX INCLUSION
         from cura.Utils.BCN3Dutils.Bcn3dIdexSupport import setParentOperationRedo
-        setParentOperationRedo(self._set_parent, self._old_parent, self._node)
+        setParentOperationRedo(self._set_parent, self._parent, self._old_parent, self._node, Application.getInstance().getController().getScene().getRoot())
         #self._set_parent(self._parent)
 
     def _set_parent(self, new_parent: Optional[SceneNode]) -> None:

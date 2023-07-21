@@ -203,7 +203,12 @@ class PrintModeManager:
                     node.setPosition(Vector(position.x + offset, position.y, position.z))
                     nodesMoved += 1
                     for child in node.getChildren():
-                        self._moveNodes([child], offset, direcction)
+                        nodesMoved += 1
+                        # Looks like al childrens are moved with it parents, no need to move them, leave the code for if this behavior is changed in the future 
+                        ''' 
+                        if isinstance(child, CuraSceneNode):
+                            self._moveNodes([child], direction)
+                        '''
             Logger.info("Nodes moved: %s" % nodesMoved)
         
 
