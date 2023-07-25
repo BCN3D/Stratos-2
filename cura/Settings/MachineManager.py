@@ -639,6 +639,9 @@ class MachineManager(QObject):
         active_quality_group = self.activeQualityGroup()
         if active_quality_group is None:
             return False
+        #BCN3D inclusion
+        from cura.Utils.BCN3Dutils.Bcn3dUtils import checkMaterialcompatibility
+        return checkMaterialcompatibility(active_quality_group, global_container_stack)
         return active_quality_group.is_available
 
 
