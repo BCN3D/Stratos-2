@@ -415,6 +415,11 @@ class CuraApplication(QtApplication):
         SettingFunction.registerOperator("valueFromContainer", self._cura_formula_functions.getValueFromContainerAtIndex)
         SettingFunction.registerOperator("extruderValueFromContainer", self._cura_formula_functions.getValueFromContainerAtIndexInExtruder)
 
+        #BCN3D inclusion
+        from cura.Utils.BCN3Dutils.Bcn3dUtils import getMaterialInfoInExtruder, setOptimalAdhesionType
+        SettingFunction.registerOperator("materialInfoInExtruder", getMaterialInfoInExtruder)
+        SettingFunction.registerOperator("optimalAdhesionType", setOptimalAdhesionType)
+
     def __addAllResourcesAndContainerResources(self) -> None:
         """Adds all resources and container related resources."""
 

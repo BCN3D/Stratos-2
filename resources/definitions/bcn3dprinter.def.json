@@ -21,7 +21,11 @@
     {
         "meshfix_maximum_deviation": { "value": "layer_height / 4" },
         "meshfix_maximum_resolution": { "value": "(speed_wall_0 + speed_wall_x) / 60" },
-        "retraction_hop_after_extruder_switch_height": { "value": 5 }
+        "retraction_hop_after_extruder_switch_height": { "value": 5 },
+        "adhesion_type": 
+        { 
+            "resolve": "optimalAdhesionType()"
+        }
     },
     "settings":
     {
