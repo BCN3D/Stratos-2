@@ -7,6 +7,7 @@ def getMetaData():
     return {}
 
 def register(app):
+    return {}
     return { "machine_action": [
         FirmwareUpdaterMachineAction.FirmwareUpdaterMachineAction()
     ]}
