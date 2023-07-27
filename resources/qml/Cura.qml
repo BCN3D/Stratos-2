@@ -912,15 +912,6 @@ UM.MainWindow
                     wrapMode: Text.WordWrap
                     width: parent.parent.width - 2 * UM.Theme.getSize("message_type_icon").width
                 }
-                Cura.TertiaryButton
-                {
-                    text: catalog.i18nc("@action:button", "Learn more about Cura print profiles")
-                    iconSource: UM.Theme.getIcon("LinkExternal")
-                    isIconOnRightSide: true
-                    leftPadding: 0
-                    rightPadding: 0
-                    onClicked: Qt.openUrlExternally("https://support.ultimaker.com/s/article/1667337576882")
-                }
             }
         ]
         okButtonText: catalog.i18nc("@button", "Save new profile")
