@@ -12,10 +12,8 @@
             "0": "bcn3domega_extruder_left",
             "1": "bcn3domega_extruder_right"
         },
-        "supported_actions": [ "SyncMaterials" ],
         "supports_cloud_connection": true,
         "supports_firmware_updates": false,
-        "type": "omega",
         "weight": "-1"
     },
     "overrides":
