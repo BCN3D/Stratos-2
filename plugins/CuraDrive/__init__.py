@@ -9,4 +9,5 @@ def getMetaData():
 
 
 def register(app):
+    return{}
     return {"extension": DrivePluginExtension()}
