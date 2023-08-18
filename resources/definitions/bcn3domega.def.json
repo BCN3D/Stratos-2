@@ -14,7 +14,8 @@
         },
         "supports_cloud_connection": true,
         "supports_firmware_updates": false,
-        "weight": "-1"
+        "weight": "-1",
+        "preferred_material": "BCN3D_filaments_OmegaProto"
     },
     "overrides":
     {

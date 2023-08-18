@@ -86,8 +86,8 @@ class PrintModeManager:
 
     def applyPrintMode(self):
         app = Application.getInstance()
-        bcn3d_api = app.getPluginRegistry().getPluginObject("BCN3D")
-        bcn3d_api.getPrintersManager().setPrintMode(self.getPrintModeToLoad())
+        bcn3dplugin = app.getPluginRegistry().getPluginObject("BCN3D")
+        bcn3dplugin.print_modes.getPrintModeManager().setPrintMode(self._print_mode_to_load)
 
     def addDuplicatedNode(self, node) -> None:
         node.callDecoration("setBuildPlateNumber", 0)
