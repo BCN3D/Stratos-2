@@ -123,6 +123,10 @@ Cura.ExpandablePopup
             {
                 return UM.Theme.getIcon("sigma", "default")
             }
+            else if (Cura.MachineManager.activeMachine.definition.name == "Sigma")
+            {
+                return UM.Theme.getIcon("sigma", "default")
+            }
             else if (Cura.MachineManager.activeMachine.definition.name == "Sigmax")
             {
                return UM.Theme.getIcon("sigmax", "default")

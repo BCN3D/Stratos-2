@@ -86,27 +86,31 @@ Loader {
                         {
                             return UM.Theme.getIcon("PrinterTriple", "medium")
                         }
-                        else if (model.name == "Sigma D25")
+                        else if (model.machineDefinition == "bcn3dd25")
                         {
                             return UM.Theme.getIcon("Sigma_d25", "default")
                         }
-                        else if (model.name == "Omega I60")
+                        else if (model.machineDefinition == "bcn3domega")
                         {
                             return UM.Theme.getIcon("Omega_I60", "default")
                         }
-                        else if (model.name == "Epsilon W50")
+                        else if (model.machineDefinition == "bcn3dw50")
                         {
                             return UM.Theme.getIcon("Epsilon_w50", "default")
                         }
-                        else if (model.name == "Epsilon W27")
+                        else if (model.machineDefinition == "bcn3dw27")
                         {
                             return UM.Theme.getIcon("Epsilon_w27", "default")
                         }
-                        else if (model.name == "Sigma R19")
+                        else if (model.machineDefinition == "bcn3dsigma19")
                         {
                             return UM.Theme.getIcon("sigma", "default")
                         }
-                        else if (model.name == "Sigmax")
+                        else if (model.machineDefinition == "bcn3dsigma")
+                        {
+                            return UM.Theme.getIcon("sigma", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dsigmax")
                         {
                         return UM.Theme.getIcon("sigmax", "default")
                         }
