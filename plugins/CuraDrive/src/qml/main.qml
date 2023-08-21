@@ -34,12 +34,12 @@ Window
     WelcomePage
     {
         id: welcomePage
-        visible: !Cura.API.account.isLoggedIn
+        visible: !Cura.APIManager.AuthenticationService.isLoggedIn
     }
 
     BackupsPage
     {
         id: backupsPage
-        visible: Cura.API.account.isLoggedIn
+        visible: Cura.APIManager.AuthenticationService.isLoggedIn
     }
 }

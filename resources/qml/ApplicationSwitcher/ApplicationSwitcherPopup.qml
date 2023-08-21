@@ -105,7 +105,7 @@ Popup
                     {
                         modelData.permissionsRequired.forEach(function(permission)
                         {
-                            if(!Cura.API.account.isLoggedIn || !Cura.API.account.permissions.includes(permission)) //This required permission is not in the account.
+                            if(!Cura.APIManager.AuthenticationService.isLoggedIn || !Cura.API.account.permissions.includes(permission)) //This required permission is not in the account.
                             {
                                 throw "No permission to use this application."; //Can't return from within this lambda. Throw instead.
                             }

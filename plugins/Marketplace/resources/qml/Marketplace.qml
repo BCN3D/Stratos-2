@@ -290,7 +290,7 @@ Window
     {
         color: UM.Theme.getColor("main_background")
         anchors.fill: parent
-        visible: !Cura.API.account.isLoggedIn && CuraApplication.isEnterprise
+        visible: !Cura.APIManager.AuthenticationService.isLoggedIn && CuraApplication.isEnterprise
 
         UM.Label
         {
@@ -311,7 +311,7 @@ Window
             anchors.topMargin: UM.Theme.getSize("default_margin").height * 2
             text: catalog.i18nc("@button", "Sign in")
             fixedWidthMode: true
-            onClicked: Cura.API.account.login()
+            onClicked: Cura.APIManager.AuthenticationService.login()
         }
     }
 }

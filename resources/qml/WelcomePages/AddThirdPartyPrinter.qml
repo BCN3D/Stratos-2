@@ -48,7 +48,7 @@ Item
 
                 onRefreshButtonClicked:
                 {
-                    Cura.PrintersManagerService.refreshPrinters()
+                    Cura.APIManager.getPrintersManager().refreshPrinters()
                 }
 
                 onAddByIpButtonClicked:
@@ -59,7 +59,7 @@ Item
                 onAddCloudPrinterButtonClicked:
                 {
                     base.goToPage("add_cloud_printers")
-                    if (!Cura.API.account.isLoggedIn)
+                    if (!Cura.APIManager.getAuthenticationService().isLoggedIn)
                     {
                         Cura.API.account.login()
                     }
