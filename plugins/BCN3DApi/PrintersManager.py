@@ -17,7 +17,6 @@ class PrintersManager(QObject):
             raise ValueError("Duplicate singleton creation")
         self._cura_application = CuraApplication.getInstance()
         self._data_api_service = DataApiService.getInstance()
-        self._application = CuraApplication.getInstance()
         AuthApiService.getInstance().authStateChanged.connect(self._authStateChanged)
 
 
@@ -71,21 +70,21 @@ class PrintersManager(QObject):
  # Function to set the state checked inside the qml of the plugin
     @pyqtSlot(result = str)
     def getPrintMode(self):
-        self._global_container_stack = self._application.getGlobalContainerStack()
+        self._global_container_stack = self._cura_application.getGlobalContainerStack()
         print_mode = self._global_container_stack.getProperty("print_mode", "value")
         return print_mode
 
     @pyqtSlot(str)
     def setPrintMode(self, print_mode: str):
-        self._application.setPrintModeToLoad(print_mode)
-        self._global_container_stack = self._application.getGlobalContainerStack()
+        self._cura_application.setPrintModeToLoad(print_mode)
+        self._global_container_stack = self._cura_application.getGlobalContainerStack()
         left_extruder = self._global_container_stack.extruderList[0]
         right_extruder = self._global_container_stack.extruderList[1]
         try:
             left_extruder.enabledChanged.disconnect(self._onEnabledChangedLeft)
             right_extruder.enabledChanged.disconnect(self._onEnabledChangedRight)
-            self._application.getMachineManager().setExtruderEnabled(0, False)
-            self._application.getMachineManager().setExtruderEnabled(1, False)
+            self._cura_application.getMachineManager().setExtruderEnabled(0, False)
+            self._cura_application.getMachineManager().setExtruderEnabled(1, False)
         except Exception:
             # Just in case the connection didn't exists
             pass

@@ -19,7 +19,7 @@ class AuthApiService(QObject):
     scope = None
     _session_manager = None
     grant_type = 'password'
-    #authStateChanged = pyqtSignal(bool, arguments=["isLoggedIn"])
+    authStateChanged = pyqtSignal(bool, arguments=["isLoggedIn"])
 
     def __init__(self):
         super().__init__()
@@ -30,7 +30,6 @@ class AuthApiService(QObject):
         self._email = None
         self._profile = None
         self._is_logged_in = False
-        self.authStateChanged = pyqtSignal(bool, arguments=["isLoggedIn"])
         
     def startApi(self, firstRun=True):
         apiData = None
@@ -62,8 +61,8 @@ class AuthApiService(QObject):
     @pyqtProperty("QVariantMap", notify=authStateChanged)
     def profile(self):
         if not self._profile:
-            return None
-        return self._profile.__dict__
+            return {}
+        return self._profile
 
     @pyqtProperty(bool, notify=authStateChanged)
     def isLoggedIn(self):
