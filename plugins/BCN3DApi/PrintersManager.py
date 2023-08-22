@@ -39,7 +39,6 @@ class PrintersManager(QObject):
         for printer in discovered_printers:
             discovered_printers_model.removeDiscoveredPrinter(printer.address)
 
-    @pyqtSlot()
     def refreshPrinters(self):
         self._resetPrinters()
         self._addPrinters()

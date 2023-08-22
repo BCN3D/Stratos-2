@@ -14,4 +14,4 @@ def register(app):
     """
     Register the plug-in object with Uranium.
     """
-    return { "extension": [SyncOrchestrator(app), Marketplace()] }
+    return {}

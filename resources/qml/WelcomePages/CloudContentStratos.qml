@@ -157,7 +157,7 @@ Item
         height: UM.Theme.getSize("account_button").height
         text: catalog.i18nc("@button", "Sign in")
         onClicked: {
-        signInStatusCode = Cura.APIManager.getAuthenticationService().signIn(email.text, password.text)
+        signInStatusCode = Cura.APIManager.signIn(email.text, password.text)
 
             if(signInStatusCode == 200) {
                 base.showNextPage()

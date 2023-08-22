@@ -1,3 +1,4 @@
+from typing import Any
 from PyQt6.QtCore import QObject, pyqtSlot, pyqtProperty, pyqtSignal
 from cura.OAuth2.Models import UserProfile
 from UM.Message import Message
@@ -36,7 +37,7 @@ class AuthApiService(QObject):
         pr = PluginRegistry.getInstance()
         pluginPath = pr.getPluginPath("BCN3DApi")
         try:
-            with open(os.path.join(pluginPath, "ApiDataStaging.json"), "r", encoding="utf-8") as f:
+            with open(os.path.join(pluginPath, "ApiData.json"), "r", encoding="utf-8") as f:
                 apiData = json.load(f)
         except IOError as e:
             Logger.error("Could not open ApiData.json for reading: %s".format(str(e)))
@@ -58,13 +59,11 @@ class AuthApiService(QObject):
     def email(self):
         return self._email
 
-    @pyqtProperty("QVariantMap", notify=authStateChanged)
     def profile(self):
         if not self._profile:
             return {}
         return self._profile
 
-    @pyqtProperty(bool, notify=authStateChanged)
     def isLoggedIn(self):
         return self._is_logged_in
 
@@ -78,7 +77,8 @@ class AuthApiService(QObject):
         if 200 <= response.status_code < 300:
             current_user = response.json()
             self._email = current_user["email"]
-            self._profile = UserProfile(username=current_user["name"])
+            self._profile = {}
+            self._profile["username"] = current_user["name"]
             self._is_logged_in = True
             self.authStateChanged.emit(True)
         else:
@@ -87,7 +87,6 @@ class AuthApiService(QObject):
             Logger.error("Could not get current user: %s" % reason)
             return {}
 
-    @pyqtSlot(str, str, result=int)
     def signIn(self, email, password):
         if not self.apiDataIsDefined():
             self.startApi(False)
@@ -135,7 +134,6 @@ class AuthApiService(QObject):
                 Logger.log("e", "Unable to refresh token with error [%d]" % err.response.status_code)
                 self.signOut()
 
-    @pyqtSlot(result=bool)
     def signOut(self):
         self._session_manager.clearSession()
         self._email = None
@@ -164,3 +162,10 @@ class AuthApiService(QObject):
         return cls.__instance
 
     __instance = None
+
+class User:
+    def __init__(self, name):
+        self.username = name
+
+    def __getattribute__(self, key: str) -> Any:
+        return getattr(self, key)
