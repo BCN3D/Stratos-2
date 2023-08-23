@@ -79,6 +79,10 @@ class AuthApiService(QObject):
             self._email = current_user["email"]
             self._profile = {}
             self._profile["username"] = current_user["name"]
+            self._profile["advanced_user"] = False
+            if "advanced_user" in current_user:
+                self._profile["advanced_user"] = current_user["advanced_user"]
+            self._profile["advanced_user"] = True
             self._is_logged_in = True
             self.authStateChanged.emit(True)
         else:

@@ -17,13 +17,11 @@ class APIManager(QObject):
         self._printers_manager = None
         self._printers_manager = PrintersManager.getInstance()
 
-    #@pyqtSlot(result=AuthApiService)
     def getAuthenticationService(self):
         if self._authentication_service is None:
             self._authentication_service = AuthApiService.getInstance()
             self._authentication_service.authStateChanged = self.authStateChanged
             self._authentication_service.startApi()
-        #return self._authentication_service
     
     @pyqtSlot(str, str, result=int)
     def signIn(self, email, password):

@@ -42,6 +42,9 @@ Item
         return PrintSetupSelectorContents.Mode.Recommended
     }
     onCurrentModeIndexChanged: UM.Preferences.setValue("cura/active_mode", currentModeIndex)
+    
+    property var machineSet: Cura.MachineManager.activeMachine
+    onMachineSetChanged : currentModeIndex = 0
 
     Item
     {

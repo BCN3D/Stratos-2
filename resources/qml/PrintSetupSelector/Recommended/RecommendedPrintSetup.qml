@@ -16,6 +16,7 @@ ScrollView
     implicitHeight: settingsColumn.height + 2 * padding
 
     property bool settingsEnabled: Cura.ExtruderManager.activeExtruderStackId || extrudersEnabledCount.properties.value == 1
+    property var profile: Cura.APIManager.profile
 
     padding: UM.Theme.getSize("default_margin").width
 
@@ -111,6 +112,7 @@ ScrollView
                     text: catalog.i18nc("@button", "Show Custom")
                     textFont: UM.Theme.getFont("medium_bold")
                     outlineColor: "transparent"
+                    visible : Cura.MachineManager.activeMachine.definition.name != "Omega I60" || profile && profile["advanced_user"] ? true : false
                     onClicked: onModeChanged()
                 }
             }
