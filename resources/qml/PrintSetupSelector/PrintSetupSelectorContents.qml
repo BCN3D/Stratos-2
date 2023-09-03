@@ -69,7 +69,48 @@ Item
                 right: parent.right
                 top: parent.top
             }
-            visible: currentModeIndex == PrintSetupSelectorContents.Mode.Recommended
+            visible: (currentModeIndex == PrintSetupSelectorContents.Mode.Recommended) && Cura.MachineManager.activeMachine.definition.name != "Omega I60"
+            height: {
+                const height = base.height - (recommendedPrintSetup.mapToItem(null, 0, 0).y + buttonRow.height + UM.Theme.getSize("default_margin").height);
+                const maxHeight = UM.Preferences.getValue("view/settings_list_height");
+                return Math.min(height, maxHeight);
+            }
+
+            Connections
+            {
+                target: UM.Preferences
+                function onPreferenceChanged(preference)
+                {
+                    if (preference !== "view/settings_list_height" && preference !== "general/window_height" && preference !== "general/window_state")
+                    {
+                        return;
+                    }
+
+                    const height = base.height - (recommendedPrintSetup.mapToItem(null, 0, 0).y + buttonRow.height + UM.Theme.getSize("default_margin").height);
+                    const maxHeight = UM.Preferences.getValue("view/settings_list_height");
+
+                    recommendedPrintSetup.height = Math.min(maxHeight, height);
+
+                    updateDragPosition();
+                }
+            }
+
+            function onModeChanged()
+            {
+                currentModeIndex = PrintSetupSelectorContents.Mode.Custom;
+            }
+        }
+
+        RecommendedOmegaPrintSetup
+        {
+            id: recommendedOmegaPrintSetup
+            anchors
+            {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+            }
+            visible:  (currentModeIndex == PrintSetupSelectorContents.Mode.Recommended) && Cura.MachineManager.activeMachine.definition.name == "Omega I60"
             height: {
                 const height = base.height - (recommendedPrintSetup.mapToItem(null, 0, 0).y + buttonRow.height + UM.Theme.getSize("default_margin").height);
                 const maxHeight = UM.Preferences.getValue("view/settings_list_height");

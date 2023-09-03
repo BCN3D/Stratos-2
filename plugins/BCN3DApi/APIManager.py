@@ -52,7 +52,7 @@ class APIManager(QObject):
     @pyqtSlot()
     def refreshPrinters(self):
         self.getPrintersManager()
-        self._printers_manager().refreshPrinters()
+        self._printers_manager.refreshPrinters()
 
     @classmethod
     def getInstance(cls) -> "APIManager":

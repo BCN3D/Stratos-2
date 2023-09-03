@@ -1277,6 +1277,10 @@ class MachineManager(QObject):
         if global_stack is None:
             return
         Logger.log("d", "Updating quality/quality_changes due to material change")
+        
+        from cura.Utils.BCN3Dutils.Bcn3dUtils import resetDefaultQualityIfNecessary
+        resetDefaultQualityIfNecessary(self.activeMachine.definition.name, self.resetToUseDefaultQuality)
+        
         current_quality_type = global_stack.quality.getMetaDataEntry("quality_type")
         candidate_quality_groups = ContainerTree.getInstance().getCurrentQualityGroups()
         available_quality_types = {qt for qt, g in candidate_quality_groups.items() if g.is_available}

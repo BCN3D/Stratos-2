@@ -142,3 +142,12 @@ def setOptimalAdhesionType(context: Optional["PropertyEvaluationContext"] = None
                 return result[1]
 
         return result[0]
+
+def resetDefaultQualityIfNecessary(machineType : str, resetDefault) -> None:
+    if machineType == "Omega I60":
+        app = Application.getInstance()
+        bcn3dapiplugin = app.getPluginRegistry().getPluginObject("BCN3DApi")
+        authService = bcn3dapiplugin.authService
+        profile = authService.profile()
+        if not profile or not profile['advanced_user']:
+            resetDefault()    

@@ -11,13 +11,14 @@ import ".."
 
 ScrollView
 {
-    id: recommendedPrintSetup
+    id: recommendedOmegaPrintSetup
 
     implicitHeight: settingsColumn.height + 2 * padding
 
     property bool settingsEnabled: Cura.ExtruderManager.activeExtruderStackId || extrudersEnabledCount.properties.value == 1
 
     padding: UM.Theme.getSize("default_margin").width
+    property var profile: Cura.APIManager.profile
 
     function onModeChanged() {}
 
@@ -67,9 +68,11 @@ ScrollView
 
         Item { height: UM.Theme.getSize("default_margin").height } // Spacer
 
+
         ProfileWarningReset
         {
             width: parent.width
+            visible: (Cura.MachineManager.hasUserSettings || (fullWarning && Cura.MachineManager.hasCustomQuality)) && (Cura.MachineManager.activeMachine.definition.name != "Omega I60" || profile && profile["advanced_user"]) ? true : false
         }
 
         Item { height: UM.Theme.getSize("thin_margin").height  + UM.Theme.getSize("narrow_margin").height} // Spacer
@@ -103,21 +106,48 @@ ScrollView
                     font: UM.Theme.getFont("medium")
                 }
 
+
                 Cura.SecondaryButton
                 {
                     id: customSettingsButton
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     text: catalog.i18nc("@button", "Show Custom")
+                    visible : Cura.MachineManager.activeMachine.definition.name != "Omega I60" || profile && profile["advanced_user"] ? true : false
                     textFont: UM.Theme.getFont("medium_bold")
                     outlineColor: "transparent"
                     onClicked: onModeChanged()
                 }
             }
-
-            RecommendedStrengthSelector
+            
+            RecommendedOmegaSliderSelector
             {
                 width: parent.width
+                selectorText : "Quality"
+                quality_key : "omega_quality"
+                backgroundTextLeftText : "FINE"
+                backgroundTextRightText : "DRAFT"
+                sourceIcon : "PrintQuality"
+            } 
+
+            RecommendedOmegaSliderSelector
+            {
+                width: parent.width
+                selectorText : "Properties"
+                quality_key : "omega_properties"
+                backgroundTextLeftText : "LIGHT"
+                backgroundTextRightText : "STRONG"
+                sourceIcon : "category_support"
+            }
+
+            RecommendedOmegaSliderSelector
+            {
+                width: parent.width
+                selectorText : "Speed"
+                quality_key : "omega_speed"
+                backgroundTextLeftText : "LOW"
+                backgroundTextRightText : "HIGH"
+                sourceIcon : "print_time"
             }
 
             RecommendedSupportSelector

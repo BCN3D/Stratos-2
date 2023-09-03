@@ -360,6 +360,40 @@ UM.PreferencesPage
 
             }
 
+
+            Item
+            {
+                //: Spacer
+                height: UM.Theme.getSize("default_margin").height
+                width: UM.Theme.getSize("default_margin").width
+            }
+
+             UM.Label
+            {
+                id: contactUs
+
+                //: Language change warning
+                text: catalog.i18nc("@label", "If you want to show custom settings for Omega I60: ")
+                wrapMode: Text.WordWrap
+                font.italic: true
+
+            }
+
+           Cura.TertiaryButton
+            {
+                id: contacButton
+                anchors
+                {
+                    right: contactUs.right
+                }
+                width: UM.Theme.getSize("account_button").width
+                height: UM.Theme.getSize("account_button").height
+                text: catalog.i18nc("@button", "Contac us")
+                onClicked: Qt.openUrlExternally("https://www.bcn3d.com/bcn3d-omega/")
+                fixedWidthMode: false
+            }
+
+
             Item
             {
                 //: Spacer

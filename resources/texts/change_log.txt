@@ -6,9 +6,9 @@
 
 * Added Omega I60 new definition.
 - Prepare machine to support 1,75mm materials
-- Added Brass extrusor (Omega I60 series)
-- Added extrusor X (Omega I60 series)
-- Added extrusor M (Omega I60 series)
+- Added Brass extruder (Omega I60 series)
+- Added extruder X (Omega I60 series)
+- Added extruder M (Omega I60 series)
 
 * Added profile compatibility for some BCN3D materials (Omega I60): 
 - Added Omega Proto material
