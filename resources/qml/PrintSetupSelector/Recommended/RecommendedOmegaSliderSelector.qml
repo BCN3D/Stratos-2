@@ -15,7 +15,7 @@ Item {
     property string quality_key: ""
     property string backgroundTextLeftText: ""
     property string backgroundTextRightText: ""
-    property string tooltipText: catalog.i18nc("@action:label", "Print settings:<br/>Wall line count: %1<br/> Top layers: %2<br/> Bottom layers : %3<br/> Infill Spare Density: %4").arg(wallLineCountValue).arg(topLayersValue).arg(bottomLayersValue).arg(infillSpareDensityValue)
+    property string tooltipText: catalog.i18nc("@action:label", "Print settings:<br/>Wall line count: %1<br/> Top layers: %2<br/> Bottom layers : %3<br/> Infill Spare Density: %4%").arg(wallLineCountValue).arg(topLayersValue).arg(bottomLayersValue).arg(infillSpareDensityValue)
     property string sourceIcon: ""
     property string infoCharacter : ""
     property string colorText : UM.Theme.getColor("text")
@@ -148,7 +148,7 @@ Item {
                     infoCharacter = " ⓘ"
                     colorText = "#196EF0"
 
-                    Cura.MachineManager.setSettingForAllExtruders( quality_key, "value", omegaQualitySlider.value )
+                    Cura.MachineManager.setSettingForAllExtruders( quality_key, "value", parseInt(omegaQualitySlider.value))
                     //for some reason the value does not update if we don't force it twice
                     topLayers.forcePropertiesChanged()
                     topLayersValue = topLayers.properties.value
