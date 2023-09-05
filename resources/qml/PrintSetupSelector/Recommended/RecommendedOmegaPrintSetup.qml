@@ -119,43 +119,18 @@ ScrollView
                     onClicked: onModeChanged()
                 }
             }
-            
-            RecommendedOmegaSliderSelector
-            {
-                width: parent.width
-                selectorText : "Quality"
-                quality_key : "omega_quality"
-                backgroundTextLeftText : "FINE"
-                backgroundTextRightText : "DRAFT"
-                sourceIcon : "PrintQuality"
-            } 
 
             RecommendedOmegaSliderSelector
             {
                 width: parent.width
                 selectorText : "Properties"
                 quality_key : "omega_properties"
-                backgroundTextLeftText : "LIGHT"
-                backgroundTextRightText : "STRONG"
+                backgroundTextLeftText : "LIGHTER"
+                backgroundTextRightText : "STRONGER"
                 sourceIcon : "category_support"
             }
 
-            RecommendedOmegaSliderSelector
-            {
-                width: parent.width
-                selectorText : "Speed"
-                quality_key : "omega_speed"
-                backgroundTextLeftText : "LOW"
-                backgroundTextRightText : "HIGH"
-                sourceIcon : "print_time"
-            }
-
             RecommendedSupportSelector
-            {
-                width: parent.width
-            }
-
-            RecommendedAdhesionSelector
             {
                 width: parent.width
             }

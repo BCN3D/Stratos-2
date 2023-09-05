@@ -15,8 +15,15 @@ Item {
     property string quality_key: ""
     property string backgroundTextLeftText: ""
     property string backgroundTextRightText: ""
-    property string tooltipText: ""
+    property string tooltipText: catalog.i18nc("@action:label", "Print settings:<br/>Wall line count: %1<br/> Top layers: %2<br/> Bottom layers : %3<br/> Infill Spare Density: %4").arg(wallLineCountValue).arg(topLayersValue).arg(bottomLayersValue).arg(infillSpareDensityValue)
     property string sourceIcon: ""
+    property string infoCharacter : ""
+    property string colorText : UM.Theme.getColor("text")
+    property int lengthProperty : 3
+    property string topLayersValue : topLayers.properties.value
+    property string bottomLayersValue : bottomLayers.properties.value
+    property string wallLineCountValue : wallLineCount.properties.value
+    property string infillSpareDensityValue : infillSpareDensity.properties.value
 
 
 
@@ -31,18 +38,42 @@ Item {
         }
     }
 
+    Binding
+    {
+        target: qualityRowTitle
+        property: "text"
+        value: {
+            return catalog.i18nc("@label", selectorText) + infoCharacter
+        }
+    }
+
     Cura.IconWithText
     {
         id: qualityRowTitle
-        text: catalog.i18nc("@label", selectorText)
+        text: catalog.i18nc("@label", selectorText) + infoCharacter
         width: leftColumnWidth
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         source: UM.Theme.getIcon(sourceIcon)
         spacing: UM.Theme.getSize("default_margin").width
         iconSize: UM.Theme.getSize("medium_button_icon").width
-        iconColor: UM.Theme.getColor("text")
+        color : colorText
+        iconColor: colorText
         font: UM.Theme.getFont("medium_bold")
+    }
+
+    MouseArea
+    {
+        id: tooltipArea
+        anchors.fill: qualityRowTitle
+        propagateComposedEvents: true
+        hoverEnabled: true
+        onEntered: {
+            colorText = UM.Theme.getColor("text")
+            infoCharacter = ""
+            base.showTooltip(parent, Qt.point(-UM.Theme.getSize("thick_margin").width, 0), tooltipText)
+        }
+        onExited: base.hideTooltip()
     }
 
     Item
@@ -62,7 +93,7 @@ Item {
             id: backgroundTextLeft
             text: backgroundTextLeftText
             font.pixelSize: 8
-            color:"white"
+            color: UM.Theme.getColor("text")
             anchors{
                 right: omegaQualitySlider.left + 10
                 verticalCenter: qualityRowTitle.verticalCenter
@@ -74,7 +105,7 @@ Item {
         {
             id: backgroundTextRight
             text: backgroundTextRightText
-            color:"white"
+            color: UM.Theme.getColor("text")
             font.pixelSize: 8
             anchors{
                 right: omegaQualitySlider.right
@@ -87,7 +118,7 @@ Item {
         CustomSlider {
             id: omegaQualitySlider
             from: 1
-            to: 4
+            to: lengthProperty
             stepSize: 1
 
             // set initial value from stack
@@ -100,19 +131,71 @@ Item {
                     return
                 }        
 
-                //omegaQualitySlider.value = omegaQuality.properties.value
-
                 // Otherwise if I change the value in the Custom mode the Recomended view will try to repeat
                 // same operation
                 var active_mode = UM.Preferences.getValue("cura/active_mode")
 
                 if (active_mode == 0 || active_mode == "simple")
                 {
+                    topLayers.forcePropertiesChanged()
+                    topLayersValue = topLayers.properties.value
+                    bottomLayers.forcePropertiesChanged()
+                    bottomLayersValue = bottomLayers.properties.value
+                    wallLineCount.forcePropertiesChanged()
+                    wallLineCountValue = wallLineCount.properties.value
+                    infillSpareDensity.forcePropertiesChanged()
+                    infillSpareDensityValue = infillSpareDensity.properties.value
+                    infoCharacter = " ⓘ"
+                    colorText = "#196EF0"
+
                     Cura.MachineManager.setSettingForAllExtruders( quality_key, "value", omegaQualitySlider.value )
+                    //for some reason the value does not update if we don't force it twice
+                    topLayers.forcePropertiesChanged()
+                    topLayersValue = topLayers.properties.value
+                    bottomLayers.forcePropertiesChanged()
+                    bottomLayersValue = bottomLayers.properties.value
+                    wallLineCount.forcePropertiesChanged()
+                    wallLineCountValue = wallLineCount.properties.value
+                    infillSpareDensity.forcePropertiesChanged()
+                    infillSpareDensityValue = infillSpareDensity.properties.value
                 }
             }
         }
     }
+
+    
+    property var wallLineCount : UM.SettingPropertyProvider
+    {
+        id: wallLineCount
+        containerStack: Cura.MachineManager.activeStack
+        key: "wall_line_count"
+        watchedProperties: [ "value" ]
+    }
+
+    property var topLayers : UM.SettingPropertyProvider
+    {
+        id: topLayers
+        containerStack: Cura.MachineManager.activeStack
+        key: "top_layers"
+        watchedProperties: [ "value" ]
+    }
+
+    property var bottomLayers : UM.SettingPropertyProvider
+    {
+        id: bottomLayers
+        containerStack: Cura.MachineManager.activeStack
+        key: "bottom_layers"
+        watchedProperties: [ "value" ]
+    }
+
+    property var infillSpareDensity : UM.SettingPropertyProvider
+    {
+        id: infillSpareDensity
+        containerStack: Cura.MachineManager.activeStack
+        key: "infill_sparse_density"
+        watchedProperties: [ "value" ]
+    }
+
 
     property var omegaQuality : UM.SettingPropertyProvider
     {

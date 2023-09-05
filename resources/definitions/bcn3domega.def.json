@@ -15,7 +15,8 @@
         "supports_cloud_connection": true,
         "supports_firmware_updates": false,
         "weight": "-1",
-        "preferred_material": "BCN3D_filaments_OmegaProto"
+        "preferred_material": "BCN3D_filaments_OmegaProto",
+        "preferred_variant_name": "Hotend X (0.4mm)"
     },
     "overrides":
     {
