@@ -120,6 +120,7 @@ from .Machines.Models.MachineListModel import MachineListModel
 from .Machines.Models.ActiveIntentQualitiesModel import ActiveIntentQualitiesModel
 from .Machines.Models.IntentSelectionModel import IntentSelectionModel
 from .SingleInstance import SingleInstance
+from cura.Utils.BCN3Dutils.Bcn3dExcludeInstances import removeNonExcludedInstances
 
 if TYPE_CHECKING:
     from UM.Settings.EmptyInstanceContainer import EmptyInstanceContainer
@@ -752,8 +753,8 @@ class CuraApplication(QtApplication):
             return
         if option == "discard":
             for extruder in global_stack.extruderList:
-                extruder.userChanges.clear()
-            global_stack.userChanges.clear()
+                removeNonExcludedInstances(extruder.userChanges)
+            removeNonExcludedInstances(global_stack.userChanges)
             self.getMachineManager().correctExtruderSettings()
 
         # if the user decided to keep settings then the user settings should be re-calculated and validated for errors

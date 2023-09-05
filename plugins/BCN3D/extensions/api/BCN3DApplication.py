@@ -1,6 +1,5 @@
 from cura.CuraApplication import CuraApplication
 from cura.Settings.GlobalStack import GlobalStack
-#from cura.Utils.Bcn3dExcludeInstances import removeNonExcludedInstances
 from typing import Optional
 from UM.Logger import Logger
 from cura import ApplicationMetadata
@@ -38,18 +37,4 @@ class BCN3DApplication(CuraApplication):
     
     def groupSelected(self) -> None:
         print("***** BCN3DApplication  groupSelected *****")
-
-    #def discardOrKeepProfileChangesClosed(self, option: str) -> None:
-    #    global_stack = self.getGlobalContainerStack()
-    #    if option == "discard":
-    #        for extruder in global_stack.extruderList:
-    #            removeNonExcludedInstances(extruder.userChanges)
-    #        removeNonExcludedInstances(global_stack.userChanges)
-
-    #    # if the user decided to keep settings then the user settings should be re-calculated and validated for errors
-    #    # before slicing. To ensure that slicer uses right settings values
-    #    elif option == "keep":
-    #        for extruder in global_stack.extruderList:
-    #            extruder.userChanges.update()
-    #        global_stack.userChanges.update()
 

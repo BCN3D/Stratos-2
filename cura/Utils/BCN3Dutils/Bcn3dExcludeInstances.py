@@ -1,6 +1,6 @@
 
 #Exclude changes to instances that will not be taken into consideration.
-excludedInstances = ["print_mode"]
+excludedInstances = ["print_mode", "omega_properties"]
 
 #Check if we need hidrate Category label for show in menu
 def hidrateCategoryLabel(category_label, item_to_add):

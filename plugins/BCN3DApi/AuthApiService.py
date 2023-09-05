@@ -37,7 +37,7 @@ class AuthApiService(QObject):
         pr = PluginRegistry.getInstance()
         pluginPath = pr.getPluginPath("BCN3DApi")
         try:
-            with open(os.path.join(pluginPath, "ApiData.json"), "r", encoding="utf-8") as f:
+            with open(os.path.join(pluginPath, "ApiDataStaging.json"), "r", encoding="utf-8") as f:
                 apiData = json.load(f)
         except IOError as e:
             Logger.error("Could not open ApiData.json for reading: %s".format(str(e)))

@@ -5,17 +5,20 @@ import QtQuick 2.7
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
 
-import UM 1.5 as UM
+import UM 1.1 as UM
 import Cura 1.0 as Cura
 
 import "."
-
+import "../../definitions/supportLinks.js" as SLinks
 Item
 {
     id: base
-    height: enabled ? UM.Theme.getSize("section").height + UM.Theme.getSize("narrow_margin").height : 0
+
+    height: UM.Theme.getSize("section").height
     anchors.left: parent.left
     anchors.right: parent.right
+    // To avoid overlaping with the scrollBars
+    anchors.rightMargin: 2 * UM.Theme.getSize("thin_margin").width
 
     property alias contents: controlContainer.children
     property alias hovered: mouse.containsMouse
@@ -62,19 +65,13 @@ Item
         var affected_by_list = ""
         for (var i in affected_by)
         {
-            if(affected_by[i].label != "")
-            {
-                affected_by_list += "<li>%1</li>\n".arg(affected_by[i].label)
-            }
+            affected_by_list += "<li>%1</li>\n".arg(affected_by[i].label)
         }
 
         var affects_list = ""
         for (var i in affects)
         {
-            if(affects[i].label != "")
-            {
-                affects_list += "<li>%1</li>\n".arg(affects[i].label)
-            }
+            affects_list += "<li>%1</li>\n".arg(affects[i].label)
         }
 
         var tooltip = "<b>%1</b>\n<p>%2</p>".arg(definition.label).arg(definition.description)
@@ -115,16 +112,7 @@ Item
 
         onExited:
         {
-            if (controlContainer.children[0] && controlContainer.children[0].hovered)
-            {
-                return
-            }
-
-            // Don't trigger the hide if either of the nested buttons is hidden. This is caused by a bug in QT
-            // Documentation claims that nested mouse events don't trigger the onExit, but this is only true if they
-            // have a *direct* parent child relationship. In this case there are rows and other visual layouts in
-            // between which messes this up.
-            if(linkedSettingIcon.hovered || revertButton.hovered || inheritButton.hovered)
+            if (controlContainer.item && controlContainer.item.hovered)
             {
                 return
             }
@@ -138,25 +126,29 @@ Item
             interval: 500
             repeat: false
 
-            onTriggered: base.showTooltip(base.createTooltipText())
+            onTriggered:
+            {
+                base.showTooltip(base.createTooltipText())
+            }
         }
 
-        UM.Label
+        Label
         {
             id: label
 
             anchors.left: parent.left
-            anchors.leftMargin: doDepthIndentation ? Math.round(UM.Theme.getSize("thin_margin").width + ((definition.depth - 1) * UM.Theme.getSize("default_margin").width)) : 0
+            anchors.leftMargin: doDepthIndentation ? Math.round(UM.Theme.getSize("thin_margin").width + ((definition.depth - 1) * UM.Theme.getSize("setting_control_depth_margin").width)) : 0
             anchors.right: settingControls.left
             anchors.verticalCenter: parent.verticalCenter
 
             text: definition.label
             elide: Text.ElideMiddle
+            renderType: Text.NativeRendering
             textFormat: Text.PlainText
 
             color: UM.Theme.getColor("setting_control_text")
             opacity: (definition.visible) ? 1 : 0.5
-            // Emphasize the setting if it has a value in the user or quality profile
+            // emphasize the setting if it has a value in the user or quality profile
             font: base.doQualityUserSettingEmphasis && base.stackLevel !== undefined && base.stackLevel <= 1 ? UM.Theme.getFont("default_italic") : UM.Theme.getFont("default")
         }
 
@@ -164,7 +156,7 @@ Item
         {
             id: settingControls
 
-            height: UM.Theme.getSize("small_button_icon").height
+            height: UM.Theme.getSize("section_control").height
             spacing: Math.round(UM.Theme.getSize("thick_margin").height / 2)
 
             anchors
@@ -182,13 +174,12 @@ Item
 
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                height: UM.Theme.getSize("small_button_icon").height
                 width: height
 
                 color: UM.Theme.getColor("setting_control_button")
                 hoverColor: UM.Theme.getColor("setting_control_button")
 
-                iconSource: UM.Theme.getIcon("Link")
+                iconSource: UM.Theme.getIcon("link")
 
                 onEntered:
                 {
@@ -212,13 +203,12 @@ Item
 
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                height: UM.Theme.getSize("small_button_icon").height
                 width: height
 
-                color: UM.Theme.getColor("accent_1")
+                color: UM.Theme.getColor("setting_control_button")
                 hoverColor: UM.Theme.getColor("setting_control_button_hover")
 
-                iconSource: UM.Theme.getIcon("ArrowReset")
+                iconSource: UM.Theme.getIcon("reset")
 
                 onClicked:
                 {
@@ -241,7 +231,6 @@ Item
                 }
                 onExited: base.showTooltip(base.createTooltipText())
             }
-
             UM.SimpleButton
             {
                 // This button shows when the setting has an inherited function, but is overridden by profile.
@@ -277,7 +266,7 @@ Item
                     }
 
                     // If the setting does not have a limit_to_extruder property (or is -1), use the active stack.
-                    if (globalPropertyProvider.properties.limit_to_extruder === null || globalPropertyProvider.properties.limit_to_extruder === "-1")
+                    if (globalPropertyProvider.properties.limit_to_extruder === null || String(globalPropertyProvider.properties.limit_to_extruder) === "-1")
                     {
                         return Cura.SettingInheritanceManager.settingsWithInheritanceWarning.indexOf(definition.key) >= 0
                     }
@@ -291,12 +280,11 @@ Item
                     {
                         return false
                     }
-                    return Cura.SettingInheritanceManager.hasOverrides(definition.key, globalPropertyProvider.properties.limit_to_extruder)
+                    return Cura.SettingInheritanceManager.getOverridesForExtruder(definition.key, String(globalPropertyProvider.properties.limit_to_extruder)).indexOf(definition.key) >= 0
                 }
 
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                height: UM.Theme.getSize("small_button_icon").height
                 width: height
 
                 onClicked:
@@ -335,11 +323,46 @@ Item
                 color: UM.Theme.getColor("setting_control_button")
                 hoverColor: UM.Theme.getColor("setting_control_button_hover")
 
-                iconSource: UM.Theme.getIcon("Function")
+                iconSource: UM.Theme.getIcon("formula")
 
                 onEntered: { hoverTimer.stop(); base.showTooltip(catalog.i18nc("@label", "This setting is normally calculated, but it currently has an absolute value set.\n\nClick to restore the calculated value.")) }
                 onExited: base.showTooltip(base.createTooltipText())
             }
+             // BCN3D-MOD ↓
+            UM.SimpleButton
+            {
+                id: infoButton
+                visible: typeof(SLinks.support_links[definition.key]) != "undefined" && SLinks.support_links[definition.key]
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                width: height
+                MouseArea
+                {
+                    id: mouseArea
+                    anchors.fill: parent
+                    onPressed:  mouse.accepted = false
+                    cursorShape: Qt.PointingHandCursor
+
+                }
+                color: UM.Theme.getColor("setting_control_button")
+                hoverColor: UM.Theme.getColor("setting_control_button_hover")
+
+                iconSource: UM.Theme.getIcon("info-circled")
+
+                onClicked:
+                {
+                    infoButton.focus = true
+                    Qt.openUrlExternally(SLinks.support_links[definition.key])
+                }
+
+                onEntered:
+                {
+                    hoverTimer.stop()
+                    base.showTooltip(SLinks.support_links[definition.key])
+                }
+                onExited: base.showTooltip(base.createTooltipText())
+            }
+            // BCN3D-MOD ↑
         }
 
         Item

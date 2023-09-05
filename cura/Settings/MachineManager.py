@@ -165,10 +165,11 @@ class MachineManager(QObject):
                 self.numUserSettingsChanged.emit()
                 self._num_user_settings = 0
             return
-        num_user_settings = self._global_container_stack.getTop().getNumInstances()
+        from cura.Utils.BCN3Dutils.Bcn3dExcludeInstances import countNonExcludedInstances
+        num_user_settings = countNonExcludedInstances(self._global_container_stack.getTop())
         stacks = self._global_container_stack.extruderList
         for stack in stacks:
-            num_user_settings += stack.getTop().getNumInstances()
+            num_user_settings += countNonExcludedInstances(stack.getTop())
 
         if self._num_user_settings != num_user_settings:
             self._num_user_settings = num_user_settings
