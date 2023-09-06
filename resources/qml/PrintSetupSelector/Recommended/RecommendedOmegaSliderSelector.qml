@@ -146,7 +146,7 @@ Item {
                     infillSpareDensity.forcePropertiesChanged()
                     infillSpareDensityValue = infillSpareDensity.properties.value
                     infoCharacter = " ⓘ"
-                    colorText = "#196EF0"
+                    colorText = UM.Theme.getColor("secondary_button")
 
                     Cura.MachineManager.setSettingForAllExtruders( quality_key, "value", parseInt(omegaQualitySlider.value))
                     //for some reason the value does not update if we don't force it twice
