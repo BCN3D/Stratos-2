@@ -20,7 +20,6 @@ Item
     property alias view3DCamera: view3DCameraAction
     property alias viewFrontCamera: viewFrontCameraAction
     property alias viewTopCamera: viewTopCameraAction
-    property alias viewBottomCamera: viewBottomCameraAction
     property alias viewLeftSideCamera: viewLeftSideCameraAction
     property alias viewRightSideCamera: viewRightSideCameraAction
 
@@ -74,11 +73,18 @@ Item
     UM.I18nCatalog{id: catalog; name: "cura"}
 
 
+Action
+    {
+        id: pluginsAction
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/tips")
+        text: catalog.i18nc("@action:inmenu", "See plugins");
+    }
+
     Action
     {
         id: showTroubleShootingAction
-        onTriggered: Qt.openUrlExternally("https://ultimaker.com/en/troubleshooting?utm_source=cura&utm_medium=software&utm_campaign=dropdown-troubleshooting")
-        text: catalog.i18nc("@action:inmenu", "Show Online Troubleshooting")
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/slice-bcn3d-stratos")
+        text: catalog.i18nc("@action:inmenu", "BCN3D Knowledge base");
     }
 
     Action
@@ -99,36 +105,28 @@ Item
 
     Action
     {
-        id: undoAction
-        text: catalog.i18nc("@action:inmenu menubar:edit", "&Undo")
-        icon.name: "edit-undo"
-        shortcut: StandardKey.Undo
-        onTriggered: UM.OperationStack.undo()
-        enabled: UM.OperationStack.canUndo
+        id: undoAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit", "&Undo");
+        icon.name: "edit-undo";
+        shortcut: StandardKey.Undo;
+        onTriggered: UM.OperationStack.undo();
+        enabled: UM.OperationStack.canUndo;
     }
 
     Action
     {
-        id: redoAction
-        text: catalog.i18nc("@action:inmenu menubar:edit", "&Redo")
-        icon.name: "edit-redo"
-        shortcut: StandardKey.Redo
-        onTriggered: UM.OperationStack.redo()
-        enabled: UM.OperationStack.canRedo
+        id: redoAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit", "&Redo");
+        icon.name: "edit-redo";
+        shortcut: StandardKey.Redo;
+        onTriggered: UM.OperationStack.redo();
+        enabled: UM.OperationStack.canRedo;
     }
 
     Action
     {
         id: quitAction
-
-        //On MacOS, don't translate the "Quit" word.
-        //Qt moves the "quit" entry to a different place, and if it got renamed can't find it again when it attempts to
-        //delete the item upon closing the application, causing a crash.
-        //In the new location, these items are translated automatically according to the system's language.
-        //For more information, see:
-        //- https://doc.qt.io/qt-5/macos-issues.html#menu-bar
-        //- https://doc.qt.io/qt-5/qmenubar.html#qmenubar-as-a-global-menu-bar
-        text: (Qt.platform.os == "osx") ? "&Quit" : catalog.i18nc("@action:inmenu menubar:file", "&Quit")
+        text: catalog.i18nc("@action:inmenu menubar:file","&Quit")
         icon.name: "application-exit"
         shortcut: StandardKey.Quit
     }
@@ -156,13 +154,6 @@ Item
 
     Action
     {
-        id: viewBottomCameraAction
-        text: catalog.i18nc("@action:inmenu menubar:view", "Bottom View")
-        onTriggered: UM.Controller.setCameraRotation("y", -90)
-    }
-
-    Action
-    {
         id: viewLeftSideCameraAction
         text: catalog.i18nc("@action:inmenu menubar:view", "Left Side View")
         onTriggered: UM.Controller.setCameraRotation("x", 90)
@@ -178,17 +169,8 @@ Item
     Action
     {
         id: preferencesAction
-        //On MacOS, don't translate the "Configure" word.
-        //Qt moves the "configure" entry to a different place, and if it got renamed can't find it again when it
-        //attempts to delete the item upon closing the application, causing a crash.
-        //In the new location, these items are translated automatically according to the system's language.
-        //For more information, see:
-        //- https://doc.qt.io/qt-5/macos-issues.html#menu-bar
-        //- https://doc.qt.io/qt-5/qmenubar.html#qmenubar-as-a-global-menu-bar
-        text: (Qt.platform.os == "osx") ? "Configure Stratos..." : catalog.i18nc("@action:inmenu", "Configure Stratos...")
+        text: catalog.i18nc("@action:inmenu", "Configure BCN3D Stratos...")
         icon.name: "configure"
-        // on MacOS it us customary to assign the ctrl+, hotkey to open a general settings menu
-        shortcut: (Qt.platform.os == "osx") ? "Ctrl+," : ""
     }
 
     Action
@@ -215,34 +197,34 @@ Item
     Action
     {
         id: marketplaceMaterialsAction
-        text: catalog.i18nc("@action:inmenu Marketplace is a brand name of UltiMaker's, so don't translate.", "Add more materials from Marketplace")
+        text: catalog.i18nc("@action:inmenu", "Add more materials from Marketplace")
     }
 
     Action
     {
-        id: updateProfileAction
+        id: updateProfileAction;
         enabled: !Cura.MachineManager.stacksHaveErrors && Cura.MachineManager.hasUserSettings && Cura.MachineManager.activeQualityChangesGroup != null
-        text: catalog.i18nc("@action:inmenu menubar:profile", "&Update profile with current settings/overrides");
-        onTriggered: Cura.ContainerManager.updateQualityChanges()
+        text: catalog.i18nc("@action:inmenu menubar:profile","&Update profile with current settings/overrides");
+        onTriggered: Cura.ContainerManager.updateQualityChanges();
     }
 
     Action
     {
-        id: resetProfileAction
+        id: resetProfileAction;
         enabled: Cura.MachineManager.hasUserSettings
-        text: catalog.i18nc("@action:inmenu menubar:profile", "&Discard current changes")
+        text: catalog.i18nc("@action:inmenu menubar:profile", "&Discard current changes");
         onTriggered:
         {
-            forceActiveFocus()
-            Cura.ContainerManager.clearUserContainers()
+            forceActiveFocus();
+            Cura.ContainerManager.clearUserContainers();
         }
     }
 
     Action
     {
-        id: addProfileAction
+        id: addProfileAction;
         enabled: !Cura.MachineManager.stacksHaveErrors && Cura.MachineManager.hasUserSettings
-        text: catalog.i18nc("@action:inmenu menubar:profile", "&Create profile from current settings/overrides...")
+        text: catalog.i18nc("@action:inmenu menubar:profile", "&Create profile from current settings/overrides...");
     }
 
     Action
@@ -255,91 +237,83 @@ Item
 
     Action
     {
-        id: documentationAction
-        text: catalog.i18nc("@action:inmenu menubar:help", "Show Online &Documentation")
-        icon.name: "help-contents"
-        shortcut: StandardKey.Help
-        onTriggered: CuraActions.openDocumentation()
+        id: documentationAction;
+        text: catalog.i18nc("@action:inmenu menubar:help", "BCN3D Stratos Introduction");
+        icon.name: "help-contents";
+        shortcut: StandardKey.Help;
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/bcn3d-stratos-introduction")
     }
 
     Action {
-        id: reportBugAction
-        text: catalog.i18nc("@action:inmenu menubar:help", "Report a &Bug")
-        icon.name: "tools-report-bug"
-        onTriggered: CuraActions.openBugReportPage()
+        id: reportBugAction;
+        text: catalog.i18nc("@action:inmenu menubar:help", "Report a &Bug");
+        icon.name: "tools-report-bug";
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/kb-tickets/new?hsLang=en")
     }
 
     Action
     {
-        id: whatsNewAction
-        text: catalog.i18nc("@action:inmenu menubar:help", "What's New")
+        id: whatsNewAction;
+        text: catalog.i18nc("@action:inmenu menubar:help", "What's New");
     }
 
     Action
     {
-        id: aboutAction
-
-        //On MacOS, don't translate the "About" word.
-        //Qt moves the "about" entry to a different place, and if it got renamed can't find it again when it
-        //attempts to delete the item upon closing the application, causing a crash.
-        //In the new location, these items are translated automatically according to the system's language.
-        //For more information, see:
-        //- https://doc.qt.io/qt-5/macos-issues.html#menu-bar
-        //- https://doc.qt.io/qt-5/qmenubar.html#qmenubar-as-a-global-menu-bar
-        text: (Qt.platform.os == "osx") ? "About..." : catalog.i18nc("@action:inmenu menubar:help", "About...")
-        icon.name: "help-about"
+        id: aboutAction;
+        text: catalog.i18nc("@action:inmenu menubar:help", "About...");
+        icon.name: "help-about";
     }
 
     Action
     {
-        id: deleteSelectionAction
-        text: catalog.i18nc("@action:inmenu menubar:edit", "Delete Selected")
-        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection
-        icon.name: "edit-delete"
+        id: deleteSelectionAction;
+        text: catalog.i18ncp("@action:inmenu menubar:edit", "Delete Selected Model", "Delete Selected Models", UM.Selection.selectionCount);
+        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection;
+        icon.name: "edit-delete";
         shortcut: StandardKey.Delete | "Backspace"
-        onTriggered: CuraActions.deleteSelection()
+        onTriggered: CuraActions.deleteSelection();
     }
 
     Action
     {
-        id: centerSelectionAction
-        text: catalog.i18nc("@action:inmenu menubar:edit", "Center Selected")
-        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection
-        icon.name: "align-vertical-center"
-        onTriggered: CuraActions.centerSelection()
+        id: centerSelectionAction;
+        text: catalog.i18ncp("@action:inmenu menubar:edit", "Center Selected Model", "Center Selected Models", UM.Selection.selectionCount);
+        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection;
+        icon.name: "align-vertical-center";
+        onTriggered: CuraActions.centerSelection();
     }
 
     Action
     {
-        id: multiplySelectionAction
-        text: catalog.i18nc("@action:inmenu menubar:edit", "Multiply Selected")
-        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection
-        icon.name: "edit-duplicate"
+        id: multiplySelectionAction;
+        text: catalog.i18ncp("@action:inmenu menubar:edit", "Multiply Selected Model", "Multiply Selected Models", UM.Selection.selectionCount);
+        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection;
+        icon.name: "edit-duplicate";
         shortcut: "Ctrl+M"
     }
 
     Action
     {
-        id: deleteObjectAction
-        text: catalog.i18nc("@action:inmenu","Delete Model")
-        enabled: UM.Controller.toolsEnabled
-        icon.name: "edit-delete"
+        id: deleteObjectAction;
+        text: catalog.i18nc("@action:inmenu","Delete Model");
+        enabled: UM.Controller.toolsEnabled;
+        icon.name: "edit-delete";
     }
 
     Action
     {
-        id: centerObjectAction
-        text: catalog.i18nc("@action:inmenu","Ce&nter Model on Platform")
+        id: centerObjectAction;
+        text: catalog.i18nc("@action:inmenu","Ce&nter Model on Platform");
     }
 
     Action
     {
         id: groupObjectsAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","&Group Models")
+        text: catalog.i18nc("@action:inmenu menubar:edit","&Group Models");
         enabled: UM.Selection.selectionCount > 1 ? true: false
         icon.name: "object-group"
-        shortcut: "Ctrl+G"
-        onTriggered: CuraApplication.groupSelected()
+        shortcut: "Ctrl+G";
+        onTriggered: CuraApplication.groupSelected();
     }
 
     Action
@@ -355,125 +329,128 @@ Item
     Action
     {
         id: unGroupObjectsAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Ungroup Models")
+        text: catalog.i18nc("@action:inmenu menubar:edit","Ungroup Models");
         enabled: UM.Selection.isGroupSelected
         icon.name: "object-ungroup"
-        shortcut: "Ctrl+Shift+G"
-        onTriggered: CuraApplication.ungroupSelected()
+        shortcut: "Ctrl+Shift+G";
+        onTriggered: CuraApplication.ungroupSelected();
     }
 
     Action
     {
         id: mergeObjectsAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","&Merge Models")
+        text: catalog.i18nc("@action:inmenu menubar:edit","&Merge Models");
         enabled: UM.Selection.selectionCount > 1 ? true: false
-        icon.name: "merge"
-        shortcut: "Ctrl+Alt+G"
-        onTriggered: CuraApplication.mergeSelected()
+        icon.name: "merge";
+        shortcut: "Ctrl+Alt+G";
+        onTriggered: CuraApplication.mergeSelected();
     }
 
     Action
     {
-        id: multiplyObjectAction
-        text: catalog.i18nc("@action:inmenu","&Multiply Model...")
+        id: multiplyObjectAction;
+        text: catalog.i18nc("@action:inmenu","&Multiply Model...");
         icon.name: "edit-duplicate"
     }
 
     Action
     {
-        id: selectAllAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Select All Models")
-        enabled: UM.Controller.toolsEnabled
-        icon.name: "edit-select-all"
-        shortcut: "Ctrl+A"
-        onTriggered: CuraApplication.selectAll()
+        id: selectAllAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Select All Models");
+        enabled: UM.Controller.toolsEnabled;
+        icon.name: "edit-select-all";
+        shortcut: "Ctrl+A";
+        onTriggered: CuraApplication.selectAll();
     }
 
     Action
     {
-        id: deleteAllAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Clear Build Plate")
-        enabled: UM.Controller.toolsEnabled
-        icon.name: "edit-delete"
-        shortcut: "Ctrl+D"
-        onTriggered: CuraApplication.deleteAll()
+        id: deleteAllAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Clear Build Plate");
+        enabled: UM.Controller.toolsEnabled;
+        icon.name: "edit-delete";
+        shortcut: "Ctrl+D";
+        onTriggered: CuraApplication.deleteAll();
     }
 
     Action
     {
-        id: reloadAllAction
-        text: catalog.i18nc("@action:inmenu menubar:file","Reload All Models")
-        icon.name: "document-revert"
+        id: reloadAllAction;
+        text: catalog.i18nc("@action:inmenu menubar:file","Reload All Models");
+        icon.name: "document-revert";
         shortcut: "F5"
-        onTriggered: CuraApplication.reloadAll()
+        onTriggered: CuraApplication.reloadAll();
     }
 
     Action
     {
-        id: arrangeAllAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Arrange All Models")
-        onTriggered: Printer.arrangeAll()
-        shortcut: "Ctrl+R"
+        id: arrangeAllBuildPlatesAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Arrange All Models To All Build Plates");
+        onTriggered: Printer.arrangeObjectsToAllBuildPlates();
     }
 
     Action
     {
-        id: arrangeSelectionAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Arrange Selection")
-        onTriggered: Printer.arrangeSelection()
+        id: arrangeAllAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Arrange All Models");
+        onTriggered: Printer.arrangeAll();
+        shortcut: "Ctrl+R";
     }
 
     Action
     {
-        id: resetAllTranslationAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Reset All Model Positions")
-        onTriggered: CuraApplication.resetAllTranslation()
+        id: arrangeSelectionAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Arrange Selection");
+        onTriggered: Printer.arrangeSelection();
     }
 
     Action
     {
-        id: resetAllAction
-        text: catalog.i18nc("@action:inmenu menubar:edit","Reset All Model Transformations")
-        onTriggered: CuraApplication.resetAll()
+        id: resetAllTranslationAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Reset All Model Positions");
+        onTriggered: CuraApplication.resetAllTranslation();
     }
 
     Action
     {
-        id: openAction
-        property var fileProviderModel: CuraApplication.getFileProviderModel()
+        id: resetAllAction;
+        text: catalog.i18nc("@action:inmenu menubar:edit","Reset All Model Transformations");
+        onTriggered: CuraApplication.resetAll();
+    }
 
-        text: catalog.i18nc("@action:inmenu menubar:file","&Open File(s)...")
-        icon.name: "document-open"
-        // Unassign the shortcut when there are more than one file providers, since then the file provider's shortcut is
-        // enabled instead, and Ctrl+O is assigned to the local file provider
-        shortcut: fileProviderModel.count == 1 ? StandardKey.Open : ""
+    Action
+    {
+        id: openAction;
+        text: catalog.i18nc("@action:inmenu menubar:file","&Open File(s)...");
+        icon.name: "document-open";
+        shortcut: StandardKey.Open;
     }
 
     Action
     {
         id: newProjectAction
-        text: catalog.i18nc("@action:inmenu menubar:file","&New Project...")
+        text: catalog.i18nc("@action:inmenu menubar:file","&New Project...");
         shortcut: StandardKey.New
     }
 
     Action
     {
-        id: showProfileFolderAction
-        text: catalog.i18nc("@action:inmenu menubar:help","Show Configuration Folder")
+        id: showProfileFolderAction;
+        text: catalog.i18nc("@action:inmenu menubar:help","Show Configuration Folder");
     }
 
 
     Action
     {
         id: configureSettingVisibilityAction
-        text: catalog.i18nc("@action:menu", "Configure setting visibility...")
+        text: catalog.i18nc("@action:menu", "Configure setting visibility...");
         icon.name: "configure"
     }
 
     Action
     {
         id: browsePackagesAction
-        text: "&Marketplace"
+        text: catalog.i18nc("@action:menu", "&Marketplace")
         icon.name: "plugins_browse"
     }
 }

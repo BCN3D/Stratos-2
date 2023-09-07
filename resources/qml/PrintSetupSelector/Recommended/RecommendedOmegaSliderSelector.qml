@@ -69,8 +69,10 @@ Item {
         propagateComposedEvents: true
         hoverEnabled: true
         onEntered: {
+            updateQualities()
             colorText = UM.Theme.getColor("text")
             infoCharacter = ""
+            updateQualities()
             base.showTooltip(parent, Qt.point(-UM.Theme.getSize("thick_margin").width, 0), tooltipText)
         }
         onExited: base.hideTooltip()
@@ -137,30 +139,25 @@ Item {
 
                 if (active_mode == 0 || active_mode == "simple")
                 {
-                    topLayers.forcePropertiesChanged()
-                    topLayersValue = topLayers.properties.value
-                    bottomLayers.forcePropertiesChanged()
-                    bottomLayersValue = bottomLayers.properties.value
-                    wallLineCount.forcePropertiesChanged()
-                    wallLineCountValue = wallLineCount.properties.value
-                    infillSpareDensity.forcePropertiesChanged()
-                    infillSpareDensityValue = infillSpareDensity.properties.value
+                    updateQualities()
                     infoCharacter = " ⓘ"
                     colorText = UM.Theme.getColor("secondary_button")
 
                     Cura.MachineManager.setSettingForAllExtruders( quality_key, "value", parseInt(omegaQualitySlider.value))
-                    //for some reason the value does not update if we don't force it twice
-                    topLayers.forcePropertiesChanged()
-                    topLayersValue = topLayers.properties.value
-                    bottomLayers.forcePropertiesChanged()
-                    bottomLayersValue = bottomLayers.properties.value
-                    wallLineCount.forcePropertiesChanged()
-                    wallLineCountValue = wallLineCount.properties.value
-                    infillSpareDensity.forcePropertiesChanged()
-                    infillSpareDensityValue = infillSpareDensity.properties.value
                 }
             }
         }
+    }
+
+    function updateQualities(){
+        topLayers.forcePropertiesChanged()
+        topLayersValue = topLayers.properties.value
+        bottomLayers.forcePropertiesChanged()
+        bottomLayersValue = bottomLayers.properties.value
+        wallLineCount.forcePropertiesChanged()
+        wallLineCountValue = wallLineCount.properties.value
+        infillSpareDensity.forcePropertiesChanged()
+        infillSpareDensityValue = infillSpareDensity.properties.value
     }
 
     

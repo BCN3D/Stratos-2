@@ -113,7 +113,7 @@ ScrollView
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     text: catalog.i18nc("@button", "Show Custom")
-                    visible : Cura.MachineManager.activeMachine.definition.name != "Omega I60" || profile && profile["advanced_user"] ? true : false
+                    visible : profile && profile["advanced_user"] ? true : false
                     textFont: UM.Theme.getFont("medium_bold")
                     outlineColor: "transparent"
                     onClicked: onModeChanged()
@@ -123,6 +123,7 @@ ScrollView
             RecommendedOmegaSliderSelector
             {
                 width: parent.width
+                visible : profile && profile["advanced_user"] ? false : true
                 selectorText : "Properties"
                 quality_key : "omega_properties"
                 backgroundTextLeftText : "LIGHTER"
@@ -130,9 +131,21 @@ ScrollView
                 sourceIcon : "category_support"
             }
 
+            RecommendedStrengthSelector
+            {
+                width: parent.width
+                visible : profile && profile["advanced_user"] ? true : false
+            }
+
             RecommendedSupportSelector
             {
                 width: parent.width
+            }
+
+            RecommendedAdhesionSelector
+            {
+                width: parent.width
+                visible : profile && profile["advanced_user"] ? true : false
             }
         }
     }
