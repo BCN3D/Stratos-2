@@ -12,11 +12,11 @@
             "0": "bcn3domega_extruder_left",
             "1": "bcn3domega_extruder_right"
         },
+        "preferred_material": "BCN3D_filaments_OmegaProto",
+        "preferred_variant_name": "Hotend X (0.4mm)",
         "supports_cloud_connection": true,
         "supports_firmware_updates": false,
-        "weight": "-1",
-        "preferred_material": "BCN3D_filaments_OmegaProto",
-        "preferred_variant_name": "Hotend X (0.4mm)"
+        "weight": "-1"
     },
     "overrides":
     {
