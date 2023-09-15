@@ -33,9 +33,6 @@ class PrintModesLitsener(QObject):
         self._global_container_stack = self._application.getGlobalContainerStack()
         left_extruder = self._global_container_stack.extruderList[0]
         right_extruder = self._global_container_stack.extruderList[1]
-        self._global_container_stack = self._application.getGlobalContainerStack()
-        left_extruder = self._global_container_stack.extruderList[0]
-        right_extruder = self._global_container_stack.extruderList[1]
         try:
             left_extruder.enabledChanged.disconnect(self._onEnabledChangedLeft)
             right_extruder.enabledChanged.disconnect(self._onEnabledChangedRight)
@@ -46,6 +43,7 @@ class PrintModesLitsener(QObject):
             pass
         if print_mode == "singleT0":
             self._global_container_stack.setProperty("print_mode", "value", "singleT0")
+            # Now we select all the nodes and set the printmode to them to avoid different nodes on differents printmodes
             CuraApplication.selectAll(CuraApplication.getInstance())
             for node in Selection.getAllSelectedObjects():
                 node.setSetting("print_mode", "singleTO")
