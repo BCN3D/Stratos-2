@@ -2,12 +2,13 @@
 from UM.Math.Vector import Vector
 from UM.Operations.MirrorOperation import MirrorOperation
 from UM.Application import Application
-
+from UM.Logger import Logger
 
 from cura.Scene.CuraSceneNode import CuraSceneNode
 from cura.Scene.BuildPlateDecorator import BuildPlateDecorator
 from cura.Settings.ExtruderManager import ExtruderManager
 from cura.Settings.SetObjectExtruderOperation import SetObjectExtruderOperation
+from cura.Scene.SliceableObjectDecorator import SliceableObjectDecorator
 
 
 from copy import deepcopy
@@ -27,7 +28,10 @@ class DuplicatedNode(CuraSceneNode):
         if build_plate_decorator is not None:
             self.addDecorator(deepcopy(build_plate_decorator))
         for decorator in node.getDecorators():
-            self.addDecorator(deepcopy(decorator))
+            if type (decorator) ==  SliceableObjectDecorator:
+                Logger.log("e", "Skip SliceableObjectDecorator")
+            else:
+                self.addDecorator(deepcopy(decorator))
 
         for child in node.getChildren():
             if isinstance(child, CuraSceneNode):
