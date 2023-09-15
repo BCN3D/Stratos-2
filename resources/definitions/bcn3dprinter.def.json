@@ -81,7 +81,7 @@
                     "label": "Used materials",
                     "settable_per_extruder": true,
                     "type": "str",
-                    "value": "'T' + str(extruderValue(extruder_nr, 'extruder_nr')) + ' ' + str(materialInfoInExtruder(extruder_nr, 'material')) if adhesion_extruder_nr == extruder_nr or extruders_enabled_count == 2 else 'T' + str(extruderValue(extruder_nr, 'extruder_nr')) + ' ' + str(materialInfoInExtruder(0, 'material')) if print_mode == \"mirror\" or print_mode == \"duplication\" else ''"
+                    "value": "'T0 ' + str(materialInfoInExtruder(0, 'material')) if print_mode == \"singleT0\" else 'T1 ' + str(materialInfoInExtruder(1, 'material')) if print_mode == \"singleT1\"  else 'T0 ' + str(materialInfoInExtruder(0, 'material')) + ' T1 ' + str(materialInfoInExtruder(1, 'material')) if print_mode == \"dual\" else 'T0 ' + str(materialInfoInExtruder(0, 'material')) + ' T1 ' + str(materialInfoInExtruder(0, 'material'))"
                 },
                 "used_material_brand":
                 {
@@ -92,7 +92,7 @@
                     "label": "Used materials",
                     "settable_per_extruder": true,
                     "type": "str",
-                    "value": "'T' + str(extruderValue(extruder_nr, 'extruder_nr')) + ' ' + str(materialInfoInExtruder(extruder_nr, 'brand')) if adhesion_extruder_nr == extruder_nr or extruders_enabled_count == 2 else 'T' + str(extruderValue(extruder_nr, 'extruder_nr')) + ' ' + str(materialInfoInExtruder(0, 'brand')) if print_mode == \"mirror\" or print_mode == \"duplication\" else ''"
+                    "value": "'T0 ' + str(materialInfoInExtruder(0, 'brand')) if print_mode == \"singleT0\" else 'T1 ' + str(materialInfoInExtruder(1, 'brand')) if print_mode == \"singleT1\"  else 'T0 ' + str(materialInfoInExtruder(0, 'brand')) + ' T1 ' + str(materialInfoInExtruder(1, 'brand')) if print_mode == \"dual\" else 'T0 ' + str(materialInfoInExtruder(0, 'brand')) + ' T1 ' + str(materialInfoInExtruder(0, 'brand'))"
                 },
                 "used_nozzle_size":
                 {
@@ -103,7 +103,7 @@
                     "label": "Used nozzle size",
                     "settable_per_extruder": true,
                     "type": "str",
-                    "value": "'T' + str(extruderValue(extruder_nr, 'extruder_nr')) + ' ' + str(extruderValue(extruder_nr, 'machine_nozzle_size')) + str(extruderValue(extruder_nr, 'machine_nozzle_type')) if adhesion_extruder_nr == extruder_nr or extruders_enabled_count == 2 else 'T' + str(extruderValue(extruder_nr, 'extruder_nr')) + ' ' + str(extruderValue(0, 'machine_nozzle_size')) + str(extruderValue(0, 'machine_nozzle_type')) if print_mode == \"mirror\" or print_mode == \"duplication\" else ''"
+                    "value": "'T0 ' + str(extruderValue(0, 'machine_nozzle_size')) + str(extruderValue(0, 'machine_nozzle_type')) if print_mode == \"singleT0\" else 'T1 ' + str(extruderValue(1, 'machine_nozzle_size')) + str(extruderValue(1, 'machine_nozzle_type')) if print_mode == \"singleT1\"  else 'T0 ' + str(extruderValue(0, 'machine_nozzle_size')) + str(extruderValue(0, 'machine_nozzle_type')) + ' T1 ' + str(extruderValue(1, 'machine_nozzle_size')) + str(extruderValue(1, 'machine_nozzle_type')) if print_mode == \"dual\" else 'T0 ' + str(extruderValue(0, 'machine_nozzle_size')) + str(extruderValue(0, 'machine_nozzle_type')) + ' T1 ' + str(extruderValue(0, 'machine_nozzle_size')) + str(extruderValue(0, 'machine_nozzle_type'))"
                 },
                 "omega_properties": {
                     "label": "Omega Properties",
