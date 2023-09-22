@@ -72,7 +72,7 @@
                     "label": "Print Mode GCode",
                     "settable_per_extruder": false,
                     "type": "str",
-                    "value": "'' if print_mode == 'dual' or print_mode == 'singleT0' or print_mode == 'singleT1' else 'M605 S6 \\t\\t;enable mirror mode\\nT0' if print_mode == 'mirror' else 'M605 S5 \\t\\t;enable duplication mode\\nT0'"
+                    "value": "'' if print_mode == 'dual' or print_mode == 'singleT0' or print_mode == 'singleT1' else 'M605 S6 \\t\\t;enable mirror mode' if print_mode == 'mirror' else 'M605 S5 \\t\\t;enable duplication mode'"
                 },
                 "purge_in_bucket_before_start_gcode":
                 {
