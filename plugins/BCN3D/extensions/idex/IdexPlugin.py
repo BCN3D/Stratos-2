@@ -59,6 +59,11 @@ class IdexPlugin(Extension):
             if print_mode == "singleT0":
                 self._application.getMachineManager().setExtruderEnabled(0, True)
                 self._application.getMachineManager().setExtruderEnabled(1, False)
+                #HACK:
+                # For some reason when goes to single 1, sometimes the disallowed areas are not updated
+                # With this we make sure that is done
+                if self._application and self._application._volume:
+                    self._application._volume._updateDisallowedAreasAndRebuild()
 
             elif print_mode == "singleT1":
                 self._application.getMachineManager().setExtruderEnabled(0, False)
