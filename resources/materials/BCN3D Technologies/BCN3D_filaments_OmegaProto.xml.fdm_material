@@ -29,7 +29,7 @@
     <setting key="retraction speed">35.0</setting>
     <machine>
       <machine_identifier manufacturer="BCN3D Technologies" product="bcn3domega" />
-      <hotend id="Hotend X (0.4mm)">
+      <hotend id="Omega Hotend Tip 0.4 HR">
       </hotend>
       <hotend id="Hotend M (0.4mm)">
           <setting key="hardware compatible">no</setting>
