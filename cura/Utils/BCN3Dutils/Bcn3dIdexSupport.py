@@ -11,7 +11,6 @@ from UM.Scene.Scene import Scene
 from UM.Math.Vector import Vector
 from UM.Message import Message
 from UM.Scene.SceneNode import SceneNode
-import UM.Application
 from UM.Logger import Logger
 from cura.Settings.GlobalStack import GlobalStack
 
