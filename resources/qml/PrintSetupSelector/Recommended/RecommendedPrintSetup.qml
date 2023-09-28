@@ -129,6 +129,12 @@ ScrollView
             {
                 width: parent.width
             }
+
+            RecommendedFlexibleBuildPlateSelector
+            {
+                width: parent.width
+                visible:  Cura.MachineManager.activeMachine.definition.name == "Epsilon W50" || Cura.MachineManager.activeMachine.definition.name == "Epsilon W27"
+            }
         }
     }
 

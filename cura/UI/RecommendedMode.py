@@ -45,5 +45,19 @@ class RecommendedMode(QObject):
 
         user_changes_container.setProperty(adhesion_type_key, "value", value)
 
+    @pyqtSlot(bool)
+    def setFlexibleBed(self, checked: bool) -> None:
+            application = CuraApplication.CuraApplication.getInstance()
+            global_stack = application.getMachineManager().activeMachine
+            if global_stack is None:
+                return
+            value = "False"
+            if checked:
+                value = "True"
+            # Remove the adhesion type value set by the user.
+            adhesion_type_key = "flexible_bed"
+            user_changes_container = global_stack.userChanges
+
+            user_changes_container.setProperty(adhesion_type_key, "value", value)
 
 __all__ = ["RecommendedMode"]

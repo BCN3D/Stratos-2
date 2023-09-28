@@ -50,6 +50,18 @@
                     "settable_per_extruder": true,
                     "type": "str"
                 },
+                "flexible_bed":
+                {
+                    "comments": "BCN3D setting",
+                    "default_value": false,
+                    "description": "Properties chosen for Epsilons which include flexible bed.",
+                    "label": "Flexible bed",
+                    "enabled": true,
+                    "minimum_value": 1,
+                    "settable_per_extruder": false,
+                    "settable_per_mesh": true,
+                    "type": "bool"
+                },
                 "omega_properties":
                 {
                     "comments": "BCN3D setting",
