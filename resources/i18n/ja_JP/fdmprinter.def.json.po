@@ -457,7 +457,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "初期レイヤーのビルドプレート温度"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "造形温度"
 
 msgctxt "center_object label"
@@ -1265,7 +1265,7 @@ msgid "Gyroid"
 msgstr "ジャイロイド"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "造形温度安定化処理有り"
 
 msgctxt "machine_heated_bed label"
@@ -4509,7 +4509,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "フィラメントがきれいに引き出される温度。"
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "印刷するプリンタ内の温度。これがゼロ (0) の場合、造形温度は調整できません。"
 
 msgctxt "material_standby_temperature description"
@@ -5057,7 +5057,7 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "プリンターに加熱式ビルドプレートが付属しているかどうか。"
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr "機器が造形温度を安定化処理できるかどうかです。"
 
 msgctxt "center_object description"

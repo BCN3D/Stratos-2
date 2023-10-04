@@ -457,7 +457,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "초기 레이어의 빌드 플레이트 온도"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "빌드 볼륨 온도"
 
 msgctxt "center_object label"
@@ -1265,7 +1265,7 @@ msgid "Gyroid"
 msgstr "자이로이드"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "빌드 볼륨 온도 안정화"
 
 msgctxt "machine_heated_bed label"
@@ -4505,7 +4505,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "필라멘트가 깔끔하게 파단되는 온도입니다."
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "프린팅되는 환경의 온도입니다. 이 값이 0인 경우 빌드 볼륨 온도는 조정되지 않습니다."
 
 msgctxt "material_standby_temperature description"
@@ -5053,7 +5053,7 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "기기에 히팅 빌드 플레이트가 있는지 여부."
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr "기기의 빌드 볼륨 온도 안정화 지원 여부입니다."
 
 msgctxt "center_object description"

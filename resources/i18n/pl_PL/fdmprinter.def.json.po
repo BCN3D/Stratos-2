@@ -461,7 +461,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "Temp. Stołu na Pierw. Warstwie"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "Temperatura obszaru roboczego"
 
 msgctxt "center_object label"
@@ -1269,7 +1269,7 @@ msgid "Gyroid"
 msgstr "Gyroid"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "Posiada komorę stabilizacji temperatury"
 
 msgctxt "machine_heated_bed label"
@@ -4517,7 +4517,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "Temperatura, w której filament można złamać na czysto."
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "Temperatura otoczenia druku. Jeśli ustawione jest 0, temperatura komory nie będzie ustawiana."
 
 msgctxt "material_standby_temperature description"
@@ -5066,7 +5066,7 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "Określa czy maszyna posiada podgrzewany stół."
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr "Określa czy drukarka posiada zamkniętą komorę stabilizującą temperaturę."
 
 msgctxt "center_object description"
@@ -6210,7 +6210,7 @@ msgstr "ruch jałowy"
 #~ msgstr "Prędkość dla pierwszej warstwy. Niższa wartość jest zalecane w celu poprawy przyczepności do stołu."
 
 #~ msgctxt "build_volume_temperature description"
-#~ msgid "The temperature used for build volume. If this is 0, the build volume temperature will not be adjusted."
+#~ msgid "The temperature used for build volume. If this is 0, the heated chamber temperature will not be adjusted."
 #~ msgstr "Temperatura stosowana dla obszaru roboczego. Jeżeli jest ustawione 0, temperatura nie będzie ustawiona."
 
 #~ msgctxt "material_bed_temperature_layer_0 description"

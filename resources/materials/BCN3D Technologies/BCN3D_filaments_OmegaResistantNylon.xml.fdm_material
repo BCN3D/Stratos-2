@@ -21,7 +21,7 @@
     <setting key="print temperature">285.0</setting>
     <setting key="standby temperature">175.0</setting>
     <setting key="heated bed temperature">75.0</setting>
-    <setting key="build volume temperature">28</setting>
+    <setting key="heated chamber temperature">28</setting>
     <setting key="print cooling">0.0</setting>
     <setting key="adhesion tendency">0</setting>
     <setting key="surface energy">100</setting>

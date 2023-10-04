@@ -462,7 +462,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "Teplota podložky při počáteční vrstvě"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "Teplota sestavení"
 
 msgctxt "center_object label"
@@ -1268,7 +1268,7 @@ msgid "Gyroid"
 msgstr "Gyroid"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "Má stabilizaci teploty podložky"
 
 msgctxt "machine_heated_bed label"
@@ -4508,7 +4508,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "Teplota, při které je filament možno přerušit pro čisté přerušení."
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "Teplota prostředí, ve kterém se má tisknout. Pokud je to 0, nebude se brát teplota prostředí v potaz."
 
 msgctxt "material_standby_temperature description"
@@ -5056,7 +5056,7 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "Zda má stroj vyhřívanou podložku."
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr "Zda je zařízení schopno stabilizovat teplotu podložky."
 
 msgctxt "center_object description"

@@ -169,11 +169,11 @@ msgid "Whether the machine has a heated build plate present."
 msgstr ""
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr ""
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr ""
 
 msgctxt "machine_always_write_active_tool label"
@@ -1749,11 +1749,11 @@ msgid "The default temperature used for printing. This should be the \"base\" te
 msgstr ""
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr ""
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr ""
 
 msgctxt "material_print_temperature label"

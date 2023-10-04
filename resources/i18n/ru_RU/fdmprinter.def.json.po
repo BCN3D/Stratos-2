@@ -457,7 +457,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "Температура стола для первого слоя"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "Температура для объема печати"
 
 msgctxt "center_object label"
@@ -1265,7 +1265,7 @@ msgid "Gyroid"
 msgstr "Гироид"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "Есть стабилизация температуры для объема печати"
 
 msgctxt "machine_heated_bed label"
@@ -4505,7 +4505,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "Температура, при которой материал отломится чисто."
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "Температура среды печати. Если это значение равно 0, температура для объема печати не будет регулироваться."
 
 msgctxt "material_standby_temperature description"
@@ -5053,7 +5053,7 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "Имеет ли принтер подогреваемый стол."
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr "Имеет ли принтер возможность стабилизации температуры для объема печати."
 
 msgctxt "center_object description"

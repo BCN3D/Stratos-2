@@ -31,7 +31,7 @@
     <machine>
         <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50" />
         <setting key="heated bed temperature">30</setting>
-        <setting key="build volume temperature">40</setting>
+        <setting key="heated chamber temperature">40</setting>
         <setting key="coasting enable">False</setting>
         <hotend id="0.4mm" />
         <hotend id="Hotend M (0.4mm)">
@@ -47,7 +47,7 @@
     <machine>
         <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27" />
         <setting key="heated bed temperature">30</setting>
-        <setting key="build volume temperature">40</setting>
+        <setting key="heated chamber temperature">40</setting>
         <setting key="coasting enable">False</setting>
         <hotend id="0.4mm" />
         <hotend id="Hotend M (0.4mm)">

@@ -457,7 +457,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "Temperatura de la placa de impresión en la capa inicial"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "Temperatura de volumen de impresión"
 
 msgctxt "center_object label"
@@ -1265,7 +1265,7 @@ msgid "Gyroid"
 msgstr "Giroide"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "Tiene estabilización de temperatura del volumen de impresión"
 
 msgctxt "machine_heated_bed label"
@@ -4505,7 +4505,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "Temperatura a la que se rompe el filamento de forma limpia."
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "La temperatura del entorno de impresión. Si el valor es 0, la temperatura de volumen de impresión no se ajustará."
 
 msgctxt "material_standby_temperature description"
@@ -5053,8 +5053,8 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "Indica si la máquina tiene una placa de impresión caliente."
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
-msgstr "Si la máquina puede estabilizar la temperatura del volumen de impresión."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
+msgstr "Si la máquina puede estabilizar la temperatura del heated chamber."
 
 msgctxt "center_object description"
 msgid "Whether to center the object on the middle of the build platform (0,0), instead of using the coordinate system in which the object was saved."

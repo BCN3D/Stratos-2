@@ -11,7 +11,7 @@
 # Modified by Jaime van Kessel (Ultimaker), j.vankessel@ultimaker.com to make it work for 15.10 / 2.x
 # Modified by Ghostkeeper (Ultimaker), rubend@tutanota.com, to debug.
 # Modified by Wes Hanney, https://github.com/novamxd, Retract Length + Speed, Clean up
-# Modified by Alex Jaxon, https://github.com/legend069, Added option to modify Build Volume Temperature
+# Modified by Alex Jaxon, https://github.com/legend069, Added option to modify Heated Chamber Temperature
 
 
 # history / changelog:
@@ -42,7 +42,7 @@
 # Added support for outputting changes to LCD (untested). Added type hints to most functions and variables. Added more comments. Created GCodeCommand
 # class for better detection of G1 vs G10 or G11 commands, and accessing arguments. Moved most GCode methods to GCodeCommand class. Improved wording
 # of Single Layer vs Keep Layer to better reflect what was happening.
-# V5.3.0    Alex Jaxon, Added option to modify Build Volume Temperature keeping current format
+# V5.3.0    Alex Jaxon, Added option to modify Heated Chamber Temperature keeping current format
 #
 
 
@@ -229,14 +229,14 @@ class ChangeAtZ(Script):
                     "enabled": "h1_Change_bedTemp"
                 },
                 "h1_Change_buildVolumeTemperature": {
-                    "label": "Change Build Volume Temperature",
-                    "description": "Select if Build Volume Temperature has to be changed",
+                    "label": "Change Heated Chamber Temperature",
+                    "description": "Select if Heated Chamber Temperature has to be changed",
                     "type": "bool",
                     "default_value": false
                 },
                 "h2_buildVolumeTemperature": {
-                    "label": "Build Volume Temperature",
-                    "description": "New Build Volume Temperature",
+                    "label": "Heated Chamber Temperature",
+                    "description": "New Heated Chamber Temperature",
                     "unit": "C",
                     "type": "float",
                     "default_value": 20,
@@ -800,7 +800,7 @@ class ChangeAtZProcessor:
         if "bedTemp" in values:
             codes.append("BedTemp: " + str(round(values["bedTemp"])))
 
-        # looking for wait for Build Volume Temperature
+        # looking for wait for Heated Chamber Temperature
         if "buildVolumeTemperature" in values:
             codes.append("buildVolumeTemperature: " + str(round(values["buildVolumeTemperature"])))
 
@@ -886,7 +886,7 @@ class ChangeAtZProcessor:
         if "bedTemp" in values:
             codes.append("M140 S" + str(values["bedTemp"]))
 
-        # looking for wait for Build Volume Temperature
+        # looking for wait for Heated Chamber Temperature
         if "buildVolumeTemperature" in values:
             codes.append("M141 S" + str(values["buildVolumeTemperature"]))
 
@@ -1396,7 +1396,7 @@ class ChangeAtZProcessor:
             # move to the next command
             return
 
-        # handle Build Volume Temperature changes, really shouldn't want to wait for enclousure temp mid print though.
+        # handle Heated Chamber Temperature changes, really shouldn't want to wait for enclousure temp mid print though.
         if command.command == "M141" or command.command == "M191":
 
             # get our bed temp if provided

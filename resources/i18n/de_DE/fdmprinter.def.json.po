@@ -457,7 +457,7 @@ msgid "Build Plate Temperature Initial Layer"
 msgstr "Temperatur der Druckplatte für die erste Schicht"
 
 msgctxt "build_volume_temperature label"
-msgid "Build Volume Temperature"
+msgid "Heated Chamber Temperature"
 msgstr "Temperatur Druckabmessung"
 
 msgctxt "center_object label"
@@ -1265,7 +1265,7 @@ msgid "Gyroid"
 msgstr "Gyroid"
 
 msgctxt "machine_heated_build_volume label"
-msgid "Has Build Volume Temperature Stabilization"
+msgid "Has Heated Chamber Temperature Stabilization"
 msgstr "Verfügt über Temperaturstabilisierung für den Druckraum"
 
 msgctxt "machine_heated_bed label"
@@ -4505,7 +4505,7 @@ msgid "The temperature at which the filament is broken for a clean break."
 msgstr "Die Temperatur, bei der das Filament für eine saubere Bruchstelle gebrochen wird."
 
 msgctxt "build_volume_temperature description"
-msgid "The temperature of the environment to print in. If this is 0, the build volume temperature will not be adjusted."
+msgid "The temperature of the environment to print in. If this is 0, the heated chamber temperature will not be adjusted."
 msgstr "Die Temperatur der Druckumgebung. Beträgt der Wert 0, wird die Druckraumtemperatur nicht angepasst."
 
 msgctxt "material_standby_temperature description"
@@ -5053,7 +5053,7 @@ msgid "Whether the machine has a heated build plate present."
 msgstr "Option für vorhandene beheizte Druckplatte."
 
 msgctxt "machine_heated_build_volume description"
-msgid "Whether the machine is able to stabilize the build volume temperature."
+msgid "Whether the machine is able to stabilize the heated chamber temperature."
 msgstr "Zeigt an, ob das Gerät die Temperatur im Druckraum stabilisieren kann."
 
 msgctxt "center_object description"
