@@ -140,6 +140,13 @@ ScrollView
             RecommendedSupportSelector
             {
                 width: parent.width
+                visible : profile && profile["advanced_user"] ? true : false
+            }
+
+            RecommendedOmegaSupportSelector
+            {
+                width: parent.width
+                visible : profile && profile["advanced_user"] ? false : true
             }
 
             RecommendedAdhesionSelector
