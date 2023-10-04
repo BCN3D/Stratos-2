@@ -2419,7 +2419,7 @@
                     "resolve": "min(extruderValues('build_volume_temperature'))",
                     "minimum_value": "-273.15",
                     "minimum_value_warning": "0",
-                    "maximum_value" : "75", 
+                    "maximum_value": "75",
                     "maximum_value_warning": "70",
                     "enabled": "machine_heated_build_volume",
                     "settable_per_mesh": false,
