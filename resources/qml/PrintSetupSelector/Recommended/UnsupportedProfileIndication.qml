@@ -43,12 +43,12 @@ Column
     Cura.TertiaryButton
     {
         anchors.right: parent.right
-
+        visible : Cura.MachineManager.activeMachine.definition.name != "Omega I60"
         text: catalog.i18nc("@button:label", "Learn more")
         textFont: UM.Theme.getFont("default")
         iconSource: UM.Theme.getIcon("LinkExternal")
         isIconOnRightSide: true
 
-        onClicked: Qt.openUrlExternally("https://support.ultimaker.com/hc/en-us/articles/360012909099")
+        onClicked: Qt.openUrlExternally("https://www.bcn3d.com/wp-content/uploads/2023/01/BCN3D-Filaments-Compatibility-Table-and-Support-material-combination-v1.0.pdf")
     }
 }
