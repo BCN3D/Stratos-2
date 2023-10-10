@@ -7,13 +7,15 @@
 * Added Omega I60
 - Omega I60 new definition
 - Prepare machine to support 1,75mm materials
-- Added 0,4 extruder X (Omega I60 series)
-- Added 0,6 extruder X (Omega I60 series)
+- Added Omega Hotend Tip 0.4 HR (Omega I60 series)
+- Omega Hotend Tip 0.6 HR (Omega I60 series)
 
 * Added profile compatibility for some BCN3D materials (Omega I60): 
 - Omega Proto material
 - Omega Resistant Nylon
 - Omega Tooling CF
+
+* Added Epsilon Flexible Printing Surface interface (Espsilon series)
 
 [1.6.4]
 
