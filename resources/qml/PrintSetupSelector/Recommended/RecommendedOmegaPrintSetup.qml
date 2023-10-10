@@ -63,7 +63,7 @@ ScrollView
         UnsupportedProfileIndication
         {
             width: parent.width
-            visible: !recommendedResolutionSelector.visible
+            visible: !recommendedResolutionSelector.visible || !Cura.MachineManager.isActiveQualitySupported
         }
 
         Item { height: UM.Theme.getSize("default_margin").height } // Spacer
