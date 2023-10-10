@@ -90,7 +90,7 @@ Cura.Menu
     {
         id: genericMenu
         title: catalog.i18nc("@label:category menu label", "Generic")
-
+        shouldBeVisible : genericMaterialsModel.items.length > 0
         Instantiator
         {
             model: genericMaterialsModel
@@ -107,7 +107,7 @@ Cura.Menu
         }
     }
 
-    Cura.MenuSeparator {}
+    Cura.MenuSeparator { visible: genericMaterialsModel.items.length > 0 }
 
     Cura.MenuItem
     {
