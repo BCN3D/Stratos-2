@@ -474,6 +474,18 @@ class MachineManager(QObject):
     def numUserSettings(self) -> int:
         return self._num_user_settings
 
+    @pyqtProperty(bool, notify = activeMaterialChanged)
+    def hasFlexibleBed(self) -> bool:
+        from UM.Application import Application
+        um_application = Application.getInstance()
+        cura_formula_functions = um_application.getCuraFormulaFunctions()
+        extrusor0type = cura_formula_functions.getValueInExtruder(0, "machine_nozzle_type")
+        extrusor1rype = cura_formula_functions.getValueInExtruder(1, "machine_nozzle_type")
+        flexibleBed = True
+        if (extrusor0type == "M" or extrusor1rype == "M"):
+            flexibleBed = False
+        return flexibleBed
+
     @pyqtSlot(str)
     def clearUserSettingAllCurrentStacks(self, key: str) -> None:
         """Delete a user setting from the global stack and all extruder stacks.

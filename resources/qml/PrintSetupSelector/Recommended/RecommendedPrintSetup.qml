@@ -133,7 +133,7 @@ ScrollView
             RecommendedFlexibleBuildPlateSelector
             {
                 width: parent.width
-                visible:  Cura.MachineManager.activeMachine.definition.name == "Epsilon W50" || Cura.MachineManager.activeMachine.definition.name == "Epsilon W27"
+                visible: Cura.MachineManager.hasFlexibleBed  && (Cura.MachineManager.activeMachine.definition.name == "Epsilon W50" || Cura.MachineManager.activeMachine.definition.name == "Epsilon W27")
             }
         }
     }

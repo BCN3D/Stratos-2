@@ -12,13 +12,12 @@ RecommendedSettingSection
 {
     id: enableAdhesionRow
 
-    title: catalog.i18nc("@label", "Flexible Printing Surface")
+    title: catalog.i18nc("@label", "Epsilon Flexible Printing Surface")
     icon: UM.Theme.getIcon("Flexible")
     enableSectionSwitchVisible: platformAdhesionType.properties.enabled === "True"
     enableSectionSwitchChecked: platformAdhesionType.properties.value === "True"
     enableSectionSwitchEnabled: recommendedPrintSetup.settingsEnabled
-    tooltipText: catalog.i18nc("@label", "Enable printing in flexible printin surface, this will rise up the temperatures for a propper printing.")
-    visible: Cura.MachineManager.activeMachine.definition.name == "Epsilon W50" || Cura.MachineManager.activeMachine.definition.name == "Epsilon W27"
+    tooltipText: catalog.i18nc("@label", "Enable printing in Epsilon Flexible Printing Surface, this will rise up the temperatures for a propper printing.")
 
     property var curaRecommendedMode: Cura.RecommendedMode {}
 
