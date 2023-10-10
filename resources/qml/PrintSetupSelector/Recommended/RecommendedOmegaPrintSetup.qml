@@ -51,12 +51,13 @@ ScrollView
         RecommendedQualityProfileSelector
         {
             width: parent.width
-            hasQualityOptions: recommendedResolutionSelector.visible
+            hasQualityOptions: recommendedResolutionSelector.visible && Cura.MachineManager.isActiveQualitySupported
         }
 
         RecommendedResolutionSelector
         {
             id: recommendedResolutionSelector
+            visible : Cura.MachineManager.isActiveQualitySupported
             width: parent.width
         }
 
