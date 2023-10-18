@@ -388,8 +388,8 @@ UM.PreferencesPage
                 }
                 width: UM.Theme.getSize("account_button").width
                 height: UM.Theme.getSize("account_button").height
-                text: catalog.i18nc("@button", "Contac us")
-                onClicked: Qt.openUrlExternally("https://www.bcn3d.com/bcn3d-omega/")
+                text: catalog.i18nc("@button", "Contact us")
+                onClicked: Qt.openUrlExternally("https://3d.bcn3d.com/bcn3d-omega-i60-omega-open-filament-license")
                 fixedWidthMode: false
             }
 
