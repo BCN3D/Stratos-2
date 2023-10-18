@@ -2,7 +2,7 @@
 build
 *.pyc
 __pycache__
-*.mo
+
 docs/html
 *.log
 resources/i18n/en_US
@@ -12,7 +12,7 @@ resources/firmware
 resources/images/whats_new
 resources/texts/whats_new
 CuraEngine.exe
-LC_MESSAGES
+
 .cache
 *.qmlc
 .mypy_cache
