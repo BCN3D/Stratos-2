@@ -476,6 +476,10 @@ class MachineManager(QObject):
 
     @pyqtProperty(bool, notify = activeMaterialChanged)
     def hasFlexibleBed(self) -> bool:
+
+        if self._active_container_stack is None or self._global_container_stack is None:
+            return True
+
         from UM.Application import Application
         um_application = Application.getInstance()
         cura_formula_functions = um_application.getCuraFormulaFunctions()
