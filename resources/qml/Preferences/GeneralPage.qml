@@ -370,10 +370,8 @@ UM.PreferencesPage
 
              UM.Label
             {
-                id: contactUs
-
-                //: Language change warning
-                text: catalog.i18nc("@label", "If you want to show custom settings for Omega I60: ")
+                id: contactUs                
+                text: catalog.i18nc("@label", "Request Omega Open Filament License (OOFL) to personalize print settings and/or to print with third-party filaments:")
                 wrapMode: Text.WordWrap
                 font.italic: true
 
@@ -384,11 +382,12 @@ UM.PreferencesPage
                 id: contacButton
                 anchors
                 {
-                    right: contactUs.right
+                    top: contactUs.right
                 }
                 width: UM.Theme.getSize("account_button").width
                 height: UM.Theme.getSize("account_button").height
-                text: catalog.i18nc("@button", "Contact us")
+                iconSource: UM.Theme.getIcon("LinkExternal")
+                text: catalog.i18nc("@button", "Request OOFL")
                 onClicked: Qt.openUrlExternally("https://3d.bcn3d.com/bcn3d-omega-i60-omega-open-filament-license")
                 fixedWidthMode: false
             }
