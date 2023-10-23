@@ -26,13 +26,13 @@ def checkMaterialcompatibility(active_quality_group, global_container_stack):
     if not checkMaterial:
         return active_quality_group.is_available
     materialcompatibility = {}
-    materialcompatibility['PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Ultrafuse TPU 64D',]
-    materialcompatibility['Tough PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Ultrafuse TPU 64D',]
-    materialcompatibility['PVA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'TPU', 'Ultrafuse TPU 64D', 'PAHT CF15', 'PET CF15']
-    materialcompatibility['BVOH'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA', 'BVOH', 'ABS', 'TPU','Ultrafuse TPU 64D', 'PA', 'PAHT CF15', 'PET CF15']
+    materialcompatibility['PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Ultrafuse TPU 64D',]
+    materialcompatibility['Tough PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Ultrafuse TPU 64D',]
+    materialcompatibility['PVA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA','PVA', 'TPU', 'Ultrafuse TPU 64D', 'PAHT CF15', 'PET CF15']
+    materialcompatibility['BVOH'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA', 'BVOH', 'ABS', 'TPU','Ultrafuse TPU 64D', 'PA', 'PAHT CF15', 'PET CF15']
     materialcompatibility['ABS'] = ['BVOH', 'ABS', 'Ultrafuse PC ABS FR', 'Matterhackers ABS', 'TPU','Ultrafuse TPU 64D','PAHT CF15', 'PET CF15']
     materialcompatibility['PET-G'] = ['PET-G',  'Fillamentum PET-G','Matterhackers PET-G', 'PET CF15']
-    materialcompatibility['TPU'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA', 'BVOH', 'PVA', 'ABS', 'TPU','Ultrafuse TPU 64D', 'PET CF15']
+    materialcompatibility['TPU'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA', 'BVOH', 'PVA', 'ABS', 'TPU','Ultrafuse TPU 64D', 'PET CF15']
     materialcompatibility['PA'] = ['BVOH', 'PA']
     materialcompatibility['PP'] = ['PP']
     materialcompatibility['PAHT CF15'] = ['PVA', 'BVOH', 'ABS', 'Ultrafuse PC ABS FR', 'Matterhackers ABS', 'PAHT CF15']
@@ -56,12 +56,12 @@ def checkMaterialcompatibility(active_quality_group, global_container_stack):
     materialcompatibility['Essentium PETCF'] = ['Essentium PETCF']
     materialcompatibility['Fillamentum NonOilen'] = ['Fillamentum NonOilen']
     materialcompatibility['Matterhackers PET-G'] = ['PET-G',  'Fillamentum PET-G','Matterhackers PET-G', 'PET CF15']
-    materialcompatibility['Matterhackers PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU']
+    materialcompatibility['Matterhackers PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA','PVA', 'BVOH', 'TPU']
     materialcompatibility['Matterhackers Nylon'] = ['Matterhackers Nylon']
     materialcompatibility['Matterhackers ABS'] = ['BVOH', 'ABS', 'Ultrafuse PC ABS FR', 'Matterhackers ABS', 'TPU','Ultrafuse TPU 64D','PAHT CF15', 'PET CF15' 'Matterhackers ABS']
-    materialcompatibility['Fillamentum PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU']
+    materialcompatibility['Fillamentum PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA','Smart Materials PLA', 'Tough PLA','PVA', 'BVOH', 'TPU']
     materialcompatibility['Ultrafuse PC ABS FR'] = ['BVOH', 'ABS', 'Ultrafuse PC ABS FR', 'Matterhackers ABS', 'TPU','PAHT CF15', 'PET CF15']
-    materialcompatibility['Ultrafuse TPU 64D'] = ['PLA', 'Ultrafuse TPU 64D', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA', 'BVOH', 'PVA', 'ABS', 'TPU', 'PET CF15']
+    materialcompatibility['Ultrafuse TPU 64D'] = ['PLA', 'Ultrafuse TPU 64D', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA', 'BVOH', 'PVA', 'ABS', 'TPU', 'PET CF15', 'Smart Materials PLA']
     materialcompatibility['Ultrafuse PA6 GF30'] = ['Ultrafuse PA6 GF30']
     materialcompatibility['Fillamentum PET-G'] = ['PET-G', 'Fillamentum PET-G', 'Matterhackers PET-G', 'PET CF15']
     materialcompatibility['Fillamentum CPE'] = ['Fillamentum CPE']
@@ -69,6 +69,7 @@ def checkMaterialcompatibility(active_quality_group, global_container_stack):
     materialcompatibility['Omega Proto'] = ['Omega Proto']
     materialcompatibility['Omega Resistant Nylon'] = ['Omega Resistant Nylon']
     materialcompatibility['Omega Tooling CF'] = ['Omega Tooling CF']
+    materialcompatibility['Smart Materials PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Smart Materials PLA']
 
 
     ext0 = global_container_stack.extruderList[0]
