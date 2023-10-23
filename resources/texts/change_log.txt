@@ -17,6 +17,9 @@
 
 * Added Epsilon Flexible Printing Surface interface (Espsilon series)
 
+* Added profile compatibility for some Smart Materials materials (Epsilon Series): 
+- Smart Materials PLA - PRO SERIES
+
 [1.6.4]
 
 * Adjusted printing profile for:
