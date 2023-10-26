@@ -112,6 +112,7 @@ class PrintModeManager:
         for node_dup in self._duplicated_nodes:
             if node_dup.node == node:
                 return node_dup
+        return None
 
     def getDuplicatedNodes(self):
         return self._duplicated_nodes
@@ -204,11 +205,9 @@ class PrintModeManager:
                     nodesMoved += 1
                     for child in node.getChildren():
                         nodesMoved += 1
-                        # Looks like al childrens are moved with it parents, no need to move them, leave the code for if this behavior is changed in the future 
-                        ''' 
+                        # Looks like al childrens are moved with it parents, no need to move them, we leave the code for if this behavior is changed in the future 
                         if isinstance(child, CuraSceneNode):
-                            self._moveNodes([child], direction)
-                        '''
+                            self._moveNodes([child], direcction)
             Logger.info("Nodes moved: %s" % nodesMoved)
         
 
