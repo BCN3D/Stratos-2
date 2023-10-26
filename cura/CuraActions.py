@@ -105,7 +105,7 @@ class CuraActions(QObject):
         print_mode = Application.getInstance().getGlobalContainerStack().getProperty("print_mode", "value")
         if print_mode == "duplication" or print_mode == "mirror":
             from UM.Message import Message
-            Message("You can not delete items in IDEX more, please turn it to a normal mode.", title="You can not delete in IDEX mode").show()
+            Message("You cannot delete objects in IDEX mode. Please change to another mode.", title="You can not delete objects in IDEX mode").show()
             return
 
         if not cura.CuraApplication.CuraApplication.getInstance().getController().getToolsEnabled():
