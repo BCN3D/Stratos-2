@@ -13,6 +13,8 @@ from UM.Scene.Iterator.BreadthFirstIterator import BreadthFirstIterator
 from UM.Operations.GroupedOperation import GroupedOperation
 from UM.Operations.RemoveSceneNodeOperation import RemoveSceneNodeOperation
 from UM.Operations.TranslateOperation import TranslateOperation
+from UM.i18n import i18nCatalog
+i18n_catalog = i18nCatalog("cura")
 
 import cura.CuraApplication
 from cura.Operations.SetParentOperation import SetParentOperation
@@ -99,6 +101,12 @@ class CuraActions(QObject):
     @pyqtSlot()
     def deleteSelection(self) -> None:
         """Delete all selected objects."""
+        from UM.Application import Application
+        print_mode = Application.getInstance().getGlobalContainerStack().getProperty("print_mode", "value")
+        if print_mode == "duplication" or print_mode == "mirror":
+            from UM.Message import Message
+            Message("You can not delete items in IDEX more, please turn it to a normal mode.", title="You can not delete in IDEX mode").show()
+            return
 
         if not cura.CuraApplication.CuraApplication.getInstance().getController().getToolsEnabled():
             return
