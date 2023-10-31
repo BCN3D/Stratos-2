@@ -1997,6 +1997,19 @@
                     "settable_globally": true,
                     "enabled": "extruders_enabled_count > 1"
                 },
+                "original_infill_sparse_density":
+                {
+                    "label": "Original Infill Density",
+                    "description": "Adjusts the density of infill of the print.",
+                    "unit": "%",
+                    "type": "float",
+                    "default_value": 20,
+                    "minimum_value": "0",
+                    "maximum_value_warning": "100",
+                    "limit_to_extruder": "infill_extruder_nr",
+                    "settable_per_mesh": false,
+                    "enabled" : false
+                },
                 "infill_sparse_density":
                 {
                     "label": "Infill Density",

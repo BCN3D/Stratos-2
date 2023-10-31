@@ -156,8 +156,9 @@ Item {
         bottomLayersValue = bottomLayers.properties.value
         wallLineCount.forcePropertiesChanged()
         wallLineCountValue = wallLineCount.properties.value
+        var infillValue = parseInt(originalInfillSpareDensity.properties.value) * parseInt(omegaQualitySlider.value)
+        Cura.MachineManager.setSettingForAllExtruders( "infill_sparse_density", "value", parseInt(infillValue))
         infillSpareDensity.forcePropertiesChanged()
-        infillSpareDensityValue = infillSpareDensity.properties.value
     }
 
     
@@ -190,6 +191,14 @@ Item {
         id: infillSpareDensity
         containerStack: Cura.MachineManager.activeStack
         key: "infill_sparse_density"
+        watchedProperties: [ "value" ]
+    }
+
+    property var originalInfillSpareDensity : UM.SettingPropertyProvider
+    {
+        id: originalInfillSpareDensity
+        containerStack: Cura.MachineManager.activeStack
+        key: "original_infill_sparse_density"
         watchedProperties: [ "value" ]
     }
 
