@@ -15,10 +15,10 @@
 - Omega Resistant Nylon
 - Omega Tooling CF
 
-* Added Epsilon Flexible Printing Surface interface (Espsilon series)
+* Added Flexible Printing Surface interface (Espsilon series and Sigma D25)
 
 * Added profile compatibility for some Smart Materials materials (Epsilon Series): 
-- Smart Materials PLA - PRO SERIES
+- Smart Materials PLA
 
 [1.6.4]
 

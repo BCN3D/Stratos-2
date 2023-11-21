@@ -54,7 +54,7 @@
                 {
                     "comments": "BCN3D setting",
                     "default_value": false,
-                    "description": "Properties chosen for Epsilons which include flexible bed.",
+                    "description": "Properties chosen for printers which include flexible bed.",
                     "label": "Flexible bed",
                     "enabled": true,
                     "minimum_value": 1,
