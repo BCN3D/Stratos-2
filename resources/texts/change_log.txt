@@ -1,18 +1,19 @@
 [2.0.1]
 
-* Added Omega I60
-- Omega I60 new definition
-- Prepare machine to support 1,75mm materials
-- Added Omega Hotend Tip 0.4 HR (Omega I60 series)
-- Omega Hotend Tip 0.6 HR (Omega I60 series)
+- Printing profile adjustments
+- Added links for OFN Materials
 
-* Added profile compatibility for some BCN3D materials (Omega I60): 
-- Omega Proto material
-- Omega Resistant Nylon
-- Omega Tooling CF
+* Bug fixes:
+- Fixed some names and translations
+- Internal bug fixing
+
+* Added profile compatibility for some MatX materials (Epsilon Series): 
+- MatX AMBX PLA
 
 * Added profile compatibility for some Smart Materials materials (Epsilon Series): 
-- Smart Materials PLA
+- Smart Materials ABS
+- Smart Materials ASA
+
 
 [2.0.0]
 
