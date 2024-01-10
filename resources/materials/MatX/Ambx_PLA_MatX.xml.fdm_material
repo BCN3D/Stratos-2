@@ -35,108 +35,32 @@ passed numerous tests, including ISO22196, which has established that objects pr
     <setting key="print cooling">100</setting>
     <setting key="retraction amount">6.5</setting>
     <machine>
-      <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50" />
-      <setting key="heated bed temperature">30</setting>
-      <setting key="build volume temperature">40</setting>
-      <hotend id="Hotend X (0.6mm)">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="Hotend M (0.4mm)">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="1.0mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.8mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.6mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.4mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-    </machine>
-    <machine>
-      <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27" />
-      <setting key="heated bed temperature">30</setting>
-      <setting key="build volume temperature">40</setting>
-      <hotend id="Hotend X (0.6mm)">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="Hotend M (0.4mm)">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="1.0mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.8mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.6mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.4mm">
-        <setting key="hardware compatible">yes</setting>
-        <setting key="print temperature">210.0</setting>
-        <setting key="heated bed temperature">45.0</setting>
-        <setting key="standby temperature">140.0</setting>
-        <setting key="retraction amount">5.0</setting>
-        <setting key="retraction speed">40.0</setting>
-      </hotend>
-    </machine>
-    <machine>
-      <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dsigmar19" />
-      <hotend id="1.0mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.8mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.6mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.5mm - Hardened Steel">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.4mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.3mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-    </machine>
-    <machine>
-      <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dsigma" />
-      <hotend id="1.0mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.8mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.6mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.5mm - Hardened Steel">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.4mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.3mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-    </machine>
-    <machine>
-      <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dd25" />
-      <setting key="heated bed temperature">30</setting>
-      <setting key="build volume temperature">40</setting>
-      <hotend id="0.8mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-      <hotend id="0.4mm">
-        <setting key="hardware compatible">yes</setting>
-      </hotend>
-    </machine>
+          <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50" />
+          <setting key="heated bed temperature">55</setting>
+          <hotend id="0.4mm" />
+          <hotend id="Hotend M (0.4mm)">
+              <setting key="hardware compatible">no</setting>
+          </hotend>
+          <hotend id="0.6mm" />
+          <hotend id="Hotend X (0.6mm)">
+              <setting key="hardware compatible">no</setting>
+          </hotend>
+          <hotend id="0.8mm" />
+          <hotend id="1.0mm" />
+      </machine>
+      <machine>
+          <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27" />
+          <setting key="heated bed temperature">55</setting>
+          <hotend id="0.4mm" />
+          <hotend id="Hotend M (0.4mm)">
+              <setting key="hardware compatible">no</setting>
+          </hotend>
+          <hotend id="0.6mm" />
+          <hotend id="Hotend X (0.6mm)">
+              <setting key="hardware compatible">no</setting>
+          </hotend>
+          <hotend id="0.8mm" />
+          <hotend id="1.0mm" />
+      </machine>
   </settings>
 </fdmmaterial>
