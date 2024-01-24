@@ -4,6 +4,7 @@
 - Added links for OFN Materials
 
 * Bug fixes:
+- Fixed a problem while printing in dual mode
 - Fixed some names and translations
 - Internal bug fixing
 
