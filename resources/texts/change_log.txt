@@ -5,6 +5,7 @@
 
 * Bug fixes:
 - Fixed a problem while printing in dual mode
+- Pause at layer now works properly
 - Fixed some names and translations
 - Internal bug fixing
 
