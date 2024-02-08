@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura 5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-06 12:02+0200\n"
+"POT-Creation-Date: 2023-10-31 19:13+0100\n"
 "PO-Revision-Date: 2022-01-02 19:59+0800\n"
 "Last-Translator: Valen Chang  <carf17771@gmail.com>\n"
 "Language-Team: Valen Chang <carf17771@gmail.com>\n"
@@ -155,12 +155,6 @@ msgctxt "@heading"
 msgid "-- incomplete --"
 msgstr ""
 
-#, python-brace-format
-msgctxt "info:{0} gets replaced by a number of printers"
-msgid "... and {0} other"
-msgid_plural "... and {0} others"
-msgstr[0] "… 和 {0} 其他"
-
 msgctxt "@action:label"
 msgid "1mm Transmittance (%)"
 msgstr "1mm 透明度"
@@ -236,13 +230,13 @@ msgstr ""
 
 msgctxt "@label crash message"
 msgid ""
-"<p><b>Oops, BCN3D Stratos has encountered something that doesn't seem right.</p></b>\n"
+"<p><b>Oops, UltiMaker Cura has encountered something that doesn't seem right.</p></b>\n"
 "                    <p>We encountered an unrecoverable error during start up. It was possibly caused by some incorrect configuration files. We suggest to backup and reset your configuration.</p>\n"
 "                    <p>Backups can be found in the configuration folder.</p>\n"
 "                    <p>Please send us this Crash Report to fix the problem.</p>\n"
 "                "
 msgstr ""
-"<p><b>糟糕，BCN3D Stratos 遇到了一些似乎不正常的事情。</p></b>\n"
+"<p><b>糟糕，UltiMaker Cura 遇到了一些似乎不正常的事情。</p></b>\n"
 "                    <p>我們在啟動過程中遇到了無法修正的錯誤。這可能是由一些不正確的設定檔造成的。我們建議備份並重置您的設定。</p>\n"
 "                    <p>備份檔案可在設定資料夾中找到。</p>\n"
 "                    <p>請將錯誤報告傳送給我們以修正此問題。</p>\n"
@@ -563,6 +557,10 @@ msgid "Arrange All Models"
 msgstr "排列所有模型"
 
 msgctxt "@action:inmenu menubar:edit"
+msgid "Arrange All Models in a grid"
+msgstr ""
+
+msgctxt "@action:inmenu menubar:edit"
 msgid "Arrange Selection"
 msgstr "排列所選模型"
 
@@ -589,22 +587,6 @@ msgstr "自動升級韌體"
 msgctxt "@label"
 msgid "Available networked printers"
 msgstr "可用的網路印表機"
-
-msgctxt "name"
-msgid "BCN3D"
-msgstr ""
-
-msgctxt "@info:tooltip"
-msgid "BCN3D Print Modes Tool"
-msgstr ""
-
-msgctxt "@label"
-msgid "BCN3D Print Modes Tool"
-msgstr ""
-
-msgctxt "@text:window"
-msgid "BCN3D Stratos collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
-msgstr "BCN3D Stratos 搜集匿名資料以提高列印品質和使用者體驗。以下是共享資料的範例："
 
 msgctxt "@item:inlistbox"
 msgid "BMP Image"
@@ -646,13 +628,13 @@ msgctxt "@info:title"
 msgid "Backups"
 msgstr "備份"
 
+msgctxt "@label"
+msgid "Balanced"
+msgstr ""
+
 msgctxt "@action:label"
 msgid "Base (mm)"
 msgstr "底板 (mm)"
-
-msgctxt "@tooltip:button"
-msgid "Become a 3D printing expert with UltiMaker e-learning."
-msgstr "使用UltiMaker e-learning成為一位3D列印專家."
 
 msgctxt "@action:inmenu menubar:view"
 msgid "Bottom View"
@@ -921,13 +903,13 @@ msgctxt "@label"
 msgid "Configurations"
 msgstr "設定"
 
+msgctxt "@action:inmenu"
+msgid "Configure Cura..."
+msgstr "設定 Cura..."
+
 msgctxt "@info:tooltip"
 msgid "Configure Per Model Settings"
 msgstr "設定對每個模型的單獨設定"
-
-msgctxt "@action:inmenu"
-msgid "Configure Stratos..."
-msgstr ""
 
 msgctxt "@action"
 msgid "Configure group"
@@ -997,6 +979,10 @@ msgctxt "@action:menu"
 msgid "Copy all changed values to all extruders"
 msgstr "複製所有改變的設定值到所有擠出機"
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Copy to clipboard"
+msgstr ""
+
 msgctxt "@action:menu"
 msgid "Copy value to all extruders"
 msgstr "將設定值複製到所有擠出機"
@@ -1030,6 +1016,10 @@ msgctxt "@info:error"
 msgid "Could not interpret the server's response."
 msgstr ""
 
+msgctxt "@error:load"
+msgid "Could not load GCodeWriter plugin. Try to re-enable the plugin."
+msgstr ""
+
 msgctxt "@info:error"
 msgid "Could not reach Marketplace."
 msgstr ""
@@ -1055,6 +1045,27 @@ msgstr "無法儲存到行動裝置 {0}：{1}"
 msgctxt "@info:text"
 msgid "Could not upload the data to the printer."
 msgstr "雲端服務未上傳資料到印表機。"
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Couldn't start EnginePlugin: {self._plugin_id}\n"
+"No permission to execute process."
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Couldn't start EnginePlugin: {self._plugin_id}\n"
+"Operating system is blocking it (antivirus?)"
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Couldn't start EnginePlugin: {self._plugin_id}\n"
+"Resource is temporarily unavailable"
+msgstr ""
 
 msgctxt "@title:window"
 msgid "Crash Report"
@@ -1165,6 +1176,14 @@ msgctxt "name"
 msgid "CuraEngine Backend"
 msgstr "Cura 引擎後台"
 
+msgctxt "description"
+msgid "CuraEngine plugin for gradually smoothing the flow to limit high-flow jumps"
+msgstr ""
+
+msgctxt "name"
+msgid "CuraEngineGradualFlow"
+msgstr ""
+
 msgctxt "@label"
 msgid "Currency:"
 msgstr "貨幣："
@@ -1209,6 +1228,10 @@ msgctxt "@label:header"
 msgid "Custom profiles"
 msgstr "自訂列印參數"
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Cut"
+msgstr ""
+
 msgctxt "@item:inlistbox"
 msgid "Cutting mesh"
 msgstr "切割網格"
@@ -1238,10 +1261,6 @@ msgid "Decline and remove from account"
 msgstr "拒絕並從帳號中刪除"
 
 msgctxt "@info:No intent profile selected"
-msgid "Default"
-msgstr "預設值"
-
-msgctxt "@label"
 msgid "Default"
 msgstr "預設值"
 
@@ -1393,10 +1412,6 @@ msgctxt "@label"
 msgid "Draft"
 msgstr "草稿"
 
-msgctxt "@label"
-msgid "Dual"
-msgstr ""
-
 msgctxt "@action:button"
 msgid "Duplicate"
 msgstr "複製"
@@ -1404,10 +1419,6 @@ msgstr "複製"
 msgctxt "@title:window"
 msgid "Duplicate Profile"
 msgstr "複製列印參數"
-
-msgctxt "@label"
-msgid "Duplication"
-msgstr ""
 
 msgctxt "@backup_limit_info"
 msgid "During the preview phase, you'll be limited to 5 visible backups. Remove a backup to see older ones."
@@ -1448,8 +1459,8 @@ msgid "Enable Extruder"
 msgstr "啟用擠出機"
 
 msgctxt "@label"
-msgid "Enable printing a brim or raft. This will add a flat area around or under your object which is easy to cut off afterwards."
-msgstr "允許列印邊緣或木筏。這將在你的物件周圍或下方添加一個容易切斷的平面區域。"
+msgid "Enable printing a brim or raft. This will add a flat area around or under your object which is easy to cut off afterwards. Disabling it results in a skirt around object by default."
+msgstr ""
 
 msgctxt "@label"
 msgid "Enabled"
@@ -1459,10 +1470,6 @@ msgctxt "description"
 msgid "Enables ability to generate printable geometry from 2D image files."
 msgstr "支援從 2D 圖片檔案產生可列印 3D 模型的能力。"
 
-msgctxt "description"
-msgid "Enables functionality of linking BCN3D Stratos to a network connected printer through BCN3D Cloud."
-msgstr ""
-
 msgctxt "@title:label"
 msgid "End G-code"
 msgstr "結束 G-code"
@@ -1470,6 +1477,10 @@ msgstr "結束 G-code"
 msgctxt "@label"
 msgid "End-to-end solution for fused filament 3D printing."
 msgstr "熔絲 3D 列印技術的的端對端解決方案。"
+
+msgctxt "@info:title"
+msgid "EnginePlugin"
+msgstr ""
 
 msgctxt "@label"
 msgid "Engineering"
@@ -1494,10 +1505,6 @@ msgstr "錯誤"
 msgctxt "@title:groupbox"
 msgid "Error traceback"
 msgstr "錯誤追溯"
-
-msgctxt "@error:zip"
-msgid "Error writing 3mf file."
-msgstr "寫入 3mf 檔案發生錯誤。"
 
 msgctxt "@label"
 msgid "Estimated time left"
@@ -1545,8 +1552,8 @@ msgid "Exported profile to <filename>{0}</filename>"
 msgstr "列印參數已匯出至：<filename>{0}</filename>"
 
 msgctxt "@tooltip:button"
-msgid "Extend BCN3D Stratos with plugins and material profiles."
-msgstr "使用插件及線材參數擴充BCN3D Stratos."
+msgid "Extend UltiMaker Cura with plugins and material profiles."
+msgstr "使用插件及線材參數擴充UltiMaker Cura."
 
 msgctxt "description"
 msgid "Extension that allows for user created scripts for post processing"
@@ -1871,6 +1878,10 @@ msgctxt "@label Description for application component"
 msgid "Graphical user interface"
 msgstr "圖形用戶介面"
 
+msgctxt "@label"
+msgid "Grid Placement"
+msgstr ""
+
 #, python-brace-format
 msgctxt "@label"
 msgid "Group #{group_nr}"
@@ -1903,10 +1914,6 @@ msgstr "高度 (mm)"
 msgctxt "@label"
 msgid "Helpers"
 msgstr "輔助結構"
-
-msgctxt "@label"
-msgid "Hex"
-msgstr ""
 
 msgctxt "@label"
 msgid "Hide all connected printers"
@@ -2052,10 +2059,6 @@ msgctxt "@button"
 msgid "Install"
 msgstr ""
 
-msgctxt "@action:button"
-msgid "Install Materials"
-msgstr ""
-
 msgctxt "@header"
 msgid "Install Materials"
 msgstr ""
@@ -2064,16 +2067,28 @@ msgctxt "@window:title"
 msgid "Install Package"
 msgstr "安裝套件"
 
+msgctxt "@action:button"
+msgid "Install Packages"
+msgstr ""
+
+msgctxt "@header"
+msgid "Install Packages"
+msgstr ""
+
 msgctxt "@header"
 msgid "Install Plugins"
 msgstr ""
 
-msgctxt "@title"
-msgid "Install missing Materials"
+msgctxt "@action:button"
+msgid "Install missing packages"
 msgstr ""
 
-msgctxt "@action:button"
-msgid "Install missing material"
+msgctxt "@title"
+msgid "Install missing packages"
+msgstr ""
+
+msgctxt "@label"
+msgid "Install missing packages from project file."
 msgstr ""
 
 msgctxt "@button"
@@ -2186,8 +2201,8 @@ msgid "Learn how to connect your printer to Digital Factory"
 msgstr "學習如何連結您的印表機至Digital Factory"
 
 msgctxt "@tooltip:button"
-msgid "Learn how to get started with BCN3D Stratos."
-msgstr "學習如何開始使用BCN3D Stratos."
+msgid "Learn how to get started with UltiMaker Cura."
+msgstr "學習如何開始使用UltiMaker Cura."
 
 msgctxt "@action"
 msgid "Learn more"
@@ -2211,6 +2226,10 @@ msgstr ""
 
 msgctxt "@button"
 msgid "Learn more about adding printers to Cura"
+msgstr ""
+
+msgctxt "@label"
+msgid "Learn more about project packages."
 msgstr ""
 
 msgctxt "@action:inmenu menubar:view"
@@ -2333,6 +2352,22 @@ msgctxt "@info:generic"
 msgid "Make sure the g-code is suitable for your printer and printer configuration before sending the file to it. The g-code representation may not be accurate."
 msgstr "發送檔案之前，請確保 G-code 適用於目前印表機和印表機設定。目前 G-code 檔案可能不準確。"
 
+msgctxt "@item:inlistbox"
+msgid "Makerbot Printfile"
+msgstr ""
+
+msgctxt "name"
+msgid "Makerbot Printfile Writer"
+msgstr ""
+
+msgctxt "@error"
+msgid "MakerbotWriter could not save to the designated path."
+msgstr ""
+
+msgctxt "@error:not supported"
+msgid "MakerbotWriter does not support text mode."
+msgstr ""
+
 msgctxt "@action:inmenu"
 msgid "Manage Materials..."
 msgstr "管理線材..."
@@ -2378,7 +2413,7 @@ msgid "Manage printers"
 msgstr "管理印表機"
 
 msgctxt "@text"
-msgid "Manage your BCN3D Stratos plugins and material profiles here. Make sure to keep your plugins up to date and backup your setup regularly."
+msgid "Manage your UltiMaker Cura plugins and material profiles here. Make sure to keep your plugins up to date and backup your setup regularly."
 msgstr ""
 
 msgctxt "description"
@@ -2437,10 +2472,6 @@ msgctxt "@label"
 msgid "Material estimation"
 msgstr "線材估計"
 
-msgctxt "@info:title"
-msgid "Material profiles not installed"
-msgstr ""
-
 msgctxt "@title:header"
 msgid "Material profiles successfully synced with the following printers:"
 msgstr "線材設定檔成功同步至下述的印表機內:"
@@ -2468,10 +2499,6 @@ msgstr ""
 msgctxt "@label"
 msgid "Mesh Type"
 msgstr "網格類型"
-
-msgctxt "@label"
-msgid "Mirror"
-msgstr ""
 
 msgctxt "@action:label"
 msgid "Mode"
@@ -2546,6 +2573,10 @@ msgid "Multiply Selected Model"
 msgid_plural "Multiply Selected Models"
 msgstr[0] "複製所選模型"
 
+msgctxt "@info"
+msgid "Multiply selected item and place them in a grid of build plate."
+msgstr ""
+
 msgctxt "@info:status"
 msgid "Multiplying and placing objects"
 msgstr "正在複製並放置模型"
@@ -2608,6 +2639,10 @@ msgstr "下一步"
 msgctxt "@button"
 msgid "Next"
 msgstr "下一步"
+
+msgctxt "@info:title"
+msgid "Nightly build"
+msgstr ""
 
 msgctxt "@info"
 msgid "No"
@@ -2887,6 +2922,10 @@ msgctxt "@info:status"
 msgid "Parsing G-code"
 msgstr "正在解析 G-code"
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Paste from clipboard"
+msgstr ""
+
 msgctxt "@label"
 msgid "Pause"
 msgstr "暫停"
@@ -3003,8 +3042,8 @@ msgid "Please select any upgrades made to this UltiMaker Original"
 msgstr "請選擇適用於 UltiMaker Original 的更新檔案"
 
 msgctxt "@description"
-msgid "Please sign in to get verified plugins and materials for BCN3D Stratos Enterprise"
-msgstr "請登入以取得 BCN3D Stratos Enterprise 驗証的外掛及線材"
+msgid "Please sign in to get verified plugins and materials for UltiMaker Cura Enterprise"
+msgstr "請登入以取得 UltiMaker Cura Enterprise 驗証的外掛及線材"
 
 msgctxt "@action:button"
 msgid "Please sync the material profiles with your printers before starting to print."
@@ -3321,8 +3360,8 @@ msgstr "專案檔案<filename>{0}</filename> 已毀損 : <message>{1}</message>.
 
 #, python-brace-format
 msgctxt "@info:error Don't translate the XML tag <filename>!"
-msgid "Project file <filename>{0}</filename> is made using profiles that are unknown to this version of BCN3D Stratos."
-msgstr "專案檔案 <filename>{0}</filename> 使用了此版本 BCN3D Stratos 未知的參數製作。"
+msgid "Project file <filename>{0}</filename> is made using profiles that are unknown to this version of UltiMaker Cura."
+msgstr "專案檔案 <filename>{0}</filename> 使用了此版本 UltiMaker Cura 未知的參數製作。"
 
 #, python-brace-format
 msgctxt "@info:error Don't translate the XML tags <filename> or <message>!"
@@ -3408,6 +3447,10 @@ msgstr "提供讀取模型檔案的支援。"
 msgctxt "description"
 msgid "Provides support for writing 3MF files."
 msgstr "提供寫入 3MF 檔案的支援。"
+
+msgctxt "description"
+msgid "Provides support for writing MakerBot Format Packages."
+msgstr ""
 
 msgctxt "description"
 msgid "Provides support for writing Ultimaker Format Packages."
@@ -3502,6 +3545,10 @@ msgctxt "@button"
 msgid "Refresh List"
 msgstr "重新載入清單"
 
+msgctxt "@button"
+msgid "Refreshing..."
+msgstr ""
+
 msgctxt "@label"
 msgid "Release Notes"
 msgstr "發佈通知"
@@ -3559,8 +3606,8 @@ msgid "Report a bug"
 msgstr "回報問題"
 
 msgctxt "@message:description"
-msgid "Report a bug on BCN3D Stratos's issue tracker."
-msgstr "於BCN3D Stratos問題追蹤器中回報問題."
+msgid "Report a bug on UltiMaker Cura's issue tracker."
+msgstr "於UltiMaker Cura問題追蹤器中回報問題."
 
 msgctxt "@label:status"
 msgid "Requires configuration changes"
@@ -3777,14 +3824,6 @@ msgctxt "@action:button"
 msgid "Send report"
 msgstr "送出報告"
 
-msgctxt "@action:button"
-msgid "Send to cloud and print"
-msgstr ""
-
-msgctxt "@action:button"
-msgid "Send to printer"
-msgstr ""
-
 msgctxt "@info:status"
 msgid "Sending Print Job"
 msgstr "正在傳送列印作業"
@@ -3961,6 +4000,10 @@ msgctxt "@option:check"
 msgid "Show summary dialog when saving project"
 msgstr "儲存專案時顯示摘要對話框"
 
+msgctxt "@tooltip:button"
+msgid "Show your support for Cura with a donation."
+msgstr ""
+
 msgctxt "@button"
 msgid "Sign Out"
 msgstr "登出"
@@ -3992,14 +4035,6 @@ msgstr "登入UltiMaker 論壇"
 msgctxt "name"
 msgid "Simulation View"
 msgstr "模擬檢視"
-
-msgctxt "@label"
-msgid "Single 1"
-msgstr ""
-
-msgctxt "@label"
-msgid "Single 2"
-msgstr ""
 
 msgctxt "@tooltip"
 msgid "Skin"
@@ -4067,6 +4102,14 @@ msgstr ""
 "\n"
 "點擊以顯這些設定。"
 
+msgctxt "@info:status"
+msgid "Some of the packages used in the project file are currently not installed in Cura, this might produce undesirable print results. We highly recommend installing the all required packages from the Marketplace."
+msgstr ""
+
+msgctxt "@info:title"
+msgid "Some required packages are not installed"
+msgstr ""
+
 msgctxt "@info %1 is the name of a profile"
 msgid "Some setting-values defined in <b>%1</b> were overridden."
 msgstr ""
@@ -4101,6 +4144,14 @@ msgctxt "@label:listbox"
 msgid "Speed"
 msgstr "速度"
 
+msgctxt "@action:inmenu"
+msgid "Sponsor Cura"
+msgstr ""
+
+msgctxt "@label:button"
+msgid "Sponsor Cura"
+msgstr ""
+
 msgctxt "@option:radio"
 msgid "Stable and Beta releases"
 msgstr "正式版本與測試版本發佈"
@@ -4134,7 +4185,7 @@ msgid "Starts"
 msgstr "啟動"
 
 msgctxt "@text"
-msgid "Streamline your workflow and customize your BCN3D Stratos experience with plugins contributed by our amazing community of users."
+msgid "Streamline your workflow and customize your UltiMaker Cura experience with plugins contributed by our amazing community of users."
 msgstr ""
 
 msgctxt "@label"
@@ -4283,6 +4334,10 @@ msgctxt "@error:file_size"
 msgid "The backup exceeds the maximum file size."
 msgstr "備份超過了最大檔案大小。"
 
+msgctxt "@text"
+msgid "The balanced profile is designed to strike a balance between productivity, surface quality, mechanical properties and dimensional accuracy."
+msgstr ""
+
 msgctxt "@info:tooltip"
 msgid "The base height from the build plate in millimeters."
 msgstr "距離列印平台的底板高度，以毫米為單位。"
@@ -4389,14 +4444,6 @@ msgctxt "@label:label Ultimaker Marketplace is a brand name, don't translate"
 msgid "The material package associated with the Cura project could not be found on the Ultimaker Marketplace. Use the partial material profile definition stored in the Cura project file at your own risk."
 msgstr ""
 
-msgctxt "@label"
-msgid "The material used in this project is currently not installed in Cura.<br/>Install the material profile and reopen the project."
-msgstr ""
-
-msgctxt "@info:status"
-msgid "The material used in this project relies on some material definitions not available in Cura, this might produce undesirable print results. We highly recommend installing the full material package from the Marketplace."
-msgstr ""
-
 msgctxt "@info:tooltip"
 msgid "The maximum distance of each pixel from \"Base.\""
 msgstr "每個像素與底板的最大距離。"
@@ -4408,10 +4455,6 @@ msgstr "新的線材直徑設定為 %1 mm，這與目前的擠出機不相容。
 msgctxt "@tooltip"
 msgid "The nozzle inserted in this extruder."
 msgstr "該擠出機所使用的噴頭。"
-
-msgctxt "@error:zip"
-msgid "The operating system does not allow saving a project file to this location or with this file name."
-msgstr "操作系統不允許將專案檔案儲存到此位置或儲存為此檔名。"
 
 msgctxt "@label"
 msgid ""
@@ -4427,6 +4470,10 @@ msgstr ""
 msgctxt "@info:tooltip"
 msgid "The percentage of light penetrating a print with a thickness of 1 millimeter. Lowering this value increases the contrast in dark regions and decreases the contrast in light regions of the image."
 msgstr "光線穿透 1mm 厚度列印件的百分比。降低此值可增加暗部的對比度，並降低亮部的對比度。"
+
+msgctxt "@label:label Ultimaker Marketplace is a brand name, don't translate"
+msgid "The plugin associated with the Cura project could not be found on the Ultimaker Marketplace. As the plugin may be required to slice the project it might not be possible to correctly slice the file."
+msgstr ""
 
 msgctxt "@info:title"
 msgid "The print job was successfully submitted"
@@ -4579,6 +4626,10 @@ msgid "This profile uses the defaults specified by the printer, so it has no set
 msgstr "此列印參數使用印表機指定的預設值，因此在下面的清單中沒有此設定項。"
 
 msgctxt "@label"
+msgid "This project contains materials or plugins that are currently not installed in Cura.<br/>Install the missing packages and reopen the project."
+msgstr ""
+
+msgctxt "@label"
 msgid ""
 "This setting has a value that is different from the profile.\n"
 "\n"
@@ -4618,6 +4669,10 @@ msgstr "此設定未被使用，因為受它影響的設定都被覆寫了。"
 msgctxt "@label"
 msgid "This setting is resolved from conflicting extruder-specific values:"
 msgstr "此設定是透過解決擠出機設定值衝突獲得："
+
+msgctxt "@info:warning"
+msgid "This version is not intended for production use. If you encounter any issues, please report them on our GitHub page, mentioning the full version {self.getVersion()}"
+msgstr ""
 
 msgctxt "@label"
 msgid "Time estimation"
@@ -4741,6 +4796,10 @@ msgctxt "@info"
 msgid "UltiMaker Certified Material"
 msgstr ""
 
+msgctxt "@text:window"
+msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
+msgstr "UltiMaker Cura 搜集匿名資料以提高列印品質和使用者體驗。以下是共享資料的範例："
+
 msgctxt "@item:inlistbox"
 msgid "UltiMaker Format Package"
 msgstr "UltiMaker 格式的封包"
@@ -4784,6 +4843,18 @@ msgstr "無法新增列印參數。"
 msgctxt "@info:status"
 msgid "Unable to find a location within the build volume for all objects"
 msgstr "無法在列印範圍內放下全部物件"
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid "Unable to find local EnginePlugin server executable for: {self._plugin_id}"
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Unable to kill running EnginePlugin: {self._plugin_id}\n"
+"Access is denied."
+msgstr ""
 
 msgctxt "@info"
 msgid "Unable to reach the UltiMaker account server."
@@ -5033,6 +5104,10 @@ msgctxt "description"
 msgid "Upgrades configurations from Cura 5.3 to Cura 5.4."
 msgstr ""
 
+msgctxt "description"
+msgid "Upgrades configurations from Cura 5.4 to Cura 5.5."
+msgstr ""
+
 msgctxt "@action:button"
 msgid "Upload custom Firmware"
 msgstr "上傳自訂韌體"
@@ -5165,6 +5240,10 @@ msgctxt "name"
 msgid "Version Upgrade 5.3 to 5.4"
 msgstr ""
 
+msgctxt "name"
+msgid "Version Upgrade 5.4 to 5.5"
+msgstr ""
+
 msgctxt "@button"
 msgid "View printers in Digital Factory"
 msgstr ""
@@ -5231,8 +5310,8 @@ msgid "We have found one or more project file(s) within the files you have selec
 msgstr "我們已經在你所選擇的檔案中找到一個或多個專案檔案，但一次只能開啟一個專案檔案。我們建議只從那些檔案中匯入模型而不開啟專案。你要繼續操作嗎？"
 
 msgctxt "@info"
-msgid "Webcam feeds for cloud printers cannot be viewed from BCN3D Stratos. Click \"Manage printer\" to visit Ultimaker Digital Factory and view this webcam."
-msgstr "網路攝影機無法從BCN3D Stratos中瀏覽，請點擊\"管理列印機\"並從Ultimaker Digital Factory中瀏覽網路攝影機."
+msgid "Webcam feeds for cloud printers cannot be viewed from UltiMaker Cura. Click \"Manage printer\" to visit Ultimaker Digital Factory and view this webcam."
+msgstr "網路攝影機無法從UltiMaker Cura中瀏覽，請點擊\"管理列印機\"並從Ultimaker Digital Factory中瀏覽網路攝影機."
 
 msgctxt "@button"
 msgid "Website"
@@ -5574,21 +5653,21 @@ msgstr "下載外掛 {} 失敗"
 #~ msgctxt "@text"
 #~ msgid ""
 #~ "- Send print jobs to Ultimaker printers outside your local network\n"
-#~ "- Store your BCN3D Stratos settings in the cloud for use anywhere\n"
+#~ "- Store your Ultimaker Cura settings in the cloud for use anywhere\n"
 #~ "- Get exclusive access to material profiles from leading brands"
 #~ msgstr ""
 #~ "- 將列印作業傳送到你區域網路外的 Ultimaker 印表機\n"
-#~ "- 將你的 BCN3D Stratos 設定儲存在雲端以便隨處使用\n"
+#~ "- 將你的 Ultimaker Cura 設定儲存在雲端以便隨處使用\n"
 #~ "- 取得領導品牌的耗材參數設定的獨家存取權限"
 
 #~ msgctxt "@text"
 #~ msgid ""
 #~ "- Send print jobs to Ultimaker printers outside your local network\n"
-#~ "- Store your BCN3D Stratos settings in the cloud for use anywhere\n"
+#~ "- Store your Ultimaker Cura settings in the cloud for use anywhere\n"
 #~ "- Get exclusive access to print profiles from leading brands"
 #~ msgstr ""
 #~ "- 將列印作業傳送到你區域網路外的 Ultimaker 印表機\n"
-#~ "- 將你的 BCN3D Stratos 設定儲存在雲端以便隨處使用\n"
+#~ "- 將你的 Ultimaker Cura 設定儲存在雲端以便隨處使用\n"
 #~ "- 取得領導品牌的耗材參數設定的獨家存取權限"
 
 #~ msgctxt "@text"
@@ -5596,8 +5675,14 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "- 通過同步設定可在任何地方將其載入以保持靈活性"
 
 #~ msgctxt "@text"
-#~ msgid "- Store your BCN3D Stratos settings in the cloud for use anywhere"
-#~ msgstr "- 將你的 BCN3D Stratos 設定儲存在雲端以便隨處使用"
+#~ msgid "- Store your UltiMaker Cura settings in the cloud for use anywhere"
+#~ msgstr "- 將你的 UltiMaker Cura 設定儲存在雲端以便隨處使用"
+
+#, python-brace-format
+#~ msgctxt "info:{0} gets replaced by a number of printers"
+#~ msgid "... and {0} other"
+#~ msgid_plural "... and {0} others"
+#~ msgstr[0] "… 和 {0} 其他"
 
 #~ msgctxt "@label"
 #~ msgid "0%"
@@ -5901,17 +5986,13 @@ msgstr "下載外掛 {} 失敗"
 #~ msgid "Available configurations"
 #~ msgstr "可用的設定"
 
-#~ msgctxt "@title:window"
-#~ msgid "BCN3D Stratos"
-#~ msgstr "BCN3D Stratos"
-
-#~ msgctxt "@text"
-#~ msgid "BCN3D Stratos collects anonymous data to improve print quality and user experience, including:"
-#~ msgstr "BCN3D Stratos 搜集匿名資料以提高列印品質和使用者體驗，包含："
-
 #~ msgctxt "@action:button"
 #~ msgid "Back"
 #~ msgstr "返回"
+
+#~ msgctxt "@tooltip:button"
+#~ msgid "Become a 3D printing expert with UltiMaker e-learning."
+#~ msgstr "使用UltiMaker e-learning成為一位3D列印專家."
 
 #~ msgctxt "@label"
 #~ msgid "Bed Temperature: %1/%2°C"
@@ -6084,10 +6165,6 @@ msgstr "下載外掛 {} 失敗"
 
 #~ msgid "Configure"
 #~ msgstr "設定"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Configure Cura..."
-#~ msgstr "設定 Cura..."
 
 #~ msgctxt "@action:menu"
 #~ msgid "Configure setting visiblity..."
@@ -6266,8 +6343,8 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "自訂"
 
 #~ msgctxt "@text"
-#~ msgid "Data collected by BCN3D Stratos will not contain any personal information."
-#~ msgstr "BCN3D Stratos 收集的資料不包含任何個人資訊。"
+#~ msgid "Data collected by UltiMaker Cura will not contain any personal information."
+#~ msgstr "UltiMaker Cura 收集的資料不包含任何個人資訊。"
 
 #~ msgctxt "@info:status"
 #~ msgid ""
@@ -6300,6 +6377,10 @@ msgstr "下載外掛 {} 失敗"
 #~ msgctxt "@action:button"
 #~ msgid "Decline"
 #~ msgstr "拒絕"
+
+#~ msgctxt "@label"
+#~ msgid "Default"
+#~ msgstr "預設值"
 
 #~ msgctxt "@title:column"
 #~ msgid "Default"
@@ -6447,6 +6528,10 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "啟用漸層"
 
 #~ msgctxt "@label"
+#~ msgid "Enable printing a brim or raft. This will add a flat area around or under your object which is easy to cut off afterwards."
+#~ msgstr "允許列印邊緣或木筏。這將在你的物件周圍或下方添加一個容易切斷的平面區域。"
+
+#~ msgctxt "@label"
 #~ msgid "End G-code"
 #~ msgstr "結束 G-code"
 
@@ -6469,6 +6554,10 @@ msgstr "下載外掛 {} 失敗"
 #~ msgctxt "@info:status"
 #~ msgid "Error while starting %s!"
 #~ msgstr "啟動 %s 時發生錯誤！"
+
+#~ msgctxt "@error:zip"
+#~ msgid "Error writing 3mf file."
+#~ msgstr "寫入 3mf 檔案發生錯誤。"
 
 #~ msgctxt "@info:status"
 #~ msgid "Errors appeared while opening your SolidWorks file!             Please check, whether it is possible to open your file in SolidWorks itself without any problems as well!"
@@ -6756,8 +6845,8 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "熱床"
 
 #~ msgctxt "@label"
-#~ msgid "Help us to improve BCN3D Stratos"
-#~ msgstr "協助我們改進 BCN3D Stratos"
+#~ msgid "Help us to improve UltiMaker Cura"
+#~ msgstr "協助我們改進 UltiMaker Cura"
 
 #~ msgctxt "description"
 #~ msgid "Helps to open Blender files directly in Cura."
@@ -7228,14 +7317,14 @@ msgstr "下載外掛 {} 失敗"
 #~ msgctxt "@text"
 #~ msgid ""
 #~ "Please follow these steps to set up\n"
-#~ "BCN3D Stratos. This will only take a few moments."
+#~ "Ultimaker Cura. This will only take a few moments."
 #~ msgstr ""
 #~ "請按照以下步驟進行設定\n"
-#~ "BCN3D Stratos。這只需要一點時間。"
+#~ "Ultimaker Cura。這只需要一點時間。"
 
 #~ msgctxt "@text"
-#~ msgid "Please follow these steps to set up BCN3D Stratos. This will only take a few moments."
-#~ msgstr "請依照步驟安裝BCN3D Stratos. 這會需要幾分鐘的時間."
+#~ msgid "Please follow these steps to set up UltiMaker Cura. This will only take a few moments."
+#~ msgstr "請依照步驟安裝UltiMaker Cura. 這會需要幾分鐘的時間."
 
 #~ msgctxt "@warning:status"
 #~ msgid "Please generate G-code before saving."
@@ -8006,6 +8095,10 @@ msgstr "下載外掛 {} 失敗"
 #~ msgid "The nominal diameter of filament supported by the printer. The exact diameter will be overridden by the material and/or the profile."
 #~ msgstr "印表機所支援的耗材直徑。實際列印的耗材直徑由耗材和/或列印參數提供。"
 
+#~ msgctxt "@error:zip"
+#~ msgid "The operating system does not allow saving a project file to this location or with this file name."
+#~ msgstr "操作系統不允許將專案檔案儲存到此位置或儲存為此檔名。"
+
 #~ msgctxt "@info:status"
 #~ msgid "The print job '{job_name}' was finished."
 #~ msgstr "列印作業 '{job_name}' 已完成。"
@@ -8201,6 +8294,14 @@ msgstr "下載外掛 {} 失敗"
 #~ msgctxt "@label"
 #~ msgid "UltiMaker Cloud"
 #~ msgstr "UltiMaker Cloud"
+
+#~ msgctxt "@title:window"
+#~ msgid "UltiMaker Cura"
+#~ msgstr "UltiMaker Cura"
+
+#~ msgctxt "@text"
+#~ msgid "UltiMaker Cura collects anonymous data to improve print quality and user experience, including:"
+#~ msgstr "UltiMaker Cura 搜集匿名資料以提高列印品質和使用者體驗，包含："
 
 #~ msgctxt "@button"
 #~ msgid "UltiMaker account"
@@ -8436,8 +8537,8 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "警告"
 
 #~ msgctxt "@info"
-#~ msgid "Webcam feeds for cloud printers cannot be viewed from BCN3D Stratos."
-#~ msgstr "無法從BCN3D Stratos中查看你的雲端列印機."
+#~ msgid "Webcam feeds for cloud printers cannot be viewed from UltiMaker Cura."
+#~ msgstr "無法從UltiMaker Cura中查看你的雲端列印機."
 
 #~ msgctxt "@action:label"
 #~ msgid "Website"
@@ -8448,12 +8549,12 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "網站"
 
 #~ msgctxt "@label"
-#~ msgid "Welcome to BCN3D Stratos"
-#~ msgstr "歡迎來到 BCN3D Stratos"
+#~ msgid "Welcome to UltiMaker Cura"
+#~ msgstr "歡迎來到 UltiMaker Cura"
 
 #~ msgctxt "@label"
-#~ msgid "What's new in BCN3D Stratos"
-#~ msgstr "BCN3D Stratos 新功能"
+#~ msgid "What's new in UltiMaker Cura"
+#~ msgstr "UltiMaker Cura 新功能"
 
 #~ msgctxt "@label"
 #~ msgid "Will install upon restarting"

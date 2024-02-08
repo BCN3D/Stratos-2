@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura 5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-06 12:02+0200\n"
+"POT-Creation-Date: 2023-10-31 19:13+0100\n"
 "PO-Revision-Date: 2022-07-15 10:53+0200\n"
 "Last-Translator: Bothof <info@bothof.nl>\n"
 "Language-Team: Finnish\n"
@@ -154,13 +154,6 @@ msgctxt "@heading"
 msgid "-- incomplete --"
 msgstr ""
 
-#, python-brace-format
-msgctxt "info:{0} gets replaced by a number of printers"
-msgid "... and {0} other"
-msgid_plural "... and {0} others"
-msgstr[0] ""
-msgstr[1] ""
-
 msgctxt "@action:label"
 msgid "1mm Transmittance (%)"
 msgstr ""
@@ -233,7 +226,7 @@ msgstr ""
 
 msgctxt "@label crash message"
 msgid ""
-"<p><b>Oops, BCN3D Stratos has encountered something that doesn't seem right.</p></b>\n"
+"<p><b>Oops, UltiMaker Cura has encountered something that doesn't seem right.</p></b>\n"
 "                    <p>We encountered an unrecoverable error during start up. It was possibly caused by some incorrect configuration files. We suggest to backup and reset your configuration.</p>\n"
 "                    <p>Backups can be found in the configuration folder.</p>\n"
 "                    <p>Please send us this Crash Report to fix the problem.</p>\n"
@@ -552,6 +545,10 @@ msgid "Arrange All Models"
 msgstr "Järjestä kaikki mallit"
 
 msgctxt "@action:inmenu menubar:edit"
+msgid "Arrange All Models in a grid"
+msgstr ""
+
+msgctxt "@action:inmenu menubar:edit"
 msgid "Arrange Selection"
 msgstr "Järjestä valinta"
 
@@ -577,22 +574,6 @@ msgstr "Päivitä laiteohjelmisto automaattisesti"
 
 msgctxt "@label"
 msgid "Available networked printers"
-msgstr ""
-
-msgctxt "name"
-msgid "BCN3D"
-msgstr ""
-
-msgctxt "@info:tooltip"
-msgid "BCN3D Print Modes Tool"
-msgstr ""
-
-msgctxt "@label"
-msgid "BCN3D Print Modes Tool"
-msgstr ""
-
-msgctxt "@text:window"
-msgid "BCN3D Stratos collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
 msgstr ""
 
 msgctxt "@item:inlistbox"
@@ -635,13 +616,13 @@ msgctxt "@info:title"
 msgid "Backups"
 msgstr ""
 
+msgctxt "@label"
+msgid "Balanced"
+msgstr "Tasapainotettu"
+
 msgctxt "@action:label"
 msgid "Base (mm)"
 msgstr "Pohja (mm)"
-
-msgctxt "@tooltip:button"
-msgid "Become a 3D printing expert with UltiMaker e-learning."
-msgstr ""
 
 msgctxt "@action:inmenu menubar:view"
 msgid "Bottom View"
@@ -910,13 +891,13 @@ msgctxt "@label"
 msgid "Configurations"
 msgstr ""
 
+msgctxt "@action:inmenu"
+msgid "Configure Cura..."
+msgstr "Määritä Curan asetukset..."
+
 msgctxt "@info:tooltip"
 msgid "Configure Per Model Settings"
 msgstr "Määritä mallikohtaiset asetukset"
-
-msgctxt "@action:inmenu"
-msgid "Configure Stratos..."
-msgstr ""
 
 msgctxt "@action"
 msgid "Configure group"
@@ -986,6 +967,10 @@ msgctxt "@action:menu"
 msgid "Copy all changed values to all extruders"
 msgstr ""
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Copy to clipboard"
+msgstr ""
+
 msgctxt "@action:menu"
 msgid "Copy value to all extruders"
 msgstr "Kopioi arvo kaikkiin suulakepuristimiin"
@@ -1019,6 +1004,10 @@ msgctxt "@info:error"
 msgid "Could not interpret the server's response."
 msgstr ""
 
+msgctxt "@error:load"
+msgid "Could not load GCodeWriter plugin. Try to re-enable the plugin."
+msgstr ""
+
 msgctxt "@info:error"
 msgid "Could not reach Marketplace."
 msgstr ""
@@ -1043,6 +1032,27 @@ msgstr "Ei voitu tallentaa siirrettävälle asemalle {0}: {1}"
 
 msgctxt "@info:text"
 msgid "Could not upload the data to the printer."
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Couldn't start EnginePlugin: {self._plugin_id}\n"
+"No permission to execute process."
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Couldn't start EnginePlugin: {self._plugin_id}\n"
+"Operating system is blocking it (antivirus?)"
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Couldn't start EnginePlugin: {self._plugin_id}\n"
+"Resource is temporarily unavailable"
 msgstr ""
 
 msgctxt "@title:window"
@@ -1154,6 +1164,14 @@ msgctxt "name"
 msgid "CuraEngine Backend"
 msgstr "CuraEngine-taustaosa"
 
+msgctxt "description"
+msgid "CuraEngine plugin for gradually smoothing the flow to limit high-flow jumps"
+msgstr ""
+
+msgctxt "name"
+msgid "CuraEngineGradualFlow"
+msgstr ""
+
 msgctxt "@label"
 msgid "Currency:"
 msgstr "Valuutta:"
@@ -1198,6 +1216,10 @@ msgctxt "@label:header"
 msgid "Custom profiles"
 msgstr ""
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Cut"
+msgstr ""
+
 msgctxt "@item:inlistbox"
 msgid "Cutting mesh"
 msgstr ""
@@ -1227,10 +1249,6 @@ msgid "Decline and remove from account"
 msgstr ""
 
 msgctxt "@info:No intent profile selected"
-msgid "Default"
-msgstr ""
-
-msgctxt "@label"
 msgid "Default"
 msgstr ""
 
@@ -1382,10 +1400,6 @@ msgctxt "@label"
 msgid "Draft"
 msgstr ""
 
-msgctxt "@label"
-msgid "Dual"
-msgstr ""
-
 msgctxt "@action:button"
 msgid "Duplicate"
 msgstr "Jäljennös"
@@ -1393,10 +1407,6 @@ msgstr "Jäljennös"
 msgctxt "@title:window"
 msgid "Duplicate Profile"
 msgstr "Monista profiili"
-
-msgctxt "@label"
-msgid "Duplication"
-msgstr ""
 
 msgctxt "@backup_limit_info"
 msgid "During the preview phase, you'll be limited to 5 visible backups. Remove a backup to see older ones."
@@ -1437,8 +1447,8 @@ msgid "Enable Extruder"
 msgstr ""
 
 msgctxt "@label"
-msgid "Enable printing a brim or raft. This will add a flat area around or under your object which is easy to cut off afterwards."
-msgstr "Ota reunuksen tai pohjaristikon tulostus käyttöön. Tämä lisää kappaleen ympärille tai alle tasaisen alueen, joka on helppo leikata pois myöhemmin."
+msgid "Enable printing a brim or raft. This will add a flat area around or under your object which is easy to cut off afterwards. Disabling it results in a skirt around object by default."
+msgstr ""
 
 msgctxt "@label"
 msgid "Enabled"
@@ -1448,10 +1458,6 @@ msgctxt "description"
 msgid "Enables ability to generate printable geometry from 2D image files."
 msgstr "Mahdollistaa tulostettavien geometrioiden luomisen 2D-kuvatiedostoista."
 
-msgctxt "description"
-msgid "Enables functionality of linking BCN3D Stratos to a network connected printer through BCN3D Cloud."
-msgstr ""
-
 msgctxt "@title:label"
 msgid "End G-code"
 msgstr ""
@@ -1459,6 +1465,10 @@ msgstr ""
 msgctxt "@label"
 msgid "End-to-end solution for fused filament 3D printing."
 msgstr "Kokonaisvaltainen sulatettavan tulostuslangan 3D-tulostusratkaisu."
+
+msgctxt "@info:title"
+msgid "EnginePlugin"
+msgstr ""
 
 msgctxt "@label"
 msgid "Engineering"
@@ -1482,10 +1492,6 @@ msgstr "Virhe"
 
 msgctxt "@title:groupbox"
 msgid "Error traceback"
-msgstr ""
-
-msgctxt "@error:zip"
-msgid "Error writing 3mf file."
 msgstr ""
 
 msgctxt "@label"
@@ -1534,7 +1540,7 @@ msgid "Exported profile to <filename>{0}</filename>"
 msgstr "Profiili viety tiedostoon <filename>{0}</filename>"
 
 msgctxt "@tooltip:button"
-msgid "Extend BCN3D Stratos with plugins and material profiles."
+msgid "Extend UltiMaker Cura with plugins and material profiles."
 msgstr ""
 
 msgctxt "description"
@@ -1860,6 +1866,10 @@ msgctxt "@label Description for application component"
 msgid "Graphical user interface"
 msgstr "Graafinen käyttöliittymä"
 
+msgctxt "@label"
+msgid "Grid Placement"
+msgstr ""
+
 #, python-brace-format
 msgctxt "@label"
 msgid "Group #{group_nr}"
@@ -1891,10 +1901,6 @@ msgstr "Korkeus (mm)"
 
 msgctxt "@label"
 msgid "Helpers"
-msgstr ""
-
-msgctxt "@label"
-msgid "Hex"
 msgstr ""
 
 msgctxt "@label"
@@ -2041,10 +2047,6 @@ msgctxt "@button"
 msgid "Install"
 msgstr ""
 
-msgctxt "@action:button"
-msgid "Install Materials"
-msgstr ""
-
 msgctxt "@header"
 msgid "Install Materials"
 msgstr ""
@@ -2053,16 +2055,28 @@ msgctxt "@window:title"
 msgid "Install Package"
 msgstr ""
 
+msgctxt "@action:button"
+msgid "Install Packages"
+msgstr ""
+
+msgctxt "@header"
+msgid "Install Packages"
+msgstr ""
+
 msgctxt "@header"
 msgid "Install Plugins"
 msgstr ""
 
-msgctxt "@title"
-msgid "Install missing Materials"
+msgctxt "@action:button"
+msgid "Install missing packages"
 msgstr ""
 
-msgctxt "@action:button"
-msgid "Install missing material"
+msgctxt "@title"
+msgid "Install missing packages"
+msgstr ""
+
+msgctxt "@label"
+msgid "Install missing packages from project file."
 msgstr ""
 
 msgctxt "@button"
@@ -2174,7 +2188,7 @@ msgid "Learn how to connect your printer to Digital Factory"
 msgstr ""
 
 msgctxt "@tooltip:button"
-msgid "Learn how to get started with BCN3D Stratos."
+msgid "Learn how to get started with UltiMaker Cura."
 msgstr ""
 
 msgctxt "@action"
@@ -2199,6 +2213,10 @@ msgstr ""
 
 msgctxt "@button"
 msgid "Learn more about adding printers to Cura"
+msgstr ""
+
+msgctxt "@label"
+msgid "Learn more about project packages."
 msgstr ""
 
 msgctxt "@action:inmenu menubar:view"
@@ -2321,6 +2339,22 @@ msgctxt "@info:generic"
 msgid "Make sure the g-code is suitable for your printer and printer configuration before sending the file to it. The g-code representation may not be accurate."
 msgstr "Varmista, että G-code on tulostimelle ja sen tulostusasetuksille soveltuva, ennen kuin lähetät tiedoston siihen. G-coden esitys ei välttämättä ole tarkka."
 
+msgctxt "@item:inlistbox"
+msgid "Makerbot Printfile"
+msgstr ""
+
+msgctxt "name"
+msgid "Makerbot Printfile Writer"
+msgstr ""
+
+msgctxt "@error"
+msgid "MakerbotWriter could not save to the designated path."
+msgstr ""
+
+msgctxt "@error:not supported"
+msgid "MakerbotWriter does not support text mode."
+msgstr ""
+
 msgctxt "@action:inmenu"
 msgid "Manage Materials..."
 msgstr "Hallitse materiaaleja..."
@@ -2366,7 +2400,7 @@ msgid "Manage printers"
 msgstr ""
 
 msgctxt "@text"
-msgid "Manage your BCN3D Stratos plugins and material profiles here. Make sure to keep your plugins up to date and backup your setup regularly."
+msgid "Manage your UltiMaker Cura plugins and material profiles here. Make sure to keep your plugins up to date and backup your setup regularly."
 msgstr ""
 
 msgctxt "description"
@@ -2425,10 +2459,6 @@ msgctxt "@label"
 msgid "Material estimation"
 msgstr ""
 
-msgctxt "@info:title"
-msgid "Material profiles not installed"
-msgstr ""
-
 msgctxt "@title:header"
 msgid "Material profiles successfully synced with the following printers:"
 msgstr ""
@@ -2455,10 +2485,6 @@ msgstr ""
 
 msgctxt "@label"
 msgid "Mesh Type"
-msgstr ""
-
-msgctxt "@label"
-msgid "Mirror"
 msgstr ""
 
 msgctxt "@action:label"
@@ -2535,6 +2561,10 @@ msgid_plural "Multiply Selected Models"
 msgstr[0] "Kerro valittu malli"
 msgstr[1] "Kerro valitut mallit"
 
+msgctxt "@info"
+msgid "Multiply selected item and place them in a grid of build plate."
+msgstr ""
+
 msgctxt "@info:status"
 msgid "Multiplying and placing objects"
 msgstr "Kappaleiden kertominen ja sijoittelu"
@@ -2597,6 +2627,10 @@ msgstr ""
 
 msgctxt "@button"
 msgid "Next"
+msgstr ""
+
+msgctxt "@info:title"
+msgid "Nightly build"
 msgstr ""
 
 msgctxt "@info"
@@ -2878,6 +2912,10 @@ msgctxt "@info:status"
 msgid "Parsing G-code"
 msgstr "G-coden jäsennys"
 
+msgctxt "@action:inmenu menubar:edit"
+msgid "Paste from clipboard"
+msgstr ""
+
 msgctxt "@label"
 msgid "Pause"
 msgstr ""
@@ -2986,7 +3024,7 @@ msgid "Please select any upgrades made to this UltiMaker Original"
 msgstr "Valitse tähän UltiMaker Original -laitteeseen tehdyt päivitykset"
 
 msgctxt "@description"
-msgid "Please sign in to get verified plugins and materials for BCN3D Stratos Enterprise"
+msgid "Please sign in to get verified plugins and materials for UltiMaker Cura Enterprise"
 msgstr ""
 
 msgctxt "@action:button"
@@ -3306,7 +3344,7 @@ msgstr ""
 
 #, python-brace-format
 msgctxt "@info:error Don't translate the XML tag <filename>!"
-msgid "Project file <filename>{0}</filename> is made using profiles that are unknown to this version of BCN3D Stratos."
+msgid "Project file <filename>{0}</filename> is made using profiles that are unknown to this version of UltiMaker Cura."
 msgstr ""
 
 #, python-brace-format
@@ -3393,6 +3431,10 @@ msgstr ""
 msgctxt "description"
 msgid "Provides support for writing 3MF files."
 msgstr "Tukee 3MF-tiedostojen kirjoittamista."
+
+msgctxt "description"
+msgid "Provides support for writing MakerBot Format Packages."
+msgstr ""
 
 msgctxt "description"
 msgid "Provides support for writing Ultimaker Format Packages."
@@ -3487,6 +3529,10 @@ msgctxt "@button"
 msgid "Refresh List"
 msgstr ""
 
+msgctxt "@button"
+msgid "Refreshing..."
+msgstr ""
+
 msgctxt "@label"
 msgid "Release Notes"
 msgstr ""
@@ -3544,7 +3590,7 @@ msgid "Report a bug"
 msgstr ""
 
 msgctxt "@message:description"
-msgid "Report a bug on BCN3D Stratos's issue tracker."
+msgid "Report a bug on UltiMaker Cura's issue tracker."
 msgstr ""
 
 msgctxt "@label:status"
@@ -3762,14 +3808,6 @@ msgctxt "@action:button"
 msgid "Send report"
 msgstr ""
 
-msgctxt "@action:button"
-msgid "Send to cloud and print"
-msgstr ""
-
-msgctxt "@action:button"
-msgid "Send to printer"
-msgstr ""
-
 msgctxt "@info:status"
 msgid "Sending Print Job"
 msgstr ""
@@ -3946,6 +3984,10 @@ msgctxt "@option:check"
 msgid "Show summary dialog when saving project"
 msgstr "Näytä yhteenvetoikkuna, kun projekti tallennetaan"
 
+msgctxt "@tooltip:button"
+msgid "Show your support for Cura with a donation."
+msgstr ""
+
 msgctxt "@button"
 msgid "Sign Out"
 msgstr ""
@@ -3976,14 +4018,6 @@ msgstr ""
 
 msgctxt "name"
 msgid "Simulation View"
-msgstr ""
-
-msgctxt "@label"
-msgid "Single 1"
-msgstr ""
-
-msgctxt "@label"
-msgid "Single 2"
 msgstr ""
 
 msgctxt "@tooltip"
@@ -4052,6 +4086,14 @@ msgstr ""
 "\n"
 "Tee asetuksista näkyviä napsauttamalla."
 
+msgctxt "@info:status"
+msgid "Some of the packages used in the project file are currently not installed in Cura, this might produce undesirable print results. We highly recommend installing the all required packages from the Marketplace."
+msgstr ""
+
+msgctxt "@info:title"
+msgid "Some required packages are not installed"
+msgstr ""
+
 msgctxt "@info %1 is the name of a profile"
 msgid "Some setting-values defined in <b>%1</b> were overridden."
 msgstr ""
@@ -4084,6 +4126,14 @@ msgstr ""
 
 msgctxt "@label:listbox"
 msgid "Speed"
+msgstr ""
+
+msgctxt "@action:inmenu"
+msgid "Sponsor Cura"
+msgstr ""
+
+msgctxt "@label:button"
+msgid "Sponsor Cura"
 msgstr ""
 
 msgctxt "@option:radio"
@@ -4119,7 +4169,7 @@ msgid "Starts"
 msgstr ""
 
 msgctxt "@text"
-msgid "Streamline your workflow and customize your BCN3D Stratos experience with plugins contributed by our amazing community of users."
+msgid "Streamline your workflow and customize your UltiMaker Cura experience with plugins contributed by our amazing community of users."
 msgstr ""
 
 msgctxt "@label"
@@ -4269,6 +4319,10 @@ msgctxt "@error:file_size"
 msgid "The backup exceeds the maximum file size."
 msgstr ""
 
+msgctxt "@text"
+msgid "The balanced profile is designed to strike a balance between productivity, surface quality, mechanical properties and dimensional accuracy."
+msgstr "Tasapainotettu profiili on suunniteltu tasapainottamaan tuottavuutta, pinnanlaatua, mekaanisia ominaisuuksia ja dimensionaalista tarkkuutta."
+
 msgctxt "@info:tooltip"
 msgid "The base height from the build plate in millimeters."
 msgstr "Pohjan korkeus alustasta millimetreinä."
@@ -4376,14 +4430,6 @@ msgctxt "@label:label Ultimaker Marketplace is a brand name, don't translate"
 msgid "The material package associated with the Cura project could not be found on the Ultimaker Marketplace. Use the partial material profile definition stored in the Cura project file at your own risk."
 msgstr ""
 
-msgctxt "@label"
-msgid "The material used in this project is currently not installed in Cura.<br/>Install the material profile and reopen the project."
-msgstr ""
-
-msgctxt "@info:status"
-msgid "The material used in this project relies on some material definitions not available in Cura, this might produce undesirable print results. We highly recommend installing the full material package from the Marketplace."
-msgstr ""
-
 msgctxt "@info:tooltip"
 msgid "The maximum distance of each pixel from \"Base.\""
 msgstr "Kunkin pikselin suurin etäisyys \"Pohja\"-arvosta."
@@ -4395,10 +4441,6 @@ msgstr ""
 msgctxt "@tooltip"
 msgid "The nozzle inserted in this extruder."
 msgstr "Tähän suulakkeeseen liitetty suutin."
-
-msgctxt "@error:zip"
-msgid "The operating system does not allow saving a project file to this location or with this file name."
-msgstr ""
 
 msgctxt "@label"
 msgid ""
@@ -4413,6 +4455,10 @@ msgstr ""
 
 msgctxt "@info:tooltip"
 msgid "The percentage of light penetrating a print with a thickness of 1 millimeter. Lowering this value increases the contrast in dark regions and decreases the contrast in light regions of the image."
+msgstr ""
+
+msgctxt "@label:label Ultimaker Marketplace is a brand name, don't translate"
+msgid "The plugin associated with the Cura project could not be found on the Ultimaker Marketplace. As the plugin may be required to slice the project it might not be possible to correctly slice the file."
 msgstr ""
 
 msgctxt "@info:title"
@@ -4567,6 +4613,10 @@ msgid "This profile uses the defaults specified by the printer, so it has no set
 msgstr "Tässä profiilissa käytetään tulostimen oletusarvoja, joten siinä ei ole alla olevan listan asetuksia tai ohituksia."
 
 msgctxt "@label"
+msgid "This project contains materials or plugins that are currently not installed in Cura.<br/>Install the missing packages and reopen the project."
+msgstr ""
+
+msgctxt "@label"
 msgid ""
 "This setting has a value that is different from the profile.\n"
 "\n"
@@ -4606,6 +4656,10 @@ msgstr ""
 
 msgctxt "@label"
 msgid "This setting is resolved from conflicting extruder-specific values:"
+msgstr ""
+
+msgctxt "@info:warning"
+msgid "This version is not intended for production use. If you encounter any issues, please report them on our GitHub page, mentioning the full version {self.getVersion()}"
 msgstr ""
 
 msgctxt "@label"
@@ -4730,6 +4784,10 @@ msgctxt "@info"
 msgid "UltiMaker Certified Material"
 msgstr ""
 
+msgctxt "@text:window"
+msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
+msgstr ""
+
 msgctxt "@item:inlistbox"
 msgid "UltiMaker Format Package"
 msgstr ""
@@ -4773,6 +4831,18 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Unable to find a location within the build volume for all objects"
 msgstr "Kaikille kappaleille ei löydy paikkaa tulostustilavuudessa"
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid "Unable to find local EnginePlugin server executable for: {self._plugin_id}"
+msgstr ""
+
+#, python-brace-format
+msgctxt "@info:plugin_failed"
+msgid ""
+"Unable to kill running EnginePlugin: {self._plugin_id}\n"
+"Access is denied."
+msgstr ""
 
 msgctxt "@info"
 msgid "Unable to reach the UltiMaker account server."
@@ -5022,6 +5092,10 @@ msgctxt "description"
 msgid "Upgrades configurations from Cura 5.3 to Cura 5.4."
 msgstr ""
 
+msgctxt "description"
+msgid "Upgrades configurations from Cura 5.4 to Cura 5.5."
+msgstr ""
+
 msgctxt "@action:button"
 msgid "Upload custom Firmware"
 msgstr "Lataa mukautettu laiteohjelmisto"
@@ -5154,6 +5228,10 @@ msgctxt "name"
 msgid "Version Upgrade 5.3 to 5.4"
 msgstr ""
 
+msgctxt "name"
+msgid "Version Upgrade 5.4 to 5.5"
+msgstr ""
+
 msgctxt "@button"
 msgid "View printers in Digital Factory"
 msgstr ""
@@ -5220,7 +5298,7 @@ msgid "We have found one or more project file(s) within the files you have selec
 msgstr "Löysimme vähintään yhden projektitiedoston valitsemiesi tiedostojen joukosta. Voit avata vain yhden projektitiedoston kerrallaan. Suosittelemme, että tuot vain malleja niistä tiedostoista. Haluatko jatkaa?"
 
 msgctxt "@info"
-msgid "Webcam feeds for cloud printers cannot be viewed from BCN3D Stratos. Click \"Manage printer\" to visit Ultimaker Digital Factory and view this webcam."
+msgid "Webcam feeds for cloud printers cannot be viewed from UltiMaker Cura. Click \"Manage printer\" to visit Ultimaker Digital Factory and view this webcam."
 msgstr ""
 
 msgctxt "@button"
@@ -5457,6 +5535,6 @@ msgctxt "@info:generic"
 msgid "{} plugins failed to download"
 msgstr ""
 
-#~ msgctxt "@action:inmenu"
-#~ msgid "Configure Cura..."
-#~ msgstr "Määritä Curan asetukset..."
+#~ msgctxt "@label"
+#~ msgid "Enable printing a brim or raft. This will add a flat area around or under your object which is easy to cut off afterwards."
+#~ msgstr "Ota reunuksen tai pohjaristikon tulostus käyttöön. Tämä lisää kappaleen ympärille tai alle tasaisen alueen, joka on helppo leikata pois myöhemmin."
