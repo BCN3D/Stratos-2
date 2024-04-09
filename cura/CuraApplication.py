@@ -33,6 +33,7 @@ from UM.Message import Message
 from UM.Operations.AddSceneNodeOperation import AddSceneNodeOperation
 from UM.Operations.GroupedOperation import GroupedOperation
 from UM.Operations.SetTransformOperation import SetTransformOperation
+from UM.OutputDevice.ProjectOutputDevice import ProjectOutputDevice
 from UM.Platform import Platform
 from UM.PluginError import PluginNotFoundError
 from UM.Preferences import Preferences
@@ -126,6 +127,7 @@ from .Machines.Models.CompatibleMachineModel import CompatibleMachineModel
 from .Machines.Models.MachineListModel import MachineListModel
 from .Machines.Models.ActiveIntentQualitiesModel import ActiveIntentQualitiesModel
 from .Machines.Models.IntentSelectionModel import IntentSelectionModel
+from .PrintOrderManager import PrintOrderManager
 from .SingleInstance import SingleInstance
 from cura.Utils.BCN3Dutils.Bcn3dExcludeInstances import removeNonExcludedInstances
 
@@ -138,7 +140,7 @@ class CuraApplication(QtApplication):
     # SettingVersion represents the set of settings available in the machine/extruder definitions.
     # You need to make sure that this version number needs to be increased if there is any non-backwards-compatible
     # changes of the settings.
-    SettingVersion = 22
+    SettingVersion = 23
 
     Created = False
 
@@ -181,6 +183,7 @@ class CuraApplication(QtApplication):
 
         # Variables set from CLI
         self._files_to_open = []
+        self._urls_to_open = []
         self._use_single_instance = False
 
         self._single_instance = None
@@ -204,6 +207,7 @@ class CuraApplication(QtApplication):
         self._container_manager = None
 
         self._object_manager = None
+        self._print_order_manager = None
         self._extruders_model = None
         self._extruders_model_with_optional = None
         self._build_plate_model = None
@@ -335,7 +339,7 @@ class CuraApplication(QtApplication):
         for filename in self._cli_args.file:
             url = QUrl(filename)
             if url.scheme() in self._supported_url_schemes:
-                self._open_url_queue.append(url)
+                self._urls_to_open.append(url)
             else:
                 self._files_to_open.append(os.path.abspath(filename))
 
@@ -359,7 +363,7 @@ class CuraApplication(QtApplication):
         self._machine_action_manager.initialize()
 
     def __sendCommandToSingleInstance(self):
-        self._single_instance = SingleInstance(self, self._files_to_open)
+        self._single_instance = SingleInstance(self, self._files_to_open, self._urls_to_open)
 
         # If we use single instance, try to connect to the single instance server, send commands, and then exit.
         # If we cannot find an existing single instance server, this is the only instance, so just keep going.
@@ -621,6 +625,7 @@ class CuraApplication(QtApplication):
 
         preferences.addPreference("view/invert_zoom", False)
         preferences.addPreference("view/filter_current_build_plate", False)
+        preferences.addPreference("view/navigation_style", "cura")
         preferences.addPreference("cura/sidebar_collapsed", False)
 
         preferences.addPreference("cura/favorite_materials", "")
@@ -922,6 +927,7 @@ class CuraApplication(QtApplication):
         # initialize info objects
         self._print_information = PrintInformation.PrintInformation(self)
         self._cura_actions = CuraActions.CuraActions(self)
+        self._print_order_manager = PrintOrderManager(self.getObjectsModel().getNodes)
         self.processEvents()
         # Initialize setting visibility presets model.
         self._setting_visibility_presets_model = SettingVisibilityPresetsModel(self.getPreferences(), parent = self)
@@ -979,6 +985,8 @@ class CuraApplication(QtApplication):
             self.callLater(self._openFile, file_name)
         for file_name in self._open_file_queue:  # Open all the files that were queued up while plug-ins were loading.
             self.callLater(self._openFile, file_name)
+        for url in self._urls_to_open:
+            self.callLater(self._openUrl, url)
         for url in self._open_url_queue:
             self.callLater(self._openUrl, url)
 
@@ -1002,6 +1010,7 @@ class CuraApplication(QtApplication):
             t.setEnabledAxis([ToolHandle.XAxis, ToolHandle.YAxis, ToolHandle.ZAxis])
 
         Selection.selectionChanged.connect(self.onSelectionChanged)
+        self._print_order_manager.printOrderChanged.connect(self._onPrintOrderChanged)
 
         # Set default background color for scene
         self.getRenderer().setBackgroundColor(QColor(245, 245, 245))
@@ -1091,6 +1100,10 @@ class CuraApplication(QtApplication):
     def getTextManager(self, *args) -> "TextManager":
         return self._text_manager
 
+    @pyqtSlot()
+    def setWorkplaceDropToBuildplate(self):
+        return self._physics.setAppAllModelDropDown()
+
     def getCuraFormulaFunctions(self, *args) -> "CuraFormulaFunctions":
         if self._cura_formula_functions is None:
             self._cura_formula_functions = CuraFormulaFunctions(self)
@@ -1145,6 +1158,16 @@ class CuraApplication(QtApplication):
         if self._build_plate_model is None:
             self._build_plate_model = BuildPlateModel(self)
         return self._build_plate_model
+
+    @pyqtSlot()
+    def exportUcp(self):
+        writer = self.getMeshFileHandler().getWriter("3MFWriter")
+
+        if writer is None:
+            Logger.warning("3mf writer is not enabled")
+            return
+
+        writer.exportUcp()
 
     def getCuraSceneController(self, *args) -> CuraSceneController:
         if self._cura_scene_controller is None:
@@ -1275,6 +1298,7 @@ class CuraApplication(QtApplication):
         self.processEvents()
         engine.rootContext().setContextProperty("Printer", self)
         engine.rootContext().setContextProperty("CuraApplication", self)
+        engine.rootContext().setContextProperty("PrintOrderManager", self._print_order_manager)
         engine.rootContext().setContextProperty("PrintInformation", self._print_information)
         engine.rootContext().setContextProperty("CuraActions", self._cura_actions)
         engine.rootContext().setContextProperty("CuraSDKVersion", ApplicationMetadata.CuraSDKVersion)
@@ -1450,7 +1474,11 @@ class CuraApplication(QtApplication):
             self._scene_bounding_box = scene_bounding_box
             self.sceneBoundingBoxChanged.emit()
 
-        self._platform_activity = True if count > 0 else False
+        if count > 0:
+            self._platform_activity = True
+        else:
+            ProjectOutputDevice.setLastOutputName(None)
+            self._platform_activity = False
         self.activityChanged.emit()
 
     @pyqtSlot()
@@ -1774,8 +1802,12 @@ class CuraApplication(QtApplication):
             Selection.remove(node)
         Selection.add(group_node)
 
+        all_nodes = self.getObjectsModel().getNodes()
+        PrintOrderManager.updatePrintOrdersAfterGroupOperation(all_nodes, group_node, selected_nodes)
+
     @pyqtSlot()
     def ungroupSelected(self) -> None:
+        all_nodes = self.getObjectsModel().getNodes()
         selected_objects = Selection.getAllSelectedObjects().copy()
         for node in selected_objects:
             if node.callDecoration("isGroup"):
@@ -1783,11 +1815,10 @@ class CuraApplication(QtApplication):
 
                 group_parent = node.getParent()
                 children = node.getChildren().copy()
-                for child in children:
-                    # Ungroup only 1 level deep
-                    if child.getParent() != node:
-                        continue
 
+                # Ungroup only 1 level deep
+                children_to_ungroup = list(filter(lambda child: child.getParent() == node, children))
+                for child in children_to_ungroup:
                     # Set the parent of the children to the parent of the group-node
                     op.addOperation(SetParentOperation(child, group_parent))
 
@@ -1798,9 +1829,19 @@ class CuraApplication(QtApplication):
                 from cura.Utils.BCN3Dutils.Bcn3dIdexSupport import onDuplicatedgroupSelected
                 op = onDuplicatedgroupSelected(op, node)
 
+                PrintOrderManager.updatePrintOrdersAfterUngroupOperation(all_nodes, node, children_to_ungroup)
                 op.push()
                 # Note: The group removes itself from the scene once all its children have left it,
                 # see GroupDecorator._onChildrenChanged
+
+    def _onPrintOrderChanged(self) -> None:
+        # update object list
+        scene = self.getController().getScene()
+        scene.sceneChanged.emit(scene.getRoot())
+
+        # reset if already was sliced
+        Application.getInstance().getBackend().needsSlicing()
+        Application.getInstance().getBackend().tickle()
 
     def _createSplashScreen(self) -> Optional[CuraSplashScreen.CuraSplashScreen]:
         if self._is_headless:
@@ -1964,6 +2005,17 @@ class CuraApplication(QtApplication):
         Logger.log("d", msg)
 
     openProjectFile = pyqtSignal(QUrl, bool, arguments = ["project_file", "add_to_recent_files"])  # Emitted when a project file is about to open.
+
+    @pyqtSlot(QUrl, bool)
+    def readLocalUcpFile(self, file: QUrl, add_to_recent_files: bool = True):
+
+        file_name = QUrl(file).toLocalFile()
+        workspace_reader = self.getWorkspaceFileHandler()
+        if workspace_reader is None:
+            Logger.warning(f"Workspace reader not found, cannot read file {file_name}.")
+            return
+
+        workspace_reader.readLocalFile(file, add_to_recent_files)
 
     @pyqtSlot(QUrl, str, bool)
     @pyqtSlot(QUrl, str)
@@ -2174,6 +2226,12 @@ class CuraApplication(QtApplication):
     def addNonSliceableExtension(self, extension):
         self._non_sliceable_extensions.append(extension)
 
+    @pyqtSlot(str, result = bool)
+    def isProjectUcp(self, file_url) -> bool:
+        file_path = QUrl(file_url).toLocalFile()
+        workspace_reader = self.getWorkspaceFileHandler().getReaderForFile(file_path)
+        return workspace_reader.getIsProjectUcp()
+
     @pyqtSlot(str, result=bool)
     def checkIsValidProjectFile(self, file_url):
         """Checks if the given file URL is a valid project file. """
@@ -2183,6 +2241,8 @@ class CuraApplication(QtApplication):
         if workspace_reader is None:
             return False  # non-project files won't get a reader
         try:
+            if workspace_reader.getPluginId() == "3MFReader":
+                workspace_reader.clearOpenAsUcp()
             result = workspace_reader.preRead(file_path, show_dialog=False)
             return result == WorkspaceReader.PreReadResult.accepted
         except:
