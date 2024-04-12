@@ -419,9 +419,9 @@ class CuraConan(ConanFile):
                 copy(self, "*.dylib", libdir, str(self._base_dir.joinpath("lib")), keep_path = False)
 
         # Copy materials (flat)
-        rmdir(self, os.path.join(self.source_folder, "resources", "materials"))
-        fdm_materials = self.dependencies["fdm_materials"].cpp_info
-        copy(self, "*", fdm_materials.resdirs[0], self.source_folder)
+        #rmdir(self, os.path.join(self.source_folder, "resources", "materials"))
+        #fdm_materials = self.dependencies["fdm_materials"].cpp_info
+        #copy(self, "*", fdm_materials.resdirs[0], self.source_folder)
 
         # Copy internal resources
         if self._internal:
