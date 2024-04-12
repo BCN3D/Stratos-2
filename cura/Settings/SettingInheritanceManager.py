@@ -245,9 +245,11 @@ class SettingInheritanceManager(QObject):
 
         # Check all user setting keys that we know of and see if they are overridden.
         all_keys = self._active_container_stack.getAllKeys()
-        for setting_key in self._active_container_stack.getAllKeysWithUserState():
-            if self._userSettingIsOverwritingInheritance(setting_key, self._active_container_stack, all_keys):
-                self._settings_with_inheritance_warning.append(setting_key)
+        function_name = "getAllKeysWithUserState"
+        if hasattr(self._active_container_stack, function_name) and callable(getattr(elf._active_container_stack, function_name)):
+            for setting_key in self._active_container_stack.getAllKeysWithUserState():
+                if self._userSettingIsOverwritingInheritance(setting_key, self._active_container_stack, all_keys):
+                    self._settings_with_inheritance_warning.append(setting_key)
 
         # Check all the categories if any of their children have their inheritance overwritten.
         for category in self._global_container_stack.definition.findDefinitions(type = "category"):
