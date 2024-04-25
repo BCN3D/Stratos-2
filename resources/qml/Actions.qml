@@ -89,8 +89,8 @@ Item
     Action
     {
         id: showTroubleShootingAction
-        onTriggered: Qt.openUrlExternally("https://ultimaker.com/en/troubleshooting?utm_source=cura&utm_medium=software&utm_campaign=dropdown-troubleshooting")
-        text: catalog.i18nc("@action:inmenu", "Show Online Troubleshooting")
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/slice-bcn3d-stratos")
+        text: catalog.i18nc("@action:inmenu", "BCN3D Knowledge base");
     }
 
     Action
@@ -266,11 +266,11 @@ Item
 
     Action
     {
-        id: documentationAction
-        text: catalog.i18nc("@action:inmenu menubar:help", "Show Online &Documentation")
-        icon.name: "help-contents"
-        shortcut: StandardKey.Help
-        onTriggered: CuraActions.openDocumentation()
+        id: documentationAction;
+        text: catalog.i18nc("@action:inmenu menubar:help", "BCN3D Stratos Introduction");
+        icon.name: "help-contents";
+        shortcut: StandardKey.Help;
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/bcn3d-stratos-introduction")
     }
 
     Action {

@@ -3729,11 +3729,11 @@ msgid "Show Custom"
 msgstr "Personnalisé"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "Afficher la &documentation en ligne"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "Afficher le dépannage en ligne"
 
 msgctxt "@label:checkbox"

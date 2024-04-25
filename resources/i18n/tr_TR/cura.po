@@ -3731,11 +3731,11 @@ msgid "Show Custom"
 msgstr "Özeli Göster"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "Çevrimiçi Belgeleri Göster"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "Çevrimiçi Sorun Giderme Kılavuzunu Göster"
 
 msgctxt "@label:checkbox"

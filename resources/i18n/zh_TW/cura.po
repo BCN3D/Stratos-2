@@ -4086,11 +4086,11 @@ msgid "Show Custom"
 msgstr ""
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "顯示線上說明文件（&D）"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr ""
 
 msgctxt "@label:checkbox"
@@ -8045,7 +8045,7 @@ msgstr "下載外掛 {} 失敗"
 #~ msgstr "顯示填充"
 
 #~ msgctxt "@action:inmenu"
-#~ msgid "Show Online Troubleshooting Guide"
+#~ msgid "BCN3D Knowledge base Guide"
 #~ msgstr "顯示線上故障排除指南"
 
 #~ msgctxt "@label"

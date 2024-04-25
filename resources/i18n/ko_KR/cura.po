@@ -3721,11 +3721,11 @@ msgid "Show Custom"
 msgstr "사용자 지정 표시"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "온라인 문서 표시"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "온라인 문제 해결 표시"
 
 msgctxt "@label:checkbox"

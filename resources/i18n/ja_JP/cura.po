@@ -3722,11 +3722,11 @@ msgid "Show Custom"
 msgstr "カスタムを表示"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "オンラインドキュメントを表示する"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "オンライントラブルシューティングを表示"
 
 msgctxt "@label:checkbox"

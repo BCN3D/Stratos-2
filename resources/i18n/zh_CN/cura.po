@@ -3724,11 +3724,11 @@ msgid "Show Custom"
 msgstr "显示自定义"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "显示在线文档(&D)"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "显示联机故障排除"
 
 msgctxt "@label:checkbox"

@@ -4104,11 +4104,11 @@ msgid "Show Custom"
 msgstr "Mostrar Personalizado"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "Exibir &Documentação Online"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "Mostrar Resolução de Problemas Online"
 
 msgctxt "@label:checkbox"

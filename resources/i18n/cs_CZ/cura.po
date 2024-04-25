@@ -4102,11 +4102,11 @@ msgid "Show Custom"
 msgstr "Zobrazit vlastní"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "Zobrazit online &dokumentaci"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "Zobrazit online řešení problémů"
 
 msgctxt "@label:checkbox"

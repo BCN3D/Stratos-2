@@ -3755,11 +3755,11 @@ msgid "Show Custom"
 msgstr "Показать свое"
 
 msgctxt "@action:inmenu menubar:help"
-msgid "Show Online &Documentation"
+msgid "BCN3D Stratos Introduction"
 msgstr "Показать онлайн документацию"
 
 msgctxt "@action:inmenu"
-msgid "Show Online Troubleshooting"
+msgid "BCN3D Knowledge base"
 msgstr "Показать сетевое руководство по устранению неполадок"
 
 msgctxt "@label:checkbox"
