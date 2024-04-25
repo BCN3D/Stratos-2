@@ -932,8 +932,8 @@ msgid "Configurations"
 msgstr "Configurações"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
-msgstr "Configurar Cura..."
+msgid "Configure BCN3D Stratos..."
+msgstr "Configurar BCN3D Stratos..."
 
 msgctxt "@info:tooltip"
 msgid "Configure Per Model Settings"

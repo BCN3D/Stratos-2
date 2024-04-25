@@ -912,7 +912,7 @@ msgid "Configurations"
 msgstr ""
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
+msgid "Configure BCN3D Stratos..."
 msgstr "Määritä Curan asetukset..."
 
 msgctxt "@info:tooltip"

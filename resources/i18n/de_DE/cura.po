@@ -846,7 +846,7 @@ msgid "Configurations"
 msgstr "Konfigurationen"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
+msgid "Configure BCN3D Stratos..."
 msgstr "Cura konfigurieren..."
 
 msgctxt "@info:tooltip"

@@ -118,7 +118,7 @@ msgstr "&Salva progetto..."
 
 msgctxt "@title:menu menubar:file Don't translate 'Universal Cura Project'"
 msgid "&Save Universal Cura Project..."
-msgstr "&Salva il Progetto Universale Cura..."
+msgstr "&Salva il Progetto Universale BCN3D Stratos..."
 
 msgctxt "@title:menu menubar:toplevel"
 msgid "&Settings"
@@ -846,8 +846,8 @@ msgid "Configurations"
 msgstr "Configurazioni"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
-msgstr "Configura Cura..."
+msgid "Configure BCN3D Stratos..."
+msgstr "Configura BCN3D Stratos..."
 
 msgctxt "@info:tooltip"
 msgid "Configure Per Model Settings"

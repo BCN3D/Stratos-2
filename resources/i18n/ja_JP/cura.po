@@ -843,7 +843,7 @@ msgid "Configurations"
 msgstr "構成"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
+msgid "Configure BCN3D Stratos..."
 msgstr "Curaを構成する..."
 
 msgctxt "@info:tooltip"

@@ -846,7 +846,7 @@ msgid "Configurations"
 msgstr "Yapılandırmalar"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
+msgid "Configure BCN3D Stratos..."
 msgstr "Cura’yı yapılandır..."
 
 msgctxt "@info:tooltip"

@@ -284,7 +284,7 @@ msgstr "О программе %1"
 
 msgctxt "@action:inmenu menubar:help"
 msgid "About..."
-msgstr "О Cura..."
+msgstr "О BCN3D Stratos..."
 
 msgctxt "@button"
 msgid "Accept"
@@ -855,8 +855,8 @@ msgid "Configurations"
 msgstr "Конфигурации"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
-msgstr "Настроить Cura..."
+msgid "Configure BCN3D Stratos..."
+msgstr "Настроить BCN3D Stratos..."
 
 msgctxt "@info:tooltip"
 msgid "Configure Per Model Settings"

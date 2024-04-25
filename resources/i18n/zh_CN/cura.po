@@ -844,8 +844,8 @@ msgid "Configurations"
 msgstr "配置"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
-msgstr "配置 Cura..."
+msgid "Configure BCN3D Stratos..."
+msgstr "配置 BCN3D Stratos..."
 
 msgctxt "@info:tooltip"
 msgid "Configure Per Model Settings"

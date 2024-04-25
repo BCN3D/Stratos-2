@@ -924,7 +924,7 @@ msgid "Configurations"
 msgstr "Konfigurációk"
 
 msgctxt "@action:inmenu"
-msgid "Configure Cura..."
+msgid "Configure BCN3D Stratos..."
 msgstr "Cura beállítása..."
 
 msgctxt "@info:tooltip"
