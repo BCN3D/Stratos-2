@@ -57,13 +57,6 @@ Popup
                     permissionsRequired: []
                 },
                 {
-                    displayName: catalog.i18nc("@label:button", "Sponsor Cura"),
-                    thumbnail: UM.Theme.getIcon("Heart"),
-                    description: catalog.i18nc("@tooltip:button", "Show your support for Cura with a donation."),
-                    link: "https://ultimaker.com/software/ultimaker-cura/sponsor/",
-                    permissionsRequired: []
-                },
-                {
                     displayName: catalog.i18nc("@label:button", "UltiMaker support"),
                     thumbnail: UM.Theme.getIcon("Help", "high"),
                     description: catalog.i18nc("@tooltip:button", "Learn how to get started with BCN3D Stratos."),
