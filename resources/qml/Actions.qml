@@ -277,7 +277,7 @@ Item
         id: reportBugAction
         text: catalog.i18nc("@action:inmenu menubar:help", "Report a &Bug")
         icon.name: "tools-report-bug"
-        onTriggered: CuraActions.openBugReportPage()
+        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/kb-tickets/new?hsLang=en")
     }
 
     Action
