@@ -514,11 +514,12 @@ class StartSliceJob(Job):
 
         # Replace the setting tokens in start and end g-code.
         extruder_nr = stack.getProperty("extruder_nr", "value")
-        settings["machine_extruder_start_code"] = self._expandGcodeTokens(settings["machine_extruder_start_code"], extruder_nr)
-        settings["machine_extruder_end_code"] = self._expandGcodeTokens(settings["machine_extruder_end_code"], extruder_nr)
         from UM.Application import Application
         print_mode = Application.getInstance().getGlobalContainerStack().getProperty("print_mode", "value")
-        if print_mode  in ("mirror", "duplication"):
+        if (print_mode in ["singleT0", "dual"] and extruder_nr == 0) or (print_mode in ["singleT1", "dual"] and extruder_nr == 1):
+            settings["machine_extruder_start_code"] = self._expandGcodeTokens(settings["machine_extruder_start_code"], extruder_nr)
+            settings["machine_extruder_end_code"] = self._expandGcodeTokens(settings["machine_extruder_end_code"], extruder_nr)
+        else:
             settings["machine_extruder_start_code"] = ""
             settings["machine_extruder_end_code"] = ""
 
