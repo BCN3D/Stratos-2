@@ -1,3 +1,14 @@
+[2.1.1]
+
+* Change Omega I60 definition, now all start and end orders will be done by the printer
+
+* Bug fixes:
+- Fixed a problem that made switching from custom to recommended when change printer profile
+- New materials are showing in printers what support then
+- Fixed a bug the show error when trying to print with Hottend X and Hotten M
+- Support blockers can be use with all extruders now
+- Internal bug fixing
+
 [2.1.0]
 
 * BCN3D Stratos 2.1.0 is based on Ultimaker Cura 5.7 with all Stratos improvements
