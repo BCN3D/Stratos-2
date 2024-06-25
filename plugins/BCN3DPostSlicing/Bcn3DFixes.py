@@ -156,5 +156,13 @@ class Bcn3DFixes(Job):
                 lines[6] = ";Extruders used: T0 0.6RX"
             elif lines[6].startswith(";Extruders used: T1 0.6rx"):
                 lines[6] = ";Extruders used: T1 0.6RX"
+            elif lines[6].startswith(";Extruders used: T0 0.4r"):
+                lines[6] = ";Extruders used: T0 0.4R"
+            elif lines[6].startswith(";Extruders used: T1 0.4r"):
+                lines[6] = ";Extruders used: T1 0.4R"
+            elif lines[6].startswith(";Extruders used: T0 0.6r"):
+                lines[6] = ";Extruders used: T0 0.6R"
+            elif lines[6].startswith(";Extruders used: T1 0.6r"):
+                lines[6] = ";Extruders used: T1 0.6R"
             layer = "\n".join(lines)
             self._gcode_list[index] = layer
