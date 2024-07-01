@@ -1,11 +1,18 @@
 [2.1.2]
 
-* Change Omega I60 definition:
-- Reworked Start and End Extrusors commands
+* Omega I60:
+  - Omega is now available in the cloud and can be added to the printer user. However, it cannot send to print yet; this feature will be available in the next version.
+  - Definition: Reworked Start and End Extruder commands.
+
+* Added profile compatibility for some BCN3D materials (Omega I60):
+  - Omega Proto material High Speed for Omega Hotend Tip 0.4 HR can be selected by choosing the fast profile.
+  - Omega Proto material Draft profile is available only for Omega Hotend Tip 0.6 HR.
 
 * Bug fixes:
-- Fixed a bug that caused an error when trying to print with Hotend RX.
-- Various internal bug fixes.
+  - Fixed a bug that caused an error when trying to print with Hotend RX.
+  - Fixed a bug in Sigma printers that caused certain materials, such as ABS or PA, to not be detected.
+  - Materials and extruders mismatch was not checked; this is now fixed.
+  - Various internal bug fixes.
 
 [2.1.1]
 
