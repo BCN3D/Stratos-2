@@ -63,7 +63,7 @@ class Device(NetworkedPrinterOutputDevice):
             
             if printer['printerModel'] and printer['printerModel']['model'] and printer['printerModel']['model'] == 'i60':
                 self._progress_message.hide()
-                Message("Omega I60 isn't ready to print yet; it will be ready for the next version.", title="Omega I60 isn't ready to print yet.").show()
+                Message("Please note that you cannot send files (.gcode) to your Omega I60 printer via Stratos yet. This feature will be available in the coming months. Alternatively, you can send your G-code files via the BCN3D Cloud.", title="Omega I60 isn't ready to print yet.").show()
                 return
             
              #Check if we know the gcode:
