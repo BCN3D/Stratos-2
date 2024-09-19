@@ -71,6 +71,7 @@ class Device(NetworkedPrinterOutputDevice):
             printMaterialLengths = printInformation.materialLengths
             printMaterialWeights = printInformation.materialWeights
 
+            '''
             if not self.bcn3dModels : 
                 from UM.PluginRegistry import PluginRegistry  # For path plugin's directory.
                 import json
@@ -84,7 +85,7 @@ class Device(NetworkedPrinterOutputDevice):
                     Logger.error("Could not open bcn3d-mapped-models.json for reading: %s".format(str(e)))
                 except Exception as e:
                     Logger.error("Could not parse bcn3d-mapped-models.json: %s".format(str(e)))
-            
+            '''
 
             if self.bcn3dModels and ((not all(i==0 for i in printMaterialLengths)) or (not all(i==0 for i in printMaterialWeights))):
                 #We have gcode data, so we generated it, lets see if it is compatible with the printer
