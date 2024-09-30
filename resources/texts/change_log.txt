@@ -1,6 +1,6 @@
 [2.1.3]
 
-*Omega I60:
+* Omega I60:
   - Added Omega Impact ABS.
   - Added printing profile: Omega Impact ABS Standard.
 
