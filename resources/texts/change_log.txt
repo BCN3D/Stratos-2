@@ -10,7 +10,6 @@
   - Omega Proto Standard
   - Omega Proto Fine
 
-
 * Bug fixes:
   - Fixed a bug that caused an error when trying to send G-codes to the cloud.
   - Fixed a bug in Omega that caused incorrect purging during dual printing.
