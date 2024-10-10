@@ -2,6 +2,7 @@
 
 * Omega I60:
   - Added Omega Impact ABS.
+  - Added Omega Custom. This profile is based on Omega Proto and will be used as a base for creating new user materials.
   - Added printing profile: Omega Impact ABS Standard.
 
 * Adjusted printing profile for:
