@@ -54,8 +54,6 @@ class Device(NetworkedPrinterOutputDevice):
         for p in connectedPrinters['data']:
             if p['serialNumber'] == serial_number:
                 printer = p
-                print("sonia")
-                print(printer)
                 break
         if printer: 
             if not printer["ready_to_print"]:
