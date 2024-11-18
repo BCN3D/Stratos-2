@@ -1,7 +1,7 @@
 [2.1.4]
 
 * Omega I60:
-  - Updated definition. Now Omega I60 can print even faster!
+  - Updated printer definition, enabling even faster printing speeds!
 
 * Adjusted printing profile for:
   - Omega Tooling CF Standard
