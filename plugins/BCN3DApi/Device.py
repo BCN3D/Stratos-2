@@ -19,15 +19,15 @@ catalog = i18nCatalog("cura")
 class Device(NetworkedPrinterOutputDevice):
     def __init__(self, name: str, bcn3dModels = None):
         id = "cloud"
-        if name == "cloud_save":
-            id = "cloud_save"
+        if name == "queue":
+            id = "queue"
 
         super().__init__(device_id=id, address="address", properties=[])
         self.bcn3dModels = bcn3dModels
         self._name = name
         message = catalog.i18nc("@action:button", "Send to printer") 
-        if self._name == "cloud_save":
-            message = catalog.i18nc("@action:button", "Send to cloud and print")
+        if self._name == "queue":
+            message = catalog.i18nc("@action:button", "Send to queue")
         self.setShortDescription(catalog.i18nc("@action:button Preceded by 'Ready to'.", message))
         self.setDescription(catalog.i18nc("@info:tooltip", message))
         self.setIconName("cloud")
@@ -51,20 +51,29 @@ class Device(NetworkedPrinterOutputDevice):
         connectedPrinters = self._data_api_service.getConnectedPrinter()
         printer = None
         
-        for p in connectedPrinters['data']:
-            if p['serialNumber'] == serial_number:
+        action = "print"
+        if self._name == "queue":
+            action = "queue"
+        
+        for p in connectedPrinters:
+             
+            if not p["serial_number"]:
+                p["serial_number"] = str(p["id"])
+                 
+            if p['serial_number'] == serial_number:
                 printer = p
                 break
-        if printer: 
-            if not printer["ready_to_print"]:
+
+        if printer:
+            if not printer["ready_to_print"] and action == "print":
                 self._progress_message.hide()
                 Message("The selected printer isn't ready to print.", title="Can't send gcode to printer").show()
                 return
             
-            if printer['printerModel'] and printer['printerModel']['model'] and printer['printerModel']['model'] == 'i60':
-                self._progress_message.hide()
-                Message("Please note that you cannot send files (.gcode) to your Omega I60 printer via Stratos yet. This feature will be available in the coming months. Alternatively, you can send your G-code files via the BCN3D Cloud.", title="Omega I60 isn't ready to print yet.").show()
-                return
+            #if printer['printerModel'] and printer['printerModel']['model'] and printer['printerModel']['model'] == 'i60':
+            #    self._progress_message.hide()
+            #    Message("Please note that you cannot send files (.gcode) to your Omega I60 printer via Stratos yet. This feature will be available in the coming months. Alternatively, you can send your G-code files via the BCN3D Cloud.", title="Omega I60 isn't ready to print yet.").show()
+            #    return
             
              #Check if we know the gcode:
             printInformation = CuraApplication.getInstance().getPrintInformation()
@@ -87,7 +96,7 @@ class Device(NetworkedPrinterOutputDevice):
                     Logger.error("Could not parse bcn3d-mapped-models.json: %s".format(str(e)))
             
 
-            if self.bcn3dModels and ((not all(i==0 for i in printMaterialLengths)) or (not all(i==0 for i in printMaterialWeights))):
+            if False and self.bcn3dModels and printer.get("filament_extruders") and ((not all(i==0 for i in printMaterialLengths)) or (not all(i==0 for i in printMaterialWeights))):
                 #We have gcode data, so we generated it, lets see if it is compatible with the printer
                 extruders = ExtruderManager.getInstance().getActiveExtruderStacks()
                 printerTool0 = None
@@ -126,7 +135,7 @@ class Device(NetworkedPrinterOutputDevice):
         self._gcode = getattr(Application.getInstance().getController().getScene(), "gcode_dict")[active_build_plate]
         gcode = self._joinGcode()
         file_name_with_extension = file_name + ".gcode"
-        self._data_api_service.sendGcode(gcode, file_name_with_extension, printer['id'], self._name == "cloud_save")
+        self._data_api_service.sendGcode(gcode, file_name_with_extension, printer['id'], action)
         self.writeFinished.emit()
         self._progress_message.hide()
   
