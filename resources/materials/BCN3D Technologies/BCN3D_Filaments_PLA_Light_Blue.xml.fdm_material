@@ -2,13 +2,41 @@
 <fdmmaterial xmlns="http://www.ultimaker.com/material" version="1.3">
     <metadata>
         <name>
-            <brand>Generic</brand>
+            <brand>BCN3D Filaments</brand>
             <material>PLA</material>
-            <color>Generic</color>
+            <color>Light Blue</color>
         </name>
-        <GUID>1ec772d4-7d43-4092-98ad-bd6bdbe26565</GUID>
+        <GUID>46c60483-1fe0-5324-9f27-9677a027a9e7</GUID>
         <version>1</version>
-        <color_code>#343537</color_code>
+        <color_code>#4AA0F6</color_code>
+        <instructions>http://bcn3dtechnologies.com/en/3d-printer-filaments</instructions>
+        <instruction_link>https://www.bcn3d.com/product/pla-bcn3d-filaments/</instruction_link>
+        <author>
+            <organization>BCN3D Technologies</organization>
+            <contact>BCN3D Support</contact>
+            <email>info@bcn3dtechnologies.com</email>
+            <phone>+34 934 137 088</phone>
+            <address>
+                <street>Esteve Terradas 1</street>
+                <city>Castelldefels</city>
+                <region>Barcelona</region>
+                <zip>08860</zip>
+                <country>Spain</country>
+            </address>
+        </author>
+        <supplier>
+            <organization>BCN3D Technologies</organization>
+            <contact>BCN3D Support</contact>
+            <email>info@bcn3dtechnologies.com</email>
+            <phone>+34 934 137 088</phone>
+            <address>
+                <street>Esteve Terradas 1</street>
+                <city>Castelldefels</city>
+                <region>Barcelona</region>
+                <zip>08860</zip>
+                <country>Spain</country>
+            </address>
+        </supplier>
     </metadata>
     <properties>
         <density>1.25</density>
@@ -52,9 +80,9 @@
             <setting key="heated chamber temperature">40</setting>
             <setting key="coasting enable">False</setting>
             <hotend id="0.4mm" />
-            <hotend id="Hotend M (0.4mm)"/>
+            <hotend id="Hotend M (0.4mm)" />
             <hotend id="0.6mm" />
-            <hotend id="Hotend X (0.6mm)"/>
+            <hotend id="Hotend X (0.6mm)" />
             <hotend id="0.8mm" />
             <hotend id="1.0mm" />
         </machine>
@@ -64,9 +92,9 @@
             <setting key="heated chamber temperature">40</setting>
             <setting key="coasting enable">False</setting>
             <hotend id="0.4mm" />
-            <hotend id="Hotend M (0.4mm)"/>
+            <hotend id="Hotend M (0.4mm)" />
             <hotend id="0.6mm" />
-            <hotend id="Hotend X (0.6mm"/>
+            <hotend id="Hotend X (0.6mm)" />
             <hotend id="0.8mm" />
             <hotend id="1.0mm" />
         </machine>
@@ -78,6 +106,5 @@
             <hotend id="0.4mm" />
             <hotend id="0.8mm" />
         </machine>
-
     </settings>
 </fdmmaterial>

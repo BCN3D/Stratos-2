@@ -3,15 +3,15 @@
     <metadata>
         <name>
             <brand>Generic</brand>
-            <material>PP</material>
+            <material>Tough PLA</material>
             <color>Generic</color>
         </name>
-        <GUID>f90e9d5f-50a2-4a5a-9819-0026b52f2065</GUID>
+        <GUID>c6d933e9-c9d3-42d4-be7e-2175d747aec6</GUID>
         <version>1</version>
-        <color_code>#E6E3C8</color_code>
+        <color_code>#343537</color_code>
     </metadata>
     <properties>
-        <density>0.9</density>
+        <density>1.25</density>
         <diameter>2.85</diameter>
     </properties>
     <settings>
@@ -47,17 +47,10 @@
            <hotend id="1.0mm" />
         </machine>
         <machine>
-           <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dsigmaxr19" />
-           <hotend id="0.3mm" />
-           <hotend id="0.4mm" />
-           <hotend id="0.5mm - Hardened Steel" />
-           <hotend id="0.6mm" />
-           <hotend id="0.8mm" />
-           <hotend id="1.0mm" />
-        </machine>
-        <machine>
             <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50" />
-            <setting key="heated bed temperature">70</setting>
+            <setting key="heated bed temperature">30</setting>
+            <setting key="heated chamber temperature">40</setting>
+            <setting key="coasting enable">False</setting>
             <hotend id="0.4mm" />
             <hotend id="Hotend M (0.4mm)">
                 <setting key="hardware compatible">no</setting>
@@ -71,7 +64,9 @@
         </machine>
         <machine>
             <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27" />
-            <setting key="heated bed temperature">70</setting>
+            <setting key="heated bed temperature">30</setting>
+            <setting key="heated chamber temperature">40</setting>
+            <setting key="coasting enable">False</setting>
             <hotend id="0.4mm" />
             <hotend id="Hotend M (0.4mm)">
                 <setting key="hardware compatible">no</setting>
@@ -83,5 +78,14 @@
             <hotend id="0.8mm" />
             <hotend id="1.0mm" />
         </machine>
+        <machine>
+            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dd25" />
+            <setting key="heated bed temperature">30</setting>
+            <setting key="heated chamber temperature">40</setting>
+            <setting key="coasting enable">False</setting>
+            <hotend id="0.4mm" />
+            <hotend id="0.8mm" />
+        </machine>
+
     </settings>
 </fdmmaterial>

@@ -3,23 +3,23 @@
     <metadata>
         <name>
             <brand>Generic</brand>
-            <material>PP</material>
+            <material>PA</material>
             <color>Generic</color>
         </name>
-        <GUID>f90e9d5f-50a2-4a5a-9819-0026b52f2065</GUID>
+        <GUID>4b47e557-e413-5136-bda6-86af1802d7d2</GUID>
         <version>1</version>
         <color_code>#E6E3C8</color_code>
     </metadata>
     <properties>
-        <density>0.9</density>
+        <density>1.115</density>
         <diameter>2.85</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">200</setting>
-        <setting key="heated bed temperature">60</setting>
+        <setting key="print temperature">250</setting>
+        <setting key="heated bed temperature">95</setting>
         <setting key="standby temperature">150</setting>
-        <setting key="print cooling">100</setting>
-        <setting key="retraction amount">6.5</setting>
+        <setting key="print cooling">0</setting>
+        <setting key="retraction amount">6</setting>
         <setting key="adhesion type">brim</setting>
 
         <machine>
@@ -57,7 +57,6 @@
         </machine>
         <machine>
             <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50" />
-            <setting key="heated bed temperature">70</setting>
             <hotend id="0.4mm" />
             <hotend id="Hotend M (0.4mm)">
                 <setting key="hardware compatible">no</setting>
@@ -71,7 +70,6 @@
         </machine>
         <machine>
             <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27" />
-            <setting key="heated bed temperature">70</setting>
             <hotend id="0.4mm" />
             <hotend id="Hotend M (0.4mm)">
                 <setting key="hardware compatible">no</setting>
