@@ -1,11 +1,12 @@
 # Copyright (c) 2023 UltiMaker
 # Cura is released under the terms of the LGPLv3 or higher.
+import datetime
 
 import json
 import os
 import platform
 import time
-from typing import Optional, Set, TYPE_CHECKING
+from typing import Any, Optional, Set, TYPE_CHECKING
 
 from PyQt6.QtCore import pyqtSlot, QObject
 from PyQt6.QtNetwork import QNetworkRequest
@@ -112,6 +113,26 @@ class SliceInfo(QObject, Extension):
 
         return list(sorted(user_modified_setting_keys))
 
+    def _flattenData(self, data: Any, result: dict, current_flat_key: Optional[str] = None, lift_list: bool = False) -> None:
+        if isinstance(data, dict):
+            for key, value in data.items():
+                total_flat_key = key if current_flat_key is None else f"{current_flat_key}_{key}"
+                self._flattenData(value, result, total_flat_key, lift_list)
+        elif isinstance(data, list):
+            for item in data:
+                self._flattenData(item, result, current_flat_key, True)
+        else:
+            actual_flat_key = current_flat_key.lower()
+            for key, value in self._adjust_flattened_names.items():
+                if actual_flat_key.startswith(key):
+                    actual_flat_key = actual_flat_key.replace(key, value)
+            if lift_list:
+                if actual_flat_key not in result:
+                    result[actual_flat_key] = []
+                result[actual_flat_key].append(data)
+            else:
+                result[actual_flat_key] = data
+
     def _onWriteStarted(self, output_device):
         try:
             if not self._application.getPreferences().getValue("info/send_slice_info"):
@@ -125,8 +146,7 @@ class SliceInfo(QObject, Extension):
             global_stack = machine_manager.activeMachine
 
             data = dict()  # The data that we're going to submit.
-            data["time_stamp"] = time.time()
-            data["schema_version"] = 0
+            data["schema_version"] = 1000
             data["cura_version"] = self._application.getVersion()
             data["cura_build_type"] = ApplicationMetadata.CuraBuildType
             org_id = user_profile.get("organization_id", None) if user_profile else None

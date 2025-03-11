@@ -110,6 +110,7 @@ from cura.UI.MachineActionManager import MachineActionManager
 from cura.UI.AddPrinterPagesModel import AddPrinterPagesModel
 from cura.UI.MachineSettingsManager import MachineSettingsManager
 from cura.UI.ObjectsModel import ObjectsModel
+from cura.UI.OpenSourceDependenciesModel import OpenSourceDependenciesModel
 from cura.UI.RecommendedMode import RecommendedMode
 from cura.UI.TextManager import TextManager
 from cura.UI.WelcomePagesModel import WelcomePagesModel
@@ -140,7 +141,7 @@ class CuraApplication(QtApplication):
     # SettingVersion represents the set of settings available in the machine/extruder definitions.
     # You need to make sure that this version number needs to be increased if there is any non-backwards-compatible
     # changes of the settings.
-    SettingVersion = 23
+    SettingVersion = 25
 
     Created = False
 
@@ -1234,6 +1235,8 @@ class CuraApplication(QtApplication):
             # Once we're at this point, everything should have been flushed already (past OnExitCallbackManager).
             # It's more difficult to call sys.exit(0): That requires that it happens as the result of a pyqtSignal-emit.
             # (See https://doc.qt.io/qt-6/qcoreapplication.html#quit)
+            # WARNING: With this in place you CAN NOT use cProfile. You will need to replace the next line with pass
+            # for it to work!
             os._exit(0)
 
         return super().event(event)
@@ -1322,6 +1325,7 @@ class CuraApplication(QtApplication):
         qmlRegisterType(AddPrinterPagesModel, "Cura", 1, 0, "AddPrinterPagesModel")
         qmlRegisterType(TextManager, "Cura", 1, 0, "TextManager")
         qmlRegisterType(RecommendedMode, "Cura", 1, 0, "RecommendedMode")
+        qmlRegisterType(OpenSourceDependenciesModel, "Cura", 1, 0, "OpenSourceDependenciesModel")
 
         self.processEvents()
         qmlRegisterType(NetworkMJPGImage, "Cura", 1, 0, "NetworkMJPGImage")
@@ -1917,23 +1921,20 @@ class CuraApplication(QtApplication):
                 def on_finish(response):
                     content_disposition_header_key = QByteArray("content-disposition".encode())
 
-                    if not response.hasRawHeader(content_disposition_header_key):
-                        Logger.log("w", "Could not find Content-Disposition header in response from {0}".format(
-                            model_url.url()))
-                        # Use the last part of the url as the filename, and assume it is an STL file
-                        filename = model_url.path().split("/")[-1] + ".stl"
-                    else:
+                    filename = model_url.path().split("/")[-1] + ".stl"
+
+                    if response.hasRawHeader(content_disposition_header_key):
                         # content_disposition is in the format
                         # ```
-                        # content_disposition attachment; "filename=[FILENAME]"
+                        # content_disposition attachment; filename="[FILENAME]"
                         # ```
                         # Use a regex to extract the filename
                         content_disposition = str(response.rawHeader(content_disposition_header_key).data(),
                                                   encoding='utf-8')
-                        content_disposition_match = re.match(r'attachment; filename="(?P<filename>.*)"',
+                        content_disposition_match = re.match(r'attachment; filename=(?P<filename>.*)',
                                                              content_disposition)
-                        assert content_disposition_match is not None
-                        filename = content_disposition_match.group("filename")
+                        if content_disposition_match is not None:
+                            filename = content_disposition_match.group("filename").strip("\"")
 
                     tmp = tempfile.NamedTemporaryFile(suffix=filename, delete=False)
                     with open(tmp.name, "wb") as f:
