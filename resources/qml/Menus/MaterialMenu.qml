@@ -72,25 +72,10 @@ Cura.Menu
 
     Cura.MenuSeparator { visible: favoriteMaterialsModel.items.length > 0}
 
-
-    Instantiator
-    {
-        model: brandModel
-        delegate: Cura.MaterialBrandMenu
-        {
-            materialTypesModel: model
-        }
-        onObjectAdded: function(index, object) { materialMenu.insertItem(index + 4, object)}
-        onObjectRemoved: function(index, object) { materialMenu.removeItem(index) }
-    }
-
-    Cura.MenuSeparator {}
-
     Cura.Menu
     {
         id: genericMenu
         title: catalog.i18nc("@label:category menu label", "Generic")
-        shouldBeVisible : genericMaterialsModel.items.length > 0
         enabled: genericMaterialsModel.items.length > 0
 
         Instantiator
@@ -109,11 +94,30 @@ Cura.Menu
         }
     }
 
-    Cura.MenuSeparator { visible: genericMaterialsModel.items.length > 0 }
+    Cura.MenuSeparator {}
+
+    Instantiator
+    {
+        model: brandModel
+        delegate: Cura.MaterialBrandMenu
+        {
+            materialTypesModel: model
+        }
+        onObjectAdded: function(index, object) { materialMenu.insertItem(index + 4, object)}
+        onObjectRemoved: function(index, object) { materialMenu.removeItem(index) }
+    }
+
+    Cura.MenuSeparator {}
 
     Cura.MenuItem
     {
         action: Cura.Actions.manageMaterials
     }
 
+    Cura.MenuSeparator {}
+
+    Cura.MenuItem
+    {
+        action: Cura.Actions.marketplaceMaterials
+    }
 }

@@ -53,20 +53,19 @@ Flickable
         RecommendedQualityProfileSelector
         {
             width: parent.width
-            hasQualityOptions: recommendedResolutionSelector.visible && Cura.MachineManager.isActiveQualitySupported
+            hasQualityOptions: recommendedResolutionSelector.visible
         }
 
         RecommendedResolutionSelector
         {
             id: recommendedResolutionSelector
-            visible : Cura.MachineManager.isActiveQualitySupported
             width: parent.width
         }
 
         UnsupportedProfileIndication
         {
             width: parent.width
-            visible: !recommendedResolutionSelector.visible || !Cura.MachineManager.isActiveQualitySupported
+            visible: !recommendedResolutionSelector.visible
         }
 
         Item { height: UM.Theme.getSize("default_margin").height } // Spacer
@@ -129,12 +128,6 @@ Flickable
             RecommendedAdhesionSelector
             {
                 width: parent.width
-            }
-
-            RecommendedFlexibleBuildPlateSelector
-            {
-                width: parent.width
-                visible: Cura.MachineManager.hasFlexibleBed  && (Cura.MachineManager.activeMachine.definition.name == "Epsilon W50" || Cura.MachineManager.activeMachine.definition.name == "Epsilon W27" || Cura.MachineManager.activeMachine.definition.name == "Sigma D25")
             }
         }
     }

@@ -9,11 +9,11 @@ import UM 1.5 as UM
 import Cura 1.0 as Cura
 
 import "."
-import "../../definitions/supportLinks.js" as SLinks
+
 Item
 {
     id: base
-    height: enabled ? UM.Theme.getSize("section").height + UM.Theme.getSize("narrow_margin").height : 0
+    height: enabled ? Math.max(UM.Theme.getSize("section").height, label.height) + UM.Theme.getSize("narrow_margin").height : 0
     anchors.left: parent.left
     anchors.right: parent.right
 
@@ -53,6 +53,7 @@ Item
     signal showTooltip(string text)
     signal hideTooltip()
     signal showAllHiddenInheritedSettings(string category_id)
+    signal setScrollPositionChangeLoseFocus(bool lose_focus)
 
     function createTooltipText()
     {
@@ -296,6 +297,7 @@ Item
 
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
+                height: UM.Theme.getSize("small_button_icon").height
                 width: height
 
                 onClicked:
@@ -339,42 +341,6 @@ Item
                 onEntered: { hoverTimer.stop(); base.showTooltip(catalog.i18nc("@label", "This setting is normally calculated, but it currently has an absolute value set.\n\nClick to restore the calculated value.")) }
                 onExited: base.showTooltip(base.createTooltipText())
             }
-            // BCN3D-MOD ↓
-            UM.SimpleButton
-            {
-                id: infoButton
-                visible: typeof(SLinks.support_links[definition.key]) != "undefined" && SLinks.support_links[definition.key]
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                height: UM.Theme.getSize("small_button_icon").height
-                width: height
-                MouseArea
-                {
-                    id: mouseArea
-                    anchors.fill: parent
-                    onPressed:  mouse.accepted = false
-                    cursorShape: Qt.PointingHandCursor
-
-                }
-                color: UM.Theme.getColor("setting_control_button")
-                hoverColor: UM.Theme.getColor("setting_control_button_hover")
-
-                iconSource: UM.Theme.getIcon("Information")
-
-                onClicked:
-                {
-                    infoButton.focus = true
-                    Qt.openUrlExternally(SLinks.support_links[definition.key])
-                }
-
-                onEntered:
-                {
-                    hoverTimer.stop()
-                    base.showTooltip(SLinks.support_links[definition.key])
-                }
-                onExited: base.showTooltip(base.createTooltipText())
-            }
-            // BCN3D-MOD ↑
         }
 
         Item

@@ -109,6 +109,9 @@ UM.PreferencesPage
         UM.Preferences.resetPreference("general/restore_window_geometry")
         restoreWindowPositionCheckbox.checked = boolCheck(UM.Preferences.getValue("general/restore_window_geometry"))
 
+        UM.Preferences.resetPreference("tool/flip_y_axis_tool_handle")
+        flipToolhandleYCheckbox.checked = boolcheck(UM.Preferences.getValue("tool/flip_y_axis_tool_handle"))
+
         UM.Preferences.resetPreference("general/camera_perspective_mode")
         //var defaultCameraMode = UM.Preferences.getValue("general/camera_perspective_mode")
 //        /setDefaultCameraMode(defaultCameraMode)
@@ -367,39 +370,6 @@ UM.PreferencesPage
                 font.italic: true
 
             }
-
-
-            Item
-            {
-                //: Spacer
-                height: UM.Theme.getSize("default_margin").height
-                width: UM.Theme.getSize("default_margin").width
-            }
-
-             UM.Label
-            {
-                id: contactUs                
-                text: catalog.i18nc("@label", "Request Omega Open Filament License (OOFL) to personalize print settings and/or to print with third-party filaments:")
-                wrapMode: Text.WordWrap
-                font.italic: true
-
-            }
-
-           Cura.TertiaryButton
-            {
-                id: contacButton
-                anchors
-                {
-                    top: contactUs.right
-                }
-                width: UM.Theme.getSize("account_button").width
-                height: UM.Theme.getSize("account_button").height
-                iconSource: UM.Theme.getIcon("LinkExternal")
-                text: catalog.i18nc("@button", "Request OOFL")
-                onClicked: Qt.openUrlExternally("https://3d.bcn3d.com/bcn3d-omega-i60-omega-open-filament-license")
-                fixedWidthMode: false
-            }
-
 
             Item
             {
@@ -695,6 +665,21 @@ UM.PreferencesPage
                     }
                 }
             }
+            UM.TooltipArea
+            {
+                width: childrenRect.width
+                height: childrenRect.height
+                text: catalog.i18nc("@info:tooltip", "Should the Y axis of the translate toolhandle be flipped? This will only affect model's Y coordinate, all other settings such as machine Printhead settings are unaffected and still behave as before.")
+
+                UM.CheckBox
+                {
+                    id: flipToolhandleYCheckbox
+                    text: catalog.i18nc("@option:check", "Flip model's toolhandle Y axis (restart required)")
+                    checked: boolCheck(UM.Preferences.getValue("tool/flip_y_axis_tool_handle"))
+                    onCheckedChanged: UM.Preferences.setValue("tool/flip_y_axis_tool_handle", checked)
+                }
+            }
+
 
             Item
             {
@@ -933,20 +918,6 @@ UM.PreferencesPage
                             return index;
                         }
                         onActivated: UM.Preferences.setValue("cura/choice_on_profile_override", model.get(index).code)
-                    }
-                    UM.TooltipArea
-                    {
-                        width: childrenRect.width
-                        height: childrenRect.height
-                        text: catalog.i18nc("@info:tooltip","Check material compatibility between materials, if the materials do not match, a warning will be displayed and our configuration of these cannot be used")
-
-                        UM.CheckBox
-                        {
-                            id: selectModelsOnLoadCheckboxaa
-                            text: catalog.i18nc("@option:check","Check material compatibility")
-                            checked: boolCheck(UM.Preferences.getValue("cura/check_material_compatibility"))
-                            onCheckedChanged: UM.Preferences.setValue("cura/check_material_compatibility", checked)
-                        }
                     }
                 }
             }

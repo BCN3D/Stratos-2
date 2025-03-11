@@ -154,7 +154,7 @@ UM.MainWindow
 
             // Reuse the welcome dialog item to show the "Add printers" dialog. Triggered when there is no active
             // machine and the user is logged in.
-            if (!Cura.MachineManager.activeMachine && Cura.APIManager.AuthenticationService.isLoggedIn)
+            if (!Cura.MachineManager.activeMachine && Cura.API.account.isLoggedIn)
             {
                 welcomeDialogItem.model = CuraApplication.getAddPrinterPagesModelWithoutCancel()
                 welcomeDialogItem.progressBarVisible = false
@@ -927,6 +927,15 @@ UM.MainWindow
                     ).arg(Cura.MachineManager.activeQualityOrQualityChangesName)
                     wrapMode: Text.WordWrap
                     width: parent.parent.width - 2 * UM.Theme.getSize("message_type_icon").width
+                }
+                Cura.TertiaryButton
+                {
+                    text: catalog.i18nc("@action:button", "Learn more about Cura print profiles")
+                    iconSource: UM.Theme.getIcon("LinkExternal")
+                    isIconOnRightSide: true
+                    leftPadding: 0
+                    rightPadding: 0
+                    onClicked: Qt.openUrlExternally("https://support.ultimaker.com/s/article/1667337576882")
                 }
             }
         ]

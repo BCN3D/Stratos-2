@@ -62,7 +62,7 @@ Item
 
     property alias showProfileFolder: showProfileFolderAction
     property alias documentation: documentationAction
-    property alias showTroubleshooting: showTroubleShootingAction
+    property alias openSponsershipPage: openSponsershipPageAction
     property alias reportBug: reportBugAction
     property alias whatsNew: whatsNewAction
     property alias about: aboutAction
@@ -77,6 +77,7 @@ Item
     property alias paste: pasteAction
     property alias copy: copyAction
     property alias cut: cutAction
+    property alias exportProjectForSupport: exportProjectForSupportAction
 
     readonly property bool copy_paste_enabled: {
         const all_enabled_packages = CuraApplication.getPackageManager().allEnabledPackages;
@@ -85,12 +86,11 @@ Item
 
     UM.I18nCatalog{id: catalog; name: "cura"}
 
-
     Action
     {
-        id: showTroubleShootingAction
-        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/slice-bcn3d-stratos")
-        text: catalog.i18nc("@action:inmenu", "BCN3D Knowledge base");
+        id: openSponsershipPageAction
+        onTriggered: Qt.openUrlExternally("https://ultimaker.com/software/ultimaker-cura/sponsor/")
+        text: catalog.i18nc("@action:inmenu", "Sponsor Cura")
     }
 
     Action
@@ -196,7 +196,7 @@ Item
         //For more information, see:
         //- https://doc.qt.io/qt-5/macos-issues.html#menu-bar
         //- https://doc.qt.io/qt-5/qmenubar.html#qmenubar-as-a-global-menu-bar
-        text: (Qt.platform.os == "osx") ? "Configure BCN3D Stratos..." : catalog.i18nc("@action:inmenu", "Configure BCN3D Stratos...")
+        text: (Qt.platform.os == "osx") ? "Configure Cura..." : catalog.i18nc("@action:inmenu", "Configure Cura...")
         icon.name: "configure"
         // on MacOS it us customary to assign the ctrl+, hotkey to open a general settings menu
         shortcut: (Qt.platform.os == "osx") ? "Ctrl+," : ""
@@ -266,18 +266,18 @@ Item
 
     Action
     {
-        id: documentationAction;
-        text: catalog.i18nc("@action:inmenu menubar:help", "BCN3D Stratos Introduction");
-        icon.name: "help-contents";
-        shortcut: StandardKey.Help;
-        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/bcn3d-stratos-introduction")
+        id: documentationAction
+        text: catalog.i18nc("@action:inmenu menubar:help", "Show Online &Documentation")
+        icon.name: "help-contents"
+        shortcut: StandardKey.Help
+        onTriggered: CuraActions.openDocumentation()
     }
 
     Action {
         id: reportBugAction
         text: catalog.i18nc("@action:inmenu menubar:help", "Report a &Bug")
         icon.name: "tools-report-bug"
-        onTriggered: Qt.openUrlExternally("https://support.bcn3d.com/knowledge/kb-tickets/new?hsLang=en")
+        onTriggered: CuraActions.openBugReportPage()
     }
 
     Action
@@ -549,5 +549,26 @@ Item
         id: browsePackagesAction
         text: "&Marketplace"
         icon.name: "plugins_browse"
+    }
+
+    Action
+    {
+        id: exportProjectForSupportAction
+        text: catalog.i18nc("@action:inmenu menubar:help", "Export Package For Technical Support")
+        onTriggered:
+        {
+            var exportName = Qt.formatDateTime(new Date(), "'export-'yyyyMMdd-HHmmss")
+            var args = {
+                "filter_by_machine": false,
+                "file_type": "workspace",
+                "preferred_mimetypes": "application/vnd.ms-package.3dmanufacturing-3dmodel+xml",
+                "limit_mimetypes": ["application/vnd.ms-package.3dmanufacturing-3dmodel+xml"],
+                "silent_save": true,
+                "writer_args": {
+                    "include_log": true
+                }
+            };
+            UM.OutputDeviceManager.requestWriteToDevice("local_file", exportName, args)
+        }
     }
 }

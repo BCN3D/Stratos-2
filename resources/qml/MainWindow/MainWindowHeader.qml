@@ -3,7 +3,6 @@
 
 import QtQuick 2.7
 import QtQuick.Controls 2.4
-import QtQuick.Controls 2.0 as Controls2
 
 import UM 1.5 as UM
 import Cura 1.0 as Cura
@@ -32,7 +31,6 @@ Item
         sourceSize.width: width
         sourceSize.height: height
     }
-    
     ButtonGroup
     {
         buttons: stagesListContainer.children
@@ -130,42 +128,80 @@ Item
         }
     }
 
-     Controls2.Button
+    // Shortcut button to quick access the Toolbox
+    Button
     {
-        id: supportbutton
-        text: catalog.i18nc("@action:button", "Support")
+        id: marketplaceButton
+        text: catalog.i18nc("@action:button", "Marketplace")
         height: Math.round(0.5 * UM.Theme.getSize("main_window_header").height)
+        onClicked: Cura.Actions.browsePackages.trigger()
+
         hoverEnabled: true
-        onClicked: Qt.openUrlExternally("https://3d.bcn3d.com/chatbot");
+
         background: Rectangle
         {
+            id: marketplaceButtonBorder
             radius: UM.Theme.getSize("action_button_radius").width
-            color: supportbutton.hovered ? UM.Theme.getColor("main_window_header_background") : UM.Theme.getColor("primary_text")
+            color: UM.Theme.getColor("main_window_header_background")
             border.width: UM.Theme.getSize("default_lining").width
             border.color: UM.Theme.getColor("primary_text")
-        }
-        contentItem: Label
-        {
-            id: label
-            text: supportbutton.text
-            font: UM.Theme.getFont("default")
-            color: supportbutton.hovered ? UM.Theme.getColor("primary_text") : UM.Theme.getColor("main_window_header_background")
-            width: contentWidth
-            verticalAlignment: Text.AlignVCenter
-            renderType: Text.NativeRendering
+
+            Rectangle
+            {
+                id: marketplaceButtonFill
+                anchors.fill: parent
+                radius: parent.radius
+                color: UM.Theme.getColor("primary_text")
+                opacity: marketplaceButton.hovered ? 0.2 : 0
+                Behavior on opacity { NumberAnimation { duration: 100 } }
+            }
         }
 
+        contentItem: UM.Label
+        {
+            id: label
+            text: marketplaceButton.text
+            color: UM.Theme.getColor("primary_text")
+            width: contentWidth
+        }
 
         anchors
         {
-            right: accountWidget.left
+            right: applicationSwitcher.left
             rightMargin: UM.Theme.getSize("default_margin").width
             verticalCenter: parent.verticalCenter
         }
 
+        Cura.NotificationIcon
+        {
+            id: marketplaceNotificationIcon
+            anchors
+            {
+                top: parent.top
+                right: parent.right
+                rightMargin: (-0.5 * width) | 0
+                topMargin: (-0.5 * height) | 0
+            }
+            visible: CuraApplication.getPackageManager().packagesWithUpdate.length > 0
+
+            labelText:
+            {
+                const itemCount = CuraApplication.getPackageManager().packagesWithUpdate.length
+                return itemCount > 9 ? "9+" : itemCount
+            }
+        }
     }
 
-
+    ApplicationSwitcher
+    {
+        id: applicationSwitcher
+        anchors
+        {
+            verticalCenter: parent.verticalCenter
+            right: accountWidget.left
+            rightMargin: UM.Theme.getSize("default_margin").width
+        }
+    }
 
     AccountWidget
     {

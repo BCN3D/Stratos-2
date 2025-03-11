@@ -18,6 +18,12 @@ Item
         name: "cura"
     }
 
+    UM.I18nCatalog
+    {
+        id: catalog_fdmprinter
+        name: "fdmprinter.def.json"
+    }
+
     width: parent.width
     height: childrenRect.height
 
@@ -222,36 +228,6 @@ Item
                     text: catalog.i18nc("@label", "Material")
                     height: parent.height
                     width: selectors.textWidth
-                    Button
-                    {
-                        id: instructionButtonTwo
-                        hoverEnabled: true
-                        contentItem: Item {}
-                        height: 0.5 * materialSelection.height
-                        width: height
-                        anchors.centerIn: parent
-                        background: UM.ColorImage
-                        {
-                            source: UM.Theme.getIcon("info-circled")
-                            color: {
-                                if (instructionButtonTwo.hovered && Cura.MachineManager.activeMachine.definition.name != "Omega I60") {
-                                    return UM.Theme.getColor("primary")
-                                } else if (Cura.MachineManager.activeStack !== null ? Cura.ContainerManager.getContainerMetaDataEntry(Cura.MachineManager.activeStack.material.id, "compatible", "") !== "True" : true) {
-                                    return UM.Theme.getColor("setting_validation_error")
-                                } else {
-                                    return UM.Theme.getColor("setting_validation_warning")
-                                }
-                            }
-                        }
-                        visible: !Cura.MachineManager.isActiveQualitySupported
-                        onClicked: {
-                            if (Cura.MachineManager.activeMachine.definition.name != "Omega I60") {
-                                return Qt.openUrlExternally("https://www.bcn3d.com/wp-content/uploads/2023/01/BCN3D-Filaments-Compatibility-Table-and-Support-material-combination-v1.0.pdf")
-                            } else {
-                                return
-                            }
-                        }
-                    }
                 }
 
                 Cura.PrintSetupHeaderButton
@@ -311,7 +287,7 @@ Item
 
                 UM.Label
                 {
-                    text: Cura.MachineManager.activeDefinitionVariantsName
+                    text: catalog_fdmprinter.i18nc("variant_name", Cura.MachineManager.activeDefinitionVariantsName)
                     height: parent.height
                     width: selectors.textWidth
                 }
@@ -341,10 +317,11 @@ Item
             {
                 id: warnings
                 height: visible ? childrenRect.height : 0
-                visible: buildplateCompatibilityError || buildplateCompatibilityWarning
+                visible: buildplateCompatibilityError || buildplateCompatibilityWarning || coreCompatibilityWarning
 
                 property bool buildplateCompatibilityError: !Cura.MachineManager.variantBuildplateCompatible && !Cura.MachineManager.variantBuildplateUsable
                 property bool buildplateCompatibilityWarning: Cura.MachineManager.variantBuildplateUsable
+                property bool coreCompatibilityWarning: !Cura.MachineManager.variantCoreUsableForFactor4
 
                 // This is a space holder aligning the warning messages.
                 UM.Label
@@ -366,7 +343,7 @@ Item
                         width: UM.Theme.getSize("section_icon").width
                         height: UM.Theme.getSize("section_icon").height
                         color: UM.Theme.getColor("material_compatibility_warning")
-                        visible: !Cura.MachineManager.isCurrentSetupSupported || warnings.buildplateCompatibilityError || warnings.buildplateCompatibilityWarning
+                        visible: !Cura.MachineManager.isCurrentSetupSupported || warnings.buildplateCompatibilityError || warnings.buildplateCompatibilityWarning || warnings.coreCompatibilityWarning
                     }
 
                     UM.Label
@@ -377,6 +354,17 @@ Item
                         width: selectors.controlWidth - warningImage.width - UM.Theme.getSize("default_margin").width
                         text: catalog.i18nc("@label", "Use glue for better adhesion with this material combination.")
                         visible: CuraSDKVersion == "dev" ? false : warnings.buildplateCompatibilityError || warnings.buildplateCompatibilityWarning
+                        wrapMode: Text.WordWrap
+                    }
+
+                    UM.Label
+                    {
+                        id: coreCompatibilityLabel
+                        anchors.left: warningImage.right
+                        anchors.leftMargin: UM.Theme.getSize("default_margin").width
+                        width: selectors.controlWidth - warningImage.width - UM.Theme.getSize("default_margin").width
+                        text: catalog.i18nc("@label", "Combination not recommended. Load BB core to slot 1 (left) for better reliability.")
+                        visible: warnings.coreCompatibilityWarning
                         wrapMode: Text.WordWrap
                     }
                 }
