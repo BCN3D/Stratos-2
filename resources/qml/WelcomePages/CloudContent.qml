@@ -205,20 +205,28 @@ Item
     // Sign in Button
     Cura.PrimaryButton
     {
-        id: signInButton
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: UM.Theme.getSize("account_button").width
+        height: UM.Theme.getSize("account_button").height
         text: catalog.i18nc("@button", "Sign in")
-        onClicked: Cura.API.account.login()
-        // Content Item is used in order to align the text inside the button. Without it, when resizing the
-        // button, the text will be aligned on the left
-        contentItem: Text {
-            text: signInButton.text
-            font: UM.Theme.getFont("medium")
-            color: UM.Theme.getColor("primary_text")
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+        onClicked: {
+        signInStatusCode = Cura.AuthenticationService.signIn(email.text, password.text)
+            if(signInStatusCode == 200) {
+                base.showNextPage()
+            }
+
         }
+        fixedWidthMode: true
+
     }
+
+        Cura.SecondaryButton
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: UM.Theme.getSize("account_button").width
+            height: UM.Theme.getSize("account_button").height
+            text: catalog.i18nc("@button", "Create account")
+            onClicked: Qt.openUrlExternally("https://cloud.bcn3d.com")
+            fixedWidthMode: true
+        }
 }

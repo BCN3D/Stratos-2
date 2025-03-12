@@ -21,7 +21,7 @@ Item
     ColumnLayout
     {
         anchors.top: parent.top
-        anchors.topMargin: UM.Theme.getSize("wide_margin").height
+        //anchors.topMargin: UM.Theme.getSize("wide_margin").height
         anchors.bottom: backButton.top
         anchors.bottomMargin: UM.Theme.getSize("default_margin").height
         anchors.left: parent.left
@@ -29,50 +29,55 @@ Item
 
         spacing: UM.Theme.getSize("default_margin").height
 
-        DropDownWidget
+    DropDownWidget
+    {
+        id: addNetworkPrinterDropDown
+
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        title: catalog.i18nc("@label", "Add a networked printer")
+        contentShown: true  // by default expand the network printer list
+
+        onClicked:
         {
-            id: addNetworkPrinterDropDown
+            addLocalPrinterDropDown.contentShown = !contentShown
+        }
 
-            Layout.fillWidth: true
-            Layout.fillHeight: contentShown
+        contentComponent: networkPrinterListComponent
 
-            title: catalog.i18nc("@label", "Add a networked printer")
-            contentShown: true  // by default expand the network printer list
+        Component
+        {
+            id: networkPrinterListComponent
 
-            onClicked:
+            AddNetworkPrinterScrollView
             {
-                addLocalPrinterDropDown.contentShown = !contentShown
-            }
+                id: networkPrinterScrollView
 
-            contentComponent: networkPrinterListComponent
-            Component
-            {
-                id: networkPrinterListComponent
-                AddNetworkPrinterScrollView
+                maxItemCountAtOnce: 10  // show at max 10 items at once, otherwise you need to scroll.
+
+                onRefreshButtonClicked:
                 {
-                    id: networkPrinterScrollView
+                    Cura.APIManager.refreshPrinters()
+                }
 
-                    onRefreshButtonClicked:
-                    {
-                        UM.OutputDeviceManager.startDiscovery()
-                    }
+                onAddByIpButtonClicked:
+                {
+                    //base.goToPage("add_printer_by_ip")
+                }
 
-                    onAddByIpButtonClicked:
+                onAddCloudPrinterButtonClicked:
+                {
+                    base.goToPage("add_cloud_printers")
+                    if (!Cura.APIManager.isLoggedIn)
                     {
-                        base.goToPage("add_printer_by_ip")
-                    }
-
-                    onAddCloudPrinterButtonClicked:
-                    {
-                        base.goToPage("add_cloud_printers")
-                        if (!Cura.API.account.isLoggedIn)
-                        {
-                            Cura.API.account.login()
-                        }
+                        Cura.API.account.login()
                     }
                 }
             }
         }
+    }
 
         DropDownWidget
         {
@@ -105,8 +110,12 @@ Item
         id: backButton
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        text: catalog.i18nc("@button", "Add UltiMaker printer via Digital Factory")
-        onClicked: goToUltimakerPrinter()
+        visible: base.currentItem.previous_page_button_text ? true : false
+        text: base.currentItem.previous_page_button_text ? base.currentItem.previous_page_button_text : ""
+        onClicked:
+        {
+            base.endWizard()
+        }
     }
 
     Cura.PrimaryButton
