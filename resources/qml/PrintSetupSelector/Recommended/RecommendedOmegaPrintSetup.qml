@@ -11,13 +11,15 @@ import ".."
 
 Flickable
 {
-    id: recommendedPrintSetup
+    id: recommendedOmegaPrintSetup
     clip: true
 
     contentHeight: settingsColumn.height
     implicitHeight: settingsColumn.height
 
     property bool settingsEnabled: Cura.ExtruderManager.activeExtruderStackId || extrudersEnabledCount.properties.value == 1
+
+    property var profile: Cura.APIManager.profile
 
     function onModeChanged() {}
 
@@ -74,6 +76,7 @@ Flickable
         ProfileWarningReset
         {
             width: parent.width
+            visible: (Cura.MachineManager.hasUserSettings || (fullWarning && Cura.MachineManager.hasCustomQuality)) && (Cura.MachineManager.activeMachine.definition.name != "Omega I60" || profile && profile["advanced_user"]) ? true : false
         }
 
         Item { height: UM.Theme.getSize("thin_margin").height  + UM.Theme.getSize("narrow_margin").height} // Spacer
@@ -111,14 +114,27 @@ Flickable
                     id: customSettingsButton
                     anchors.right: parent.right
                     text: catalog.i18nc("@button", "Show Custom")
+                    visible : profile && profile["advanced_user"] ? true : false
                     textFont: UM.Theme.getFont("medium_bold")
                     onClicked: onModeChanged()
                 }
             }
 
+            RecommendedOmegaSliderSelector
+            {
+                width: parent.width
+                visible : profile && profile["advanced_user"] ? false : true
+                selectorText : "Properties"
+                quality_key : "omega_properties"
+                backgroundTextLeftText : "LIGHTER"
+                backgroundTextRightText : "STRONGER"
+                sourceIcon : "category_support"
+            }
+
             RecommendedStrengthSelector
             {
                 width: parent.width
+                visible : profile && profile["advanced_user"] ? true : false
             }
 
             RecommendedSupportSelector

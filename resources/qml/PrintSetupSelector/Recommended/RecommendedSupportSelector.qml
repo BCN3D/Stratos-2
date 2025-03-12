@@ -28,7 +28,7 @@ RecommendedSettingSection
     property UM.SettingPropertyProvider supportEnabled: UM.SettingPropertyProvider
     {
         id: supportEnabled
-        containerStack: Cura.MachineManager.activeMachine
+        containerStack: Cura.MachineManager.activeStack
         key: "support_enable"
         watchedProperties: [ "value", "enabled", "description" ]
         storeIndex: 0
@@ -57,9 +57,7 @@ RecommendedSettingSection
                 settingName: "support_structure"
                 propertyRemoveUnusedValue: false
                 updateAllExtruders: false
-                defaultExtruderIndex: supportExtruderProvider.properties.value != undefined ?
-                    supportExtruderProvider.properties.value :
-                    Cura.ExtruderManager.activeExtruderIndex
+                defaultExtruderIndex: supportExtruderProvider.properties.value
             }
         },
         RecommendedSettingItem
@@ -94,9 +92,7 @@ RecommendedSettingSection
                 width: parent.width
                 settingName: "support_type"
                 updateAllExtruders: true
-                defaultExtruderIndex: supportExtruderProvider.properties.value != undefined ?
-                    supportExtruderProvider.properties.value :
-                    Cura.ExtruderManager.activeExtruderIndex
+                defaultExtruderIndex: supportExtruderProvider.properties.value
             }
         }
     ]

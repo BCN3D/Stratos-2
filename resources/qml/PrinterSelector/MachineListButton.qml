@@ -81,8 +81,44 @@ Loader {
                     width: UM.Theme.getSize("medium_button").width
                     color: UM.Theme.getColor("machine_selector_printer_icon")
                     visible: model.isAbstractMachine || !model.isOnline
-                    source: model.isAbstractMachine ? UM.Theme.getIcon("PrinterTriple", "medium") : UM.Theme.getIcon("Printer", "medium")
-
+                    source:   {
+                        if (model.isAbstractMachine)
+                        {
+                            return UM.Theme.getIcon("PrinterTriple", "medium")
+                        }
+                        else if (model.machineDefinition == "bcn3dd25")
+                        {
+                            return UM.Theme.getIcon("Sigma_d25", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3domega")
+                        {
+                            return UM.Theme.getIcon("Omega_I60", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dw50")
+                        {
+                            return UM.Theme.getIcon("Epsilon_w50", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dw27")
+                        {
+                            return UM.Theme.getIcon("Epsilon_w27", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dsigma19")
+                        {
+                            return UM.Theme.getIcon("sigma", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dsigma")
+                        {
+                            return UM.Theme.getIcon("sigma", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dsigmax")
+                        {
+                        return UM.Theme.getIcon("sigmax", "default")
+                        }
+                        else
+                        {
+                            return UM.Theme.getIcon("Printer", "medium")
+                        }
+                    }
                     anchors
                     {
                         left: parent.left
