@@ -152,8 +152,10 @@ class Device(NetworkedPrinterOutputDevice):
             "Hotend X (0.6mm)": "0.6X",
             "0.8mm": "0.8",
             "1.0mm": "1.0",
-            "Omega Hotend Tip 0.4 HR" : "0.4HR",
-            "Omega Hotend Tip 0.6 HR" : "0.6HR"
+            "Omega Hotend Tip 0.4 HR" : "0.4RX",
+            "Omega Hotend Tip 0.6 HR" : "0.6RX",
+            "Omega Hotend Tip 0.4 HS" : "0.4HS",
+            "Omega Hotend Tip 0.6 HS" : "0.6HS"
         }
         cloudModelMame = extruder_model_diameters[printerModelExtruder]
         extruderModelId = None
