@@ -72,6 +72,7 @@ def checkMaterialcompatibility(active_quality_group, global_container_stack):
     materialcompatibility['Omega Resistant Nylon'] = ['Omega Resistant Nylon']
     materialcompatibility['Omega Tooling CF'] = ['Omega Tooling CF']
     materialcompatibility['Omega Impact ABS'] = ['Omega Impact ABS']
+    materialcompatibility['Ultrafuse PC ABS'] = ['Ultrafuse PC ABS']
     materialcompatibility['Smart Materials PLA'] = ['PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Smart Materials PLA', 'AMBX PLA']
     materialcompatibility['AMBX PLA'] = ['AMBX PLA', 'PLA', 'Fillamentum PLA', 'Matterhackers PLA', 'Tough PLA','PVA', 'BVOH', 'TPU', 'Smart Materials PLA']
 
