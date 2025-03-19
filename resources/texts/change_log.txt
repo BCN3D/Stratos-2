@@ -2,6 +2,19 @@
 
 * Omega I60:
   - Updated printer definition, enabling even faster printing speeds!
+  - Added Omega Hotend Tip 0.4 HS (Omega I60 series)
+  - Added Omega Hotend Tip 0.6 HS (Omega I60 series)
+
+* Added High Speed profiles for some BCN3D materials (Omega I60): 
+  - Omega Proto material
+  - Omega Impact ABS
+  - Omega Custom
+
+* Added profile compatibility for some new OFN materials (Omega I60): 
+  - Polimaker PolySupport
+  - Polimaker PolyCast
+  - BASF Forward AM Ultrafuse PC ABS
+  - Smart Materials ASA
 
 * Adjusted printing profile for:
   - Omega Tooling CF Standard
