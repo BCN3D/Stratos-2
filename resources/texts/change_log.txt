@@ -22,7 +22,7 @@
   - Omega Proto Standard
   - Omega Proto Fine
 
-  * Bug fixes:
+* Bug fixes:
   - Fixed a bug in Omega that caused incorrect extruder information when printing in dual dupli or mirror.
 
 [2.1.3]
