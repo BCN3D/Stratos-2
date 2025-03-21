@@ -2,6 +2,7 @@ version: "5.10.0-beta.1"
 requirements:
   - "cura_resources/5.10.0-beta.1"
   - "uranium/5.10.0-beta.1"
+  - "protobuf/3.21.12"
   - "curaengine/5.10.0-beta.1"
   - "cura_binary_data/5.10.0-beta.1"
   - "fdm_materials/5.10.0-beta.1"
