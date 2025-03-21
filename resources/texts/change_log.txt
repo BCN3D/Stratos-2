@@ -52,7 +52,7 @@
   - Hotend Tip 0.6 HR: A new print profile called Standard has been added. It is the first one for the 0.6mm Hotend Tip for Omega Proto material and is ideal for printing large tooling quickly while ensuring good print surface quality and strength.
 
 * Bug fixes:
-  - Fixed a bug that caused an error when trying to print with Hotend RX.
+  - Fixed a bug that caused an error when trying to print with Hotend HR.
   - Fixed a bug in Sigma printers that caused certain materials, such as ABS or PA, to not be detected.
   - Materials and extruders mismatch was not checked; this is now fixed.
   - Various internal bug fixes.
