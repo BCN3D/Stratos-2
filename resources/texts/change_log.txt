@@ -1,16 +1,9 @@
-[2.1.4]
 
-* Omega I60:
-  - Updated printer definition, enabling even faster printing speeds!
+[2.2.0]
 
-* Adjusted printing profile for:
-  - Omega Tooling CF Standard
-  - Omega Resistant Nylon Fine
-  - Omega Proto Standard
-  - Omega Proto Fine
-
-  * Bug fixes:
-  - Fixed a bug in Omega that caused incorrect extruder information when printing in dual dupli or mirror.
+* BCN3D Cloud
+  - BCN3D Stratos 2.2.0 is now ready to communicate with the new BCN3D Cloud.
+  Log in with your account and enjoy printing your G-code files directly from the cloud to your printer!
 
 [2.1.3]
 
