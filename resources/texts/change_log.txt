@@ -1,7 +1,7 @@
 
 [2.2.0]
 
-* BCN3D Cloud
+* BCN3D Cloud:
   - BCN3D Stratos 2.2.0 is now ready to communicate with the new BCN3D Cloud.
   Log in with your account and enjoy printing your G-code files directly from the cloud to your printer!
 
