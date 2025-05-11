@@ -26,8 +26,12 @@ class Device(NetworkedPrinterOutputDevice):
         self.bcn3dModels = bcn3dModels
         self._name = name
         message = catalog.i18nc("@action:button", "Send to printer") 
+        self._progress_message = Message("Sending the gcode to the printer",
+                                         title="Send to printer", dismissable=False, progress=-1)
         if self._name == "queue":
             message = catalog.i18nc("@action:button", "Send to queue")
+            self._progress_message = Message("Sending the gcode to the queue",
+                                         title="Send to queue", dismissable=False, progress=-1)
         self.setShortDescription(catalog.i18nc("@action:button Preceded by 'Ready to'.", message))
         self.setDescription(catalog.i18nc("@info:tooltip", message))
         self.setIconName("cloud")
@@ -37,8 +41,7 @@ class Device(NetworkedPrinterOutputDevice):
         self._gcode = []
         self._writing = False
         self._compressing_gcode = False
-        self._progress_message = Message("Sending the gcode to the printer",
-                                         title="Send to printer", dismissable=False, progress=-1)
+        
 
     def requestWrite(self, nodes, file_name=None, limit_mimetypes=False, file_handler=None, **kwargs):
         self._progress_message.show()
@@ -56,7 +59,7 @@ class Device(NetworkedPrinterOutputDevice):
             action = "queue"
         
         for p in connectedPrinters:
-             
+
             if not p["serial_number"]:
                 p["serial_number"] = str(p["id"])
                  
