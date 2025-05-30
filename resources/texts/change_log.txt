@@ -13,6 +13,7 @@
 * Added profile compatibility for some new OFN materials (Omega I60): 
   - Polimaker PolySupport
   - Polimaker PolyCast
+  - Polimaker PoliDissolve
   - BASF Forward AM Ultrafuse PC ABS
   - Smart Materials ASA
 
