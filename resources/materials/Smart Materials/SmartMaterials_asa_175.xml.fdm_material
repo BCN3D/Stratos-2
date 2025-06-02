@@ -36,10 +36,10 @@
       <hotend id="Omega Hotend Tip 0.6 HR">
         <setting key="hardware compatible">no</setting>
       </hotend>
-      <hotend id="Omega Hotend Tip 0.4 HS">
+      <hotend id="Omega Hotend Tip 0.4 HF">
         <setting key="hardware compatible">no</setting>
       </hotend>
-      <hotend id="Omega Hotend Tip 0.6 HS">
+      <hotend id="Omega Hotend Tip 0.6 HF">
         <setting key="hardware compatible">no</setting>
       </hotend>
       <hotend id="Hotend M (0.4mm)">

@@ -33,9 +33,9 @@
       <hotend id="Omega Hotend Tip 0.4 HR">
       </hotend>
       <hotend id="Omega Hotend Tip 0.6 HR" />
-      <hotend id="Omega Hotend Tip 0.4 HS">
+      <hotend id="Omega Hotend Tip 0.4 HF">
       </hotend>
-      <hotend id="Omega Hotend Tip 0.6 HS">
+      <hotend id="Omega Hotend Tip 0.6 HF">
           <setting key="hardware compatible">no</setting>
       </hotend>
       <hotend id="Hotend M (0.4mm)">
