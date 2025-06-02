@@ -2,8 +2,8 @@
 
 * Omega I60:
   - Updated printer definition, enabling even faster printing speeds!
-  - Added Omega Hotend Tip 0.4 HS (Omega I60 series)
-  - Added Omega Hotend Tip 0.6 HS (Omega I60 series)
+  - Added Omega Hotend Tip 0.4 HF (Omega I60 series)
+  - Added Omega Hotend Tip 0.6 HF (Omega I60 series)
 
 * Added High Speed profiles for some BCN3D materials (Omega I60): 
   - Omega Proto material
