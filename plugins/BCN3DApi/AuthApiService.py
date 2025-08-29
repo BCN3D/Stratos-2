@@ -16,7 +16,6 @@ from threading import Lock
 class AuthApiService(QObject):
     api_url = None
     client_id = None
-    app_secret = None
     scope = None
     _session_manager = None
     grant_type = 'password'
@@ -48,7 +47,6 @@ class AuthApiService(QObject):
         if apiData:
             self.api_url = apiData['api_url']
             self.client_id = apiData['client_id']
-            self.app_secret = apiData['app_secret']
             self.scope = apiData['scope']
             if not self._session_manager:
                 self._session_manager = SessionManager.getInstance()
