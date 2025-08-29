@@ -142,6 +142,8 @@ class Bcn3DFixes(Job):
         if check:
             lines[6] = lines[6].replace("0.4rx", "0.4RX")
             lines[6] = lines[6].replace("0.6rx", "0.6RX")
+            lines[6] = lines[6].replace("0.4hs", "0.4HS")
+            lines[6] = lines[6].replace("0.6hs", "0.6HS")
             lines[6] = lines[6].replace("0.6x", "0.6X")
             lines[6] = lines[6].replace("0.4m", "0.4M")
             layer = "\n".join(lines)
