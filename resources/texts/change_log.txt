@@ -1,7 +1,13 @@
 [2.2.2]
 
+* Omega I60:
+  - Added Omega Hotend Tip 0.6 HR (Omega I60 series) for custom materials.
+  - Added Omega Hotend Tip 0.6 HF (Omega I60 series) for custom materials.
+
 * Bug fixes:
   - Fixed tool change travel moves across the entire G-code.
+  - Fixed a bug that caused G-codes to be generated with the wrong head.
+  - Fixed an issue where the application would crash when network settings were incorrect; it now displays an error instead.
 
 [2.2.1]
 
