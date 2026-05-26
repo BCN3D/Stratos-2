@@ -4,6 +4,7 @@
   - Added Omega Hotend Tip 0.6 HR (Omega I60 series) for custom materials.
   - Added Omega Hotend Tip 0.6 HF (Omega I60 series) for custom materials.
   - Reintroduced the Omega Hotend Tip 0.6 HR (Omega I60 series) quality profile for Proto material.
+  - Improved Omega Materials quality definitions.
 
 * Bug fixes:
   - Fixed tool-change travel moves across the entire G-code.
