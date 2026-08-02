@@ -90,7 +90,7 @@ Loader {
                         {
                             return UM.Theme.getIcon("Sigma_d25", "default")
                         }
-                        else if (model.machineDefinition == "bcn3domega")
+                        else if (model.machineDefinition == "bcn3domega" || model.machineDefinition == "bcn3domega2")
                         {
                             return UM.Theme.getIcon("Omega_I60", "default")
                         }
