@@ -98,7 +98,7 @@ Loader {
                         {
                             return UM.Theme.getIcon("Epsilon_w50", "default")
                         }
-                        else if (model.machineDefinition == "bcn3dw27")
+                        else if (model.machineDefinition == "bcn3dw27" || model.machineDefinition == "bcn3dw27g2")
                         {
                             return UM.Theme.getIcon("Epsilon_w27", "default")
                         }
