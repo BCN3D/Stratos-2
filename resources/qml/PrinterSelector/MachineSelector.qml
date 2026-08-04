@@ -107,13 +107,25 @@ Cura.ExpandablePopup
             {
                 return UM.Theme.getIcon("Sigma_d25", "default")
             }
+            else if (Cura.MachineManager.activeMachine.definition.name == "Omega G2")
+            {
+                return UM.Theme.getIcon("Omega_I60_G2", "default")
+            }
             else if (Cura.MachineManager.activeMachine.definition.name == "Omega I60")
             {
                 return UM.Theme.getIcon("Omega_I60", "default")
             }
+            else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W50 G2 1.75mm")
+            {
+                return UM.Theme.getIcon("Epsilon_w50_G2", "default")
+            }
             else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W50")
             {
                 return UM.Theme.getIcon("Epsilon_w50", "default")
+            }
+            else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W27 G2 1.75mm")
+            {
+                return UM.Theme.getIcon("Epsilon_w27_G2", "default")
             }
             else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W27")
             {

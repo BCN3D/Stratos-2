@@ -90,15 +90,27 @@ Loader {
                         {
                             return UM.Theme.getIcon("Sigma_d25", "default")
                         }
-                        else if (model.machineDefinition == "bcn3domega" || model.machineDefinition == "bcn3domega2")
+                        else if (model.machineDefinition == "bcn3domega2")
+                        {
+                            return UM.Theme.getIcon("Omega_I60_G2", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3domega")
                         {
                             return UM.Theme.getIcon("Omega_I60", "default")
                         }
-                        else if (model.machineDefinition == "bcn3dw50" || model.machineDefinition == "bcn3dw50g2")
+                        else if (model.machineDefinition == "bcn3dw50g2")
+                        {
+                            return UM.Theme.getIcon("Epsilon_w50_G2", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dw50")
                         {
                             return UM.Theme.getIcon("Epsilon_w50", "default")
                         }
-                        else if (model.machineDefinition == "bcn3dw27" || model.machineDefinition == "bcn3dw27g2")
+                        else if (model.machineDefinition == "bcn3dw27g2")
+                        {
+                            return UM.Theme.getIcon("Epsilon_w27_G2", "default")
+                        }
+                        else if (model.machineDefinition == "bcn3dw27")
                         {
                             return UM.Theme.getIcon("Epsilon_w27", "default")
                         }
