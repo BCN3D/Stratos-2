@@ -1,32 +1,34 @@
 {
-    "version": 2,
-    "name": "Epsilon W27 G2 1.75mm",
-    "inherits": "bcn3dw27",
-    "metadata":
-    {
-        "exclude_materials": [
-            "BCN3D_filaments_OmegaImpact",
-            "BCN3D_Filaments_OmegaTooling",
-            "BCN3D_filaments_OmegaCustom",
-            "BCN3D_filaments_OmegaResistantNylon",
-            "BCN3D_filaments_OmegaProto",
-            "polymaker_polysupport_175",
-            "polymaker_polycast_175",
-            "basf_pc_abs_175",
-            "SmartMaterials_asa_175"
-        ],
-        "machine_extruder_trains":
-        {
-            "0": "bcn3dw27g2_extruder_left",
-            "1": "bcn3dw27g2_extruder_right"
-        },
-        "quality_definition": "bcn3dw27",
-        "weight": "2"
+  "version": 2,
+  "name": "Epsilon W27 G2 1.75mm",
+  "inherits": "bcn3dw27",
+  "metadata": {
+    "exclude_materials": [
+      "BCN3D_filaments_OmegaImpact",
+      "BCN3D_Filaments_OmegaTooling",
+      "BCN3D_filaments_OmegaCustom",
+      "BCN3D_filaments_OmegaResistantNylon",
+      "BCN3D_filaments_OmegaProto",
+      "polymaker_polysupport_175",
+      "polymaker_polycast_175",
+      "basf_pc_abs_175",
+      "SmartMaterials_asa_175"
+    ],
+    "machine_extruder_trains": {
+      "0": "bcn3dw27g2_extruder_left",
+      "1": "bcn3dw27g2_extruder_right"
     },
-    "overrides":
-    {
-        "machine_depth": { "default_value": 273.5 },
-        "machine_name": { "default_value": "Epsilon W27 G2 1.75mm" },
-        "machine_width": { "default_value": 390 }
+    "weight": "2"
+  },
+  "overrides": {
+    "machine_depth": {
+      "default_value": 273.5
+    },
+    "machine_name": {
+      "default_value": "Epsilon W27 G2 1.75mm"
+    },
+    "machine_width": {
+      "default_value": 390
     }
+  }
 }

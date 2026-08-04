@@ -14,6 +14,18 @@
         },
         "preferred_material": "BCN3D_filaments_OmegaCustom",
         "preferred_variant_name": "Omega Hotend Tip 0.4 HR",
+        "exclude_materials": [
+            "BCN3D_Filaments_ABS_G2",
+            "BCN3D_Filaments_FLEX_TPU_G2",
+            "BCN3D_Filaments_PAHT_G2",
+            "BCN3D_Filaments_PLA_G2",
+            "BCN3D_Filaments_Proto_G2",
+            "Generic_ABS_G2",
+            "Generic_FLEX_TPU_G2",
+            "Generic_PAHT_G2",
+            "Generic_PLA_G2",
+            "Generic_Proto_G2"
+        ],
         "supports_cloud_connection": true,
         "supports_firmware_updates": false,
         "weight": "-1"
