@@ -7,13 +7,6 @@
         "visible": true,
         "file_formats": "text/x-gcode",
         "platform": "bcn3domega_bed.stl",
-        "machine_extruder_trains":
-        {
-            "0": "bcn3domega_extruder_left",
-            "1": "bcn3domega_extruder_right"
-        },
-        "preferred_material": "BCN3D_filaments_OmegaCustom",
-        "preferred_variant_name": "Omega Hotend Tip 0.4 HR",
         "exclude_materials": [
             "BCN3D_Filaments_ABS_G2",
             "BCN3D_Filaments_FLEX_TPU_G2",
@@ -26,6 +19,13 @@
             "Generic_PLA_G2",
             "Generic_Proto_G2"
         ],
+        "machine_extruder_trains":
+        {
+            "0": "bcn3domega_extruder_left",
+            "1": "bcn3domega_extruder_right"
+        },
+        "preferred_material": "BCN3D_filaments_OmegaCustom",
+        "preferred_variant_name": "Omega Hotend Tip 0.4 HR",
         "supports_cloud_connection": true,
         "supports_firmware_updates": false,
         "weight": "-1"
