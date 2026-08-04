@@ -25,6 +25,8 @@
     },
     "overrides":
     {
-        "machine_name": { "default_value": "Epsilon W50 G2 1.75mm" }
+        "machine_depth": { "default_value": 273.5 },
+        "machine_name": { "default_value": "Epsilon W50 G2 1.75mm" },
+        "machine_width": { "default_value": 390 }
     }
 }
