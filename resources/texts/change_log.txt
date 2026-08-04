@@ -1,3 +1,24 @@
+[2.3.0]
+
+* Omega G2:
+  - Added a new printer definition based on the Omega I60.
+  - Added dedicated material compatibility, hotend variants and quality-profile support.
+
+* Epsilon W50 G2 1.75mm:
+  - Added a new printer definition based on the Epsilon W50.
+  - Added dedicated left and right extruder definitions configured for 1.75 mm filament.
+  - Added dedicated 1.75 mm material profiles, compatible hotend variants and W50 quality-profile support.
+  - Set the build plate to 390 x 273.5 mm to account for the larger extruders and their reduced printable area.
+
+* Epsilon W27 G2 1.75mm:
+  - Added a new printer definition based on the Epsilon W27.
+  - Added dedicated left and right extruder definitions configured for 1.75 mm filament.
+  - Added dedicated 1.75 mm material profiles, compatible hotend variants and W27 quality-profile support.
+  - Set the build plate to 390 x 273.5 mm to account for the larger extruders and their reduced printable area.
+
+* Bug fixes:
+- Internal bug fixing
+
 [2.2.2]
 
 * Omega I60:
