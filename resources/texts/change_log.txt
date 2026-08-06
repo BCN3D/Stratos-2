@@ -1,6 +1,6 @@
 [2.3.0]
 
-* Added Omega G2
+* Added Omega I60 G2
   - New printer definition based on Omega I60.
   - Added dedicated material compatibility and quality-profile support.
   - Added compatible Omega Hotend Tip variants.
