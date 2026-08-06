@@ -19,6 +19,9 @@
   - Added compatible hotend variants and W27 quality-profile support.
   - Set the build plate to 390 x 273.5 mm to account for the larger extruders and their reduced printable area.
 
+* G-code thumbnails:
+  - A thumbnail of the models on the build plate is now generated automatically when saving or sending G-code, so it can be displayed in BCN3D Cloud.
+
 * Bug fixes:
 - Internal bug fixing
 
