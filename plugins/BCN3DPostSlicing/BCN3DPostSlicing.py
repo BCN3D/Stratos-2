@@ -50,7 +50,14 @@ class BCN3DPostSlicing(QObject, Extension):
             return
 
         try:
-            snapshot = Snapshot.snapshot(self.THUMBNAIL_WIDTH, self.THUMBNAIL_HEIGHT)
+            # IDEX copies are visual-only nodes, so include them in the thumbnail
+            # without making them sliceable or adding them to the G-code.
+            snapshot = Snapshot.snapshot(
+                self.THUMBNAIL_WIDTH,
+                self.THUMBNAIL_HEIGHT,
+                include_duplicated_nodes = True,
+                add_print_mode_indicator = True
+            )
             if snapshot is None:
                 Logger.log("w", "Unable to create the G-code thumbnail: the build plate is empty")
                 return
