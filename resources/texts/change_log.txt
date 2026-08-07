@@ -23,6 +23,7 @@
   - A thumbnail of the models on the build plate is now generated automatically when saving or sending G-code, so it can be displayed in BCN3D Cloud.
 
 * Bug fixes:
+- Fixed the virtual IDEX copy orientation when switching directly between Duplication and Mirror modes.
 - Internal bug fixing
 
 [2.2.2]
