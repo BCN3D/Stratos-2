@@ -1935,11 +1935,13 @@ class CuraApplication(QtApplication):
                         assert content_disposition_match is not None
                         filename = content_disposition_match.group("filename")
 
-                    tmp = tempfile.NamedTemporaryFile(suffix=filename, delete=False)
-                    with open(tmp.name, "wb") as f:
-                        f.write(response.readAll())
+                    # Close the temporary file before the mesh reader opens it.
+                    # Reopening a live NamedTemporaryFile can fail on Windows.
+                    with tempfile.NamedTemporaryFile(suffix=filename, delete=False) as tmp:
+                        tmp.write(bytes(response.readAll()))
+                        temp_path = tmp.name
 
-                    self.readLocalFile(QUrl.fromLocalFile(tmp.name), add_to_recent_files=False)
+                    self.readLocalFile(QUrl.fromLocalFile(temp_path), add_to_recent_files=False)
 
                 def on_error(*args, **kwargs):
                     Logger.log("w", "Could not download file from {0}".format(model_url.url()))
