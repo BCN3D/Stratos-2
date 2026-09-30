@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "Epsilon W27 G2 1.75mm",
+    "name": "Epsilon X27",
     "inherits": "bcn3dw27",
     "metadata":
     {
@@ -17,8 +17,8 @@
         ],
         "machine_extruder_trains":
         {
-            "0": "bcn3dw27g2_extruder_left",
-            "1": "bcn3dw27g2_extruder_right"
+            "0": "bcn3dx27_extruder_left",
+            "1": "bcn3dx27_extruder_right"
         },
         "weight": "2"
     },
@@ -32,7 +32,7 @@
         "machine_max_feedrate_x": { "default_value": 180 },
         "machine_max_feedrate_y": { "default_value": 180 },
         "machine_max_feedrate_z": { "default_value": 10 },
-        "machine_name": { "default_value": "Epsilon W27 G2 1.75mm" },
+        "machine_name": { "default_value": "Epsilon X27" },
         "machine_width": { "default_value": 390 },
         "material_break_preparation_temperature": { "maximum_value": 300 },
         "material_break_temperature": { "maximum_value": 300 },

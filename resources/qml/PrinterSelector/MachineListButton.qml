@@ -98,7 +98,7 @@ Loader {
                         {
                             return UM.Theme.getIcon("Omega_I60", "default")
                         }
-                        else if (model.machineDefinition == "bcn3dw50g2")
+                        else if (model.machineDefinition == "bcn3dx50")
                         {
                             return UM.Theme.getIcon("Epsilon_w50_G2", "default")
                         }
@@ -106,7 +106,7 @@ Loader {
                         {
                             return UM.Theme.getIcon("Epsilon_w50", "default")
                         }
-                        else if (model.machineDefinition == "bcn3dw27g2")
+                        else if (model.machineDefinition == "bcn3dx27")
                         {
                             return UM.Theme.getIcon("Epsilon_w27_G2", "default")
                         }

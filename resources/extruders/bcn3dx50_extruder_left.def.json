@@ -2,12 +2,12 @@
     "version": 2,
     "name": "Extruder Left",
     "inherits": "fdmextruder",
-    "id": "bcn3dw50g2_extruder_left",
+    "id": "bcn3dx50_extruder_left",
     "metadata":
     {
-        "machine": "bcn3dw50g2",
+        "machine": "bcn3dx50",
         "position": "0",
-        "quality_definition": "bcn3dw50g2_extruder_left"
+        "quality_definition": "bcn3dx50_extruder_left"
     },
     "overrides":
     {

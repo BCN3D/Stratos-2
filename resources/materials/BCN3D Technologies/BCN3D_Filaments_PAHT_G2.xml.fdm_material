@@ -50,7 +50,7 @@
         <setting key="retraction amount">6.5</setting>
 
         <machine>
-            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27g2" />
+            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dx27" />
             <cura:setting key="material_diameter">1.75</cura:setting>
             <hotend id="0.4mm">
                 <setting key="hardware compatible">no</setting>
@@ -70,7 +70,7 @@
             </hotend>
         </machine>
 <machine>
-            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50g2" />
+            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dx50" />
             <cura:setting key="material_diameter">1.75</cura:setting>
             <hotend id="0.4mm">
                 <setting key="hardware compatible">no</setting>

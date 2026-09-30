@@ -51,7 +51,7 @@
         <setting key="adhesion type">brim</setting>
 
         <machine>
-            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw27g2" />
+            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dx27" />
             <cura:setting key="material_diameter">1.75</cura:setting>
             <setting key="heated bed temperature">30</setting>
             <setting key="heated chamber temperature">40</setting>
@@ -64,7 +64,7 @@
             <hotend id="1.0mm" />
         </machine>
 <machine>
-            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dw50g2" />
+            <machine_identifier manufacturer="BCN3D Technologies" product="bcn3dx50" />
             <cura:setting key="material_diameter">1.75</cura:setting>
             <setting key="heated bed temperature">30</setting>
             <setting key="heated chamber temperature">40</setting>

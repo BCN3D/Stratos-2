@@ -115,7 +115,7 @@ Cura.ExpandablePopup
             {
                 return UM.Theme.getIcon("Omega_I60", "default")
             }
-            else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W50 G2 1.75mm")
+            else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon X50")
             {
                 return UM.Theme.getIcon("Epsilon_w50_G2", "default")
             }
@@ -123,7 +123,7 @@ Cura.ExpandablePopup
             {
                 return UM.Theme.getIcon("Epsilon_w50", "default")
             }
-            else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon W27 G2 1.75mm")
+            else if (Cura.MachineManager.activeMachine.definition.name == "Epsilon X27")
             {
                 return UM.Theme.getIcon("Epsilon_w27_G2", "default")
             }
