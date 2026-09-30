@@ -107,7 +107,7 @@ Cura.ExpandablePopup
             {
                 return UM.Theme.getIcon("Sigma_d25", "default")
             }
-            else if (Cura.MachineManager.activeMachine.definition.name == "Omega G2")
+            else if (Cura.MachineManager.activeMachine.definition.name == "Omega I60 G2")
             {
                 return UM.Theme.getIcon("Omega_I60_G2", "default")
             }
