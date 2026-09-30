@@ -20,6 +20,7 @@
             "0": "bcn3dx50_extruder_left",
             "1": "bcn3dx50_extruder_right"
         },
+        "preferred_material": "BCN3D_Filaments_PLA_G2",
         "weight": "1"
     },
     "overrides":
