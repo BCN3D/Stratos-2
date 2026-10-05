@@ -348,7 +348,10 @@ class CuraApplication(QtApplication):
 
         super().initialize(ApplicationMetadata.IsEnterpriseVersion)
 
-        self._preferences.addPreference("cura/single_instance", False)
+        # Deep links are delivered by starting Stratos with the URL as a command-line
+        # argument. Keep a local server running so that launcher process can forward
+        # the URL to an already-running Stratos instance.
+        self._preferences.addPreference("cura/single_instance", True)
         self._use_single_instance = self._preferences.getValue("cura/single_instance") or self._cli_args.single_instance
         #BCN3D inclusion
         self._preferences.addPreference("cura/check_material_compatibility", True)
@@ -1935,11 +1938,13 @@ class CuraApplication(QtApplication):
                         assert content_disposition_match is not None
                         filename = content_disposition_match.group("filename")
 
-                    tmp = tempfile.NamedTemporaryFile(suffix=filename, delete=False)
-                    with open(tmp.name, "wb") as f:
-                        f.write(response.readAll())
+                    # Close the temporary file before the mesh reader opens it.
+                    # Reopening a live NamedTemporaryFile can fail on Windows.
+                    with tempfile.NamedTemporaryFile(suffix=filename, delete=False) as tmp:
+                        tmp.write(bytes(response.readAll()))
+                        temp_path = tmp.name
 
-                    self.readLocalFile(QUrl.fromLocalFile(tmp.name), add_to_recent_files=False)
+                    self.readLocalFile(QUrl.fromLocalFile(temp_path), add_to_recent_files=False)
 
                 def on_error(*args, **kwargs):
                     Logger.log("w", "Could not download file from {0}".format(model_url.url()))

@@ -4,6 +4,7 @@
 
 import os
 import argparse  # Command line arguments parsing and help.
+import re
 import subprocess
 
 import shutil
@@ -14,19 +15,58 @@ from pathlib import Path
 from jinja2 import Template
 
 
+def _application_directory(dist_loc: Path) -> Path:
+    """Return the PyInstaller output directory used by this build."""
+    for directory_name in ("BCN3D-Stratos", "UltiMaker-Cura"):
+        candidate = dist_loc.joinpath(directory_name)
+        if candidate.is_dir():
+            return candidate
+    raise FileNotFoundError("Could not find the BCN3D-Stratos PyInstaller output directory")
+
+
+def _version_from_environment_or_filename(filename: str) -> str:
+    version = os.getenv("CURA_VERSION_FULL")
+    if version:
+        return version
+
+    match = re.search(r"(\d+\.\d+\.\d+(?:\.[A-Za-z0-9]+)?)", Path(filename).name)
+    if match:
+        return match.group(1)
+    raise RuntimeError("Set CURA_VERSION_FULL or include the version in the installer filename")
+
+
 def generate_nsi(source_path: str, dist_path: str, filename: str):
     dist_loc = Path(os.getcwd(), dist_path)
     source_loc = Path(os.getcwd(), source_path)
+    application_dir = _application_directory(dist_loc)
+    main_app = (
+        "BCN3D-Stratos.exe"
+        if application_dir.name == "BCN3D-Stratos"
+        else "UltiMaker-Cura.exe"
+    )
+    version = _version_from_environment_or_filename(filename)
+    numeric_version = version.split(".")[:3]
+    if len(numeric_version) != 3:
+        raise RuntimeError(f"Invalid Cura version: {version}")
+
     instdir = Path("$INSTDIR")
-    dist_paths = [p.relative_to(dist_loc.joinpath("UltiMaker-Cura")) for p in sorted(dist_loc.joinpath("UltiMaker-Cura").rglob("*")) if p.is_file()]
+    dist_paths = [
+        path.relative_to(application_dir)
+        for path in sorted(application_dir.rglob("*"))
+        if path.is_file()
+    ]
     mapped_out_paths = {}
-    for dist_path in dist_paths:
-        if "__pycache__" not in dist_path.parts:
-            out_path = instdir.joinpath(dist_path).parent
+    for relative_path in dist_paths:
+        if "__pycache__" not in relative_path.parts:
+            out_path = instdir.joinpath(relative_path).parent
             if out_path not in mapped_out_paths:
-                mapped_out_paths[out_path] = [(dist_loc.joinpath("UltiMaker-Cura", dist_path), instdir.joinpath(dist_path))]
+                mapped_out_paths[out_path] = [
+                    (application_dir.joinpath(relative_path), instdir.joinpath(relative_path))
+                ]
             else:
-                mapped_out_paths[out_path].append((dist_loc.joinpath("UltiMaker-Cura", dist_path), instdir.joinpath(dist_path)))
+                mapped_out_paths[out_path].append(
+                    (application_dir.joinpath(relative_path), instdir.joinpath(relative_path))
+                )
 
     rmdir_paths = set()
     for rmdir_f in mapped_out_paths.values():
@@ -42,14 +82,14 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
 
 
     nsis_content = template.render(
-        app_name = f"BCN3D Stratos {os.getenv('CURA_VERSION_FULL')}",
-        main_app = "UltiMaker-Cura.exe",
-        version = os.getenv('CURA_VERSION_FULL'),
-        version_major = os.environ.get("CURA_VERSION_MAJOR"),
-        version_minor = os.environ.get("CURA_VERSION_MINOR"),
-        version_patch = os.environ.get("CURA_VERSION_PATCH"),
-        company = "UltiMaker",
-        web_site = "https://ultimaker.com",
+        app_name = f"BCN3D Stratos {version}",
+        main_app = main_app,
+        version = version,
+        version_major = numeric_version[0],
+        version_minor = numeric_version[1],
+        version_patch = numeric_version[2],
+        company = "BCN3D",
+        web_site = "https://www.bcn3d.com",
         year = datetime.now().year,
         cura_license_file = str(source_loc.joinpath("packaging", "cura_license.txt")),
         compression_method = "LZMA",  # ZLIB, BZIP2 or LZMA
@@ -68,8 +108,18 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
 
 def build(dist_path: str):
     dist_loc = Path(os.getcwd(), dist_path)
-    command = ["makensis", "/V2", "/P4", str(dist_loc.joinpath("UltiMaker-Cura.nsi"))]
-    subprocess.run(command)
+    makensis = shutil.which("makensis")
+    if not makensis:
+        program_files_x86 = os.environ.get("ProgramFiles(x86)")
+        if program_files_x86:
+            candidate = Path(program_files_x86, "NSIS", "makensis.exe")
+            if candidate.is_file():
+                makensis = str(candidate)
+    if not makensis:
+        raise FileNotFoundError("Could not find makensis.exe")
+
+    command = [makensis, "/V2", "/P4", str(dist_loc.joinpath("UltiMaker-Cura.nsi"))]
+    subprocess.run(command, check=True)
 
 
 if __name__ == "__main__":
