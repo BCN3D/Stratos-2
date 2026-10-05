@@ -35,7 +35,7 @@ class BCN3DPostSlicing(QObject, Extension):
         if hasattr(scene, "gcode_dict"):
             gcode_dict = getattr(scene, "gcode_dict")
             if gcode_dict:
-                self._addThumbnails(gcode_dict)
+                #self._addThumbnails(gcode_dict)
                 for i in gcode_dict:
                     self._bcn3d_fixes_job = Bcn3DFixes(container, gcode_dict[i])
                     self._bcn3d_fixes_job.start()
