@@ -161,20 +161,28 @@
 
         <!--Url Scheme-->
         <Component Id="CuraRegistration" Guid="*" Directory="APPLICATIONFOLDER">
-            <RegistryKey Root="HKCR" Key="cura">
+            <RegistryKey Root="HKCU" Key="Software\Classes\cura">
                 <RegistryValue Type="string" Value="URL:BCN3D Stratos Protocol"/>
                 <RegistryValue Type="string" Name="URL Protocol" Value=""/>
-                <RegistryValue Type="string" Key="DefaultIcon" Value="[APPLICATIONFOLDER]\{{ main_app }},1"/>
-                <RegistryValue Type="string" Key="shell\open\command" Value="&quot;[APPLICATIONFOLDER]\{{ main_app }}&quot; &quot;%1&quot;"/>
+                <RegistryKey Key="DefaultIcon">
+                    <RegistryValue Type="string" Value="[APPLICATIONFOLDER]{{ main_app }},1"/>
+                </RegistryKey>
+                <RegistryKey Key="shell\open\command">
+                    <RegistryValue Type="string" Value="&quot;[APPLICATIONFOLDER]{{ main_app }}&quot; --single-instance &quot;%1&quot;"/>
+                </RegistryKey>
             </RegistryKey>
         </Component>
 
         <Component Id="SlicerRegistration" Guid="*" Directory="APPLICATIONFOLDER">
-            <RegistryKey Root="HKCR" Key="slicer">
+            <RegistryKey Root="HKCU" Key="Software\Classes\slicer">
                 <RegistryValue Type="string" Value="URL:BCN3D Stratos Protocol"/>
                 <RegistryValue Type="string" Name="URL Protocol" Value=""/>
-                <RegistryValue Type="string" Key="DefaultIcon" Value="[APPLICATIONFOLDER]\{{ main_app }},1"/>
-                <RegistryValue Type="string" Key="shell\open\command" Value="&quot;[APPLICATIONFOLDER]\{{ main_app }}&quot; &quot;%1&quot;"/>
+                <RegistryKey Key="DefaultIcon">
+                    <RegistryValue Type="string" Value="[APPLICATIONFOLDER]{{ main_app }},1"/>
+                </RegistryKey>
+                <RegistryKey Key="shell\open\command">
+                    <RegistryValue Type="string" Value="&quot;[APPLICATIONFOLDER]{{ main_app }}&quot; --single-instance &quot;%1&quot;"/>
+                </RegistryKey>
             </RegistryKey>
         </Component>
 

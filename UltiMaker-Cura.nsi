@@ -151,6 +151,28 @@ SectionEnd
 
 ######################################################################
 
+Section UrlProtocol
+SectionIn RO
+
+; Register the URL schemes for the user that launches Stratos. Writing to
+; HKCU explicitly also repairs an older, empty per-user protocol command that
+; would otherwise override a valid machine-wide HKCR registration.
+WriteRegStr HKCU "Software\Classes\cura" "" "URL:BCN3D Stratos Protocol"
+WriteRegStr HKCU "Software\Classes\cura" "URL Protocol" ""
+WriteRegStr HKCU "Software\Classes\cura\DefaultIcon" "" "$INSTDIR\${MAIN_APP_EXE},1"
+WriteRegStr HKCU "Software\Classes\cura\shell" "" "open"
+WriteRegStr HKCU "Software\Classes\cura\shell\open\command" "" '"$INSTDIR\${MAIN_APP_EXE}" --single-instance "%1"'
+
+WriteRegStr HKCU "Software\Classes\slicer" "" "URL:BCN3D Stratos Protocol"
+WriteRegStr HKCU "Software\Classes\slicer" "URL Protocol" ""
+WriteRegStr HKCU "Software\Classes\slicer\DefaultIcon" "" "$INSTDIR\${MAIN_APP_EXE},1"
+WriteRegStr HKCU "Software\Classes\slicer\shell" "" "open"
+WriteRegStr HKCU "Software\Classes\slicer\shell\open\command" "" '"$INSTDIR\${MAIN_APP_EXE}" --single-instance "%1"'
+
+SectionEnd
+
+######################################################################
+
 Section Uninstall
 ${INSTALL_TYPE}
 
@@ -191,6 +213,9 @@ RmDir "$SMPROGRAMS\BCN3D Stratos"
 
 !insertmacro APP_UNASSOCIATE "stl" "Cura.model"
 !insertmacro APP_UNASSOCIATE "3mf" "Cura.project"
+
+DeleteRegKey HKCU "Software\Classes\cura"
+DeleteRegKey HKCU "Software\Classes\slicer"
 
 DeleteRegKey ${REG_ROOT} "${REG_APP_PATH}"
 DeleteRegKey ${REG_ROOT} "${UNINSTALL_PATH}"

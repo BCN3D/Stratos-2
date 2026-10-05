@@ -147,17 +147,17 @@ SectionEnd
 Section UrlProtocol
 SectionIn RO
 
-WriteRegStr HKCR "cura" "" "URL:BCN3D Stratos Protocol"
-WriteRegStr HKCR "cura" "URL Protocol" ""
-WriteRegStr HKCR "cura\DefaultIcon" "" "$INSTDIR\${MAIN_APP_EXE},1"
-WriteRegStr HKCR "cura\shell" "" "open"
-WriteRegStr HKCR "cura\shell\open\command" "" '"$INSTDIR\${MAIN_APP_EXE}" "%1"'
+WriteRegStr HKCU "Software\Classes\cura" "" "URL:BCN3D Stratos Protocol"
+WriteRegStr HKCU "Software\Classes\cura" "URL Protocol" ""
+WriteRegStr HKCU "Software\Classes\cura\DefaultIcon" "" "$INSTDIR\${MAIN_APP_EXE},1"
+WriteRegStr HKCU "Software\Classes\cura\shell" "" "open"
+WriteRegStr HKCU "Software\Classes\cura\shell\open\command" "" '"$INSTDIR\${MAIN_APP_EXE}" --single-instance "%1"'
 
-WriteRegStr HKCR "slicer" "" "URL:BCN3D Stratos Protocol"
-WriteRegStr HKCR "slicer" "URL Protocol" ""
-WriteRegStr HKCR "slicer\DefaultIcon" "" "$INSTDIR\${MAIN_APP_EXE},1"
-WriteRegStr HKCR "slicer\shell" "" "open"
-WriteRegStr HKCR "slicer\shell\open\command" "" '"$INSTDIR\${MAIN_APP_EXE}" "%1"'
+WriteRegStr HKCU "Software\Classes\slicer" "" "URL:BCN3D Stratos Protocol"
+WriteRegStr HKCU "Software\Classes\slicer" "URL Protocol" ""
+WriteRegStr HKCU "Software\Classes\slicer\DefaultIcon" "" "$INSTDIR\${MAIN_APP_EXE},1"
+WriteRegStr HKCU "Software\Classes\slicer\shell" "" "open"
+WriteRegStr HKCU "Software\Classes\slicer\shell\open\command" "" '"$INSTDIR\${MAIN_APP_EXE}" --single-instance "%1"'
 
 SectionEnd
 ######################################################################
@@ -206,10 +206,10 @@ RmDir "$SMPROGRAMS\{{ app_name }}"
 !insertmacro APP_UNASSOCIATE "3mf" "Cura.project"
 
 ; Unassociate file associations for 'cura' protocol
-DeleteRegKey HKCR "cura"
+DeleteRegKey HKCU "Software\Classes\cura"
 
 ; Unassociate file associations for 'slicer' protocol
-DeleteRegKey HKCR "slicer"
+DeleteRegKey HKCU "Software\Classes\slicer"
 
 DeleteRegKey ${REG_ROOT} "${REG_APP_PATH}"
 DeleteRegKey ${REG_ROOT} "${UNINSTALL_PATH}"

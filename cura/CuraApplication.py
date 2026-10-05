@@ -348,7 +348,10 @@ class CuraApplication(QtApplication):
 
         super().initialize(ApplicationMetadata.IsEnterpriseVersion)
 
-        self._preferences.addPreference("cura/single_instance", False)
+        # Deep links are delivered by starting Stratos with the URL as a command-line
+        # argument. Keep a local server running so that launcher process can forward
+        # the URL to an already-running Stratos instance.
+        self._preferences.addPreference("cura/single_instance", True)
         self._use_single_instance = self._preferences.getValue("cura/single_instance") or self._cli_args.single_instance
         #BCN3D inclusion
         self._preferences.addPreference("cura/check_material_compatibility", True)
