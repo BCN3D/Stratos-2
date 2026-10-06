@@ -1917,6 +1917,17 @@ class CuraApplication(QtApplication):
                 query = QUrlQuery(url.query())
                 model_url = QUrl(query.queryItemValue("file", options=QUrl.ComponentFormattingOption.FullyDecoded))
 
+                if model_url.isLocalFile():
+                    local_path = model_url.toLocalFile()
+                    if not os.path.isfile(local_path):
+                        Logger.log("w", "Could not find local file from deep link: %s", local_path)
+                        Message("Could not find local file: " + local_path,
+                                title="Loading Model failed",
+                                message_type=Message.MessageType.ERROR).show()
+                        return
+                    self.readLocalFile(QUrl.fromLocalFile(local_path), add_to_recent_files=False)
+                    return
+
                 def on_finish(response):
                     content_disposition_header_key = QByteArray("content-disposition".encode())
 
