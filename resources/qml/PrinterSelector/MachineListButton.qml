@@ -86,6 +86,10 @@ Loader {
                         {
                             return UM.Theme.getIcon("PrinterTriple", "medium")
                         }
+                        else if (model.machineDefinition == "aurora")
+                        {
+                            return UM.Theme.getIcon("aurora", "default")
+                        }
                         else if (model.machineDefinition == "bcn3dd25")
                         {
                             return UM.Theme.getIcon("Sigma_d25", "default")
@@ -100,7 +104,7 @@ Loader {
                         }
                         else if (model.machineDefinition == "bcn3dx50")
                         {
-                            return UM.Theme.getIcon("Epsilon_w50_G2", "default")
+                            return UM.Theme.getIcon("Epsilon_x50", "default")
                         }
                         else if (model.machineDefinition == "bcn3dw50")
                         {
@@ -108,7 +112,7 @@ Loader {
                         }
                         else if (model.machineDefinition == "bcn3dx27")
                         {
-                            return UM.Theme.getIcon("Epsilon_w27_G2", "default")
+                            return UM.Theme.getIcon("Epsilon_x27", "default")
                         }
                         else if (model.machineDefinition == "bcn3dw27")
                         {
