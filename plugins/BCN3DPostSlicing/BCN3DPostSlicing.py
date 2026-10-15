@@ -35,7 +35,7 @@ class BCN3DPostSlicing(QObject, Extension):
         if hasattr(scene, "gcode_dict"):
             gcode_dict = getattr(scene, "gcode_dict")
             if gcode_dict:
-                #self._addThumbnails(gcode_dict)
+                self._addThumbnails(gcode_dict)
                 for i in gcode_dict:
                     self._bcn3d_fixes_job = Bcn3DFixes(container, gcode_dict[i])
                     self._bcn3d_fixes_job.start()
@@ -99,8 +99,24 @@ class BCN3DPostSlicing(QObject, Extension):
 
     @staticmethod
     def _insertThumbnail(gcode_list, thumbnail_gcode) -> None:
-        """Insert the thumbnail immediately after the generator header of a G-code file."""
+        """Insert the thumbnail after the start-up sequence of a G-code file.
+
+        BCN3D start G-code writes the selected print mode before heating and
+        machine initialization.  The thumbnail must come after that sequence,
+        not between the G-code header and the temperature commands.
+        """
         generated_prefixes = (";Generated with Cura", ";Generated with StratosEngine")
+        print_mode_found = False
+
+        for index, gcode_layer in enumerate(gcode_list):
+            lines = gcode_layer.split("\n")
+            for line_index, line in enumerate(lines):
+                if line.startswith(";Print mode:"):
+                    print_mode_found = True
+                elif print_mode_found and line.lstrip().startswith("M107"):
+                    lines[line_index + 1:line_index + 1] = thumbnail_gcode
+                    gcode_list[index] = "\n".join(lines)
+                    return
 
         for index, gcode_layer in enumerate(gcode_list):
             lines = gcode_layer.split("\n")
@@ -108,6 +124,7 @@ class BCN3DPostSlicing(QObject, Extension):
                 if line.startswith(generated_prefixes):
                     lines[line_index + 1:line_index + 1] = thumbnail_gcode
                     gcode_list[index] = "\n".join(lines)
+                    Logger.log("w", "G-code start-up sequence not found; added thumbnail after generator header")
                     return
 
         Logger.log("w", "Unable to add the G-code thumbnail: generator header not found")
